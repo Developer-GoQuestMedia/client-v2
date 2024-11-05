@@ -52,6 +52,8 @@ const VideoPlayer = () => {
     }
   };
   console.log(currentDialogue?.videoURL );
+
+  
   // require('./Kuma/Kuma Clip 01_x264.mp4');
   
 
