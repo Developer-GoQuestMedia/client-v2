@@ -52,6 +52,8 @@ const VideoPlayer = () => {
     }
   };
   console.log(currentDialogue?.videoURL );
+  console.log(videoRef?.current);
+
 
   
   // require('./Kuma/Kuma Clip 01_x264.mp4');
@@ -67,7 +69,7 @@ const VideoPlayer = () => {
         // controls
       >
         <source 
-          src={currentDialogue.videoURL ? currentDialogue.videoURL : '../data/kuma/Kuma Clip 01_x264.mp4'}
+          src={currentDialogue.videoURL ? currentDialogue.videoURL : '../data/kuma/Kuma Clip 01.mp4'}
           // src={ './Kuma/Kuma Clip 01_x264.mp4'}
           type="video/mp4" 
         />
