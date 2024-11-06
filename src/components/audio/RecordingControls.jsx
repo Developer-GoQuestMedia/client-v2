@@ -75,11 +75,6 @@ const RecordingControls = () => {
 
       stopRecording();
       
-      // After stopping recording, save to localStorage
-      if (currentDialogue?.audioURL) {
-        localStorage.setItem(`recording_${currentIndex}`, currentDialogue.audioURL);
-      }
-      
       // Clean up the media stream
       if (mediaStreamRef.current) {
         mediaStreamRef.current.getTracks().forEach(track => track.stop());
@@ -93,7 +88,7 @@ const RecordingControls = () => {
     } catch (error) {
       console.error("Error stopping recording:", error);
     }
-  }, [stopRecording, setIsPlaying, audioElement, currentIndex, currentDialogue]);
+  }, [stopRecording, setIsPlaying, audioElement]);
 
   // Cleanup effect
   useEffect(() => {
@@ -111,9 +106,6 @@ const RecordingControls = () => {
 
   const handleDeleteRecording = () => {
     if (window.confirm("Are you sure you want to delete this recording?")) {
-      // Remove from localStorage when deleted
-      localStorage.removeItem(`recording_${currentIndex}`);
-      
       updateDialogue(currentIndex, {
         audioURL: null,
         status: "pending",
@@ -157,32 +149,6 @@ const RecordingControls = () => {
       }
     }
   };
-
-  // Add new function to handle successful upload
-  const handleSuccessfulUpload = useCallback(() => {
-    // Clear localStorage after successful upload and approval
-    localStorage.removeItem(`recording_${currentIndex}`);
-  }, [currentIndex]);
-
-  // Load saved recording from localStorage on component mount
-  // useEffect(() => {
-  //   const savedRecording = localStorage.getItem(`recording_${currentIndex}`);
-  //   if (savedRecording && currentDialogue) {
-  //     updateDialogue(currentIndex, {
-  //       audioURL: savedRecording,
-  //       status: "pending",
-  //     });
-  //   }
-  // }, [currentIndex, currentDialogue, updateDialogue]);
-
-
-  useEffect(() => {
-    if (audioElement) {
-      // audioElement.pause();
-      setAudioElement(null);
-      setIsPlaying(false);
-    }
-  }, [currentIndex, audioElement]);
 
   return (
     <div className="fixed bottom-0 left-0 right-0 bg-white border-t p-4 space-y-4">

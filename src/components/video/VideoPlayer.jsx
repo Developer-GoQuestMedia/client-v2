@@ -10,21 +10,37 @@ const VideoPlayer = () => {
 
   useEffect(() => {
     if (videoRef.current) {
-      videoRef.current.load(); // Reload the video element to update the source
-      if (isRecording) {
-        videoRef.current.load();
-      } else {
-        videoRef.current.pause();
-      }
-    }
-  }, [currentDialogue, isRecording]); // Re-run effect when currentDialogue or isRecording changes
+      const baseUrl = process.env.PUBLIC_URL || '/client-v2';
+      const videoPath = currentDialogue?.videoURL 
+        ? `${baseUrl}${encodeURI(currentDialogue.videoURL)}`
+        : `${baseUrl}/Kuma/Kuma%20Clip%2001.mp4`;
+      
+      console.log('File location check:');
+      console.log('- Base URL:', baseUrl);
+      console.log('- Video path:', videoPath);
+      console.log('- Full URL:', window.location.origin + videoPath);
+      
+      fetch(videoPath)
+        .then(async response => {
+          console.log('Content-Type:', response.headers.get('content-type'));
+          const blob = await response.blob();
+          console.log('File size:', blob.size);
+          console.log('File type:', blob.type);
+        })
+        .catch(error => {
+          console.error('Fetch error:', error);
+        });
 
-  const handleTimeUpdate = () => {
-    if (videoRef.current) {
-      const time = videoRef.current.currentTime;
-      // Add time update logic if needed
+      videoRef.current.load();
     }
-  };
+  }, [currentDialogue, isRecording]);
+
+  // const handleTimeUpdate = () => {
+  //   if (videoRef.current) {
+  //     const time = videoRef.current.currentTime;
+  //     // Add time update logic if needed
+  //   }
+  // };
 
   const handlePlay = () => {
     if (videoRef.current) {
@@ -33,7 +49,13 @@ const VideoPlayer = () => {
     }
   };
 
+  console.log(videoRef.current === undefined);
+  
+
   const handleStop = () => {
+    if(videoRef.current === undefined) {
+      return console.log("video is null");
+    }
     if (videoRef.current) {
       videoRef.current.pause();
       videoRef.current.currentTime = 0; // Reset to start
@@ -51,9 +73,7 @@ const VideoPlayer = () => {
       audioRef.current.play(); // Play the recorded audio
     }
   };
-  console.log(currentDialogue?.videoURL );
-  console.log(videoRef?.current);
-
+  console.log(typeof(currentDialogue?.videoURL));
 
   
   // require('./Kuma/Kuma Clip 01_x264.mp4');
@@ -64,14 +84,27 @@ const VideoPlayer = () => {
       <video
         ref={videoRef}
         className="w-full rounded-t-lg"
-        onTimeUpdate={handleTimeUpdate}
         style={{ width: '100%', height: '40%' }}
-        // controls
+        onError={(e) => {
+          console.log('Video error event:', e);
+          const video = videoRef.current;
+          if (video) {
+            console.log('Network state:', video.networkState);
+            console.log('Ready state:', video.readyState);
+            console.log('Error code:', video.error?.code);
+            console.log('Error message:', video.error?.message);
+          }
+        }}
       >
         <source 
-          src={currentDialogue.videoURL ? currentDialogue.videoURL : '../data/kuma/Kuma Clip 01.mp4'}
-          // src={ './Kuma/Kuma Clip 01_x264.mp4'}
+          src={`${process.env.PUBLIC_URL || '/client-v2'}${
+            currentDialogue?.videoURL || '/Kuma/Kuma%20Clip%2001.mp4'
+          }`}
           type="video/mp4" 
+          onError={(e) => {
+            console.log('Source error event:', e);
+            console.log('Attempted source path:', e.target.src);
+          }}
         />
         Your browser does not support the video tag.
       </video>
