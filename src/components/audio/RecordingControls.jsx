@@ -26,63 +26,35 @@ const RecordingControls = () => {
     isPlaying,
     setAudioElement,
     setIsPlaying,
-    videoNotRequired,
   } = useRecording();
 
   const [isProcessing, setIsProcessing] = useState(false);
   const mediaStreamRef = useRef(null);
   const timeoutRef = useRef(null);
 
-  const handleStartRecording = useCallback(async () => {
-    if (isProcessing) return;
-    
-    try {
-      setIsProcessing(true);
-      
-      // Get media stream first
-      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-      mediaStreamRef.current = stream;
-      
-      const maxDuration = calculateMaxDuration(currentDialogue) * 1000;
-      
-      // Set timeout to stop recording after maxDuration
-      timeoutRef.current = setTimeout(() => {
-        handleStopRecording();
-      }, maxDuration);
-
-      // Start recording with the stream
-      await startRecording(maxDuration);
-
-    } catch (error) {
-      console.error("Error starting recording:", error);
-      // Clean up on error
-      if (mediaStreamRef.current) {
-        mediaStreamRef.current.getTracks().forEach(track => track.stop());
-        mediaStreamRef.current = null;
-      }
-    } finally {
-      setIsProcessing(false);
-    }
-  }, [currentDialogue, startRecording]);
-
   const handleStopRecording = useCallback(() => {
     try {
-      // Clear the timeout if stopping manually
+      console.log('Stopping recording...');
+      
       if (timeoutRef.current) {
+        console.log('Clearing timeout...');
         clearTimeout(timeoutRef.current);
         timeoutRef.current = null;
       }
 
       stopRecording();
+      console.log('Recording stopped');
       
       // Clean up the media stream
       if (mediaStreamRef.current) {
+        console.log('Cleaning up media stream...');
         mediaStreamRef.current.getTracks().forEach(track => track.stop());
         mediaStreamRef.current = null;
       }
       
       setIsPlaying(false);
       if (audioElement) {
+        console.log('Pausing audio element...');
         audioElement.pause();
       }
     } catch (error) {
@@ -90,22 +62,46 @@ const RecordingControls = () => {
     }
   }, [stopRecording, setIsPlaying, audioElement]);
 
-  // Cleanup effect
-  useEffect(() => {
-    return () => {
-      // Cleanup on unmount
-      if (timeoutRef.current) {
-        clearTimeout(timeoutRef.current);
-      }
+  const handleStartRecording = useCallback(async () => {
+    if (isProcessing) return;
+    
+    try {
+      console.log('Starting recording process...');
+      setIsProcessing(true);
+      
+      console.log('Requesting media stream...');
+      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+      console.log('Media stream obtained:', stream);
+      mediaStreamRef.current = stream;
+      
+      const maxDuration = calculateMaxDuration(currentDialogue) * 1000;
+      console.log('Max duration set to:', maxDuration, 'ms');
+      
+      timeoutRef.current = setTimeout(() => {
+        console.log('Max duration reached, stopping recording...');
+        handleStopRecording();
+      }, maxDuration);
+
+      console.log('Initiating recording...');
+      await startRecording(maxDuration);
+      console.log('Recording started successfully');
+
+    } catch (error) {
+      console.error("Error starting recording:", error);
       if (mediaStreamRef.current) {
         mediaStreamRef.current.getTracks().forEach(track => track.stop());
         mediaStreamRef.current = null;
       }
-    };
-  }, []);
+    } finally {
+      setIsProcessing(false);
+    }
+  }, [currentDialogue, startRecording, handleStopRecording, isProcessing]);
 
   const handleDeleteRecording = () => {
     if (window.confirm("Are you sure you want to delete this recording?")) {
+      // Remove from localStorage when deleted
+      localStorage.removeItem(`recording_${currentIndex}`);
+      
       updateDialogue(currentIndex, {
         audioURL: null,
         status: "pending",
@@ -149,6 +145,32 @@ const RecordingControls = () => {
       }
     }
   };
+
+  // Add new function to handle successful upload
+  const handleSuccessfulUpload = useCallback(() => {
+    // Clear localStorage after successful upload and approval
+    localStorage.removeItem(`recording_${currentIndex}`);
+  }, [currentIndex]);
+
+  // Load saved recording from localStorage on component mount
+  // useEffect(() => {
+  //   const savedRecording = localStorage.getItem(`recording_${currentIndex}`);
+  //   if (savedRecording && currentDialogue) {
+  //     updateDialogue(currentIndex, {
+  //       audioURL: savedRecording,
+  //       status: "pending",
+  //     });
+  //   }
+  // }, [currentIndex, currentDialogue, updateDialogue]);
+
+
+  useEffect(() => {
+    if (audioElement) {
+      // audioElement.pause();
+      setAudioElement(null);
+      setIsPlaying(false);
+    }
+  }, [currentIndex, audioElement]);
 
   return (
     <div className="fixed bottom-0 left-0 right-0 bg-white border-t p-4 space-y-4">

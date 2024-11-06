@@ -1,6 +1,7 @@
 // src/context/RecordingContext.jsx
-import React, { createContext, useContext, useState, useRef, useCallback } from 'react';
+import React, { createContext, useContext, useState, useRef, useCallback, useEffect, useMemo } from 'react';
 import '../styles/globals.css';
+import { createWorker } from '../utils/audioWorker';
 
 // Add this at the top of your file, before the component
 const initializeMediaDevices = () => {
@@ -39,59 +40,98 @@ export const RecordingProvider = ({ children }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isRecording, setIsRecording] = useState(false);
   const [audioStream, setAudioStream] = useState(null);
-  const [noVideo, setNoVideo] = useState(true);
   const [error, setError] = useState(null);
   const [recordingDuration, setRecordingDuration] = useState(0);
   const [audioElement, setAudioElement] = useState(null);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [noVideo, setNoVideo] = useState(false);
 
   // Refs
   const mediaRecorder = useRef(null);
   const audioChunks = useRef([]);
-  const recordingTimer = useRef(null);
   const videoRef = useRef(null);
+  const recordingTimer = useRef(null);
 
-  // Audio recording functions
+  // Add currentDialogue computed value
+  const currentDialogue = useMemo(() => 
+    dialogues[currentIndex] || null
+  , [dialogues, currentIndex]);
+
+  // Helper function to create audio processor
+  const createAudioProcessor = async (audioContext) => {
+    await audioContext.audioWorklet.addModule(URL.createObjectURL(new Blob([`
+      class RecorderProcessor extends AudioWorkletProcessor {
+        constructor() {
+          super();
+          this.chunks = [];
+        }
+
+        process(inputs) {
+          const input = inputs[0];
+          if (input.length > 0) {
+            this.chunks.push(input);
+            this.port.postMessage({ chunks: input });
+          }
+          return true;
+        }
+      }
+
+      registerProcessor('recorder-processor', RecorderProcessor);
+    `], { type: 'application/javascript' })));
+
+    const processor = new AudioWorkletNode(audioContext, 'recorder-processor');
+    
+    processor.port.onmessage = (e) => {
+      if (mediaRecorder.current?.isRecording && e.data.chunks) {
+        mediaRecorder.current.chunks.push(e.data.chunks);
+      }
+    };
+
+    return processor;
+  };
+
+  // Helper function for cleanup
+  const cleanup = useCallback(() => {
+    if (mediaRecorder.current) {
+      const { stream, audioContext } = mediaRecorder.current;
+      if (stream) {
+        stream.getTracks().forEach(track => track.stop());
+      }
+      if (audioContext && audioContext.state !== 'closed') {
+        audioContext.close();
+      }
+    }
+    setIsRecording(false);
+    setAudioStream(null);
+    mediaRecorder.current = null;
+  }, []);
 
   const stopRecording = useCallback(() => {
     console.log('Stop recording called');
-    console.log('Recording state:', isRecording);
-    console.log('MediaRecorder:', mediaRecorder.current);
     
-    if (!mediaRecorder.current) {
-      console.log('No MediaRecorder instance found');
+    if (!mediaRecorder.current || mediaRecorder.current.state === 'inactive') {
+      console.log('No active recording found');
       return;
     }
 
     try {
-      if (mediaRecorder.current.state === 'recording') {
-        console.log('Stopping active recording');
-        mediaRecorder.current.stop();
-        
-        // Clean up the audio stream
-        if (audioStream) {
-          audioStream.getTracks().forEach(track => track.stop());
-        }
-        
-        if (recordingTimer.current) {
-          clearInterval(recordingTimer.current);
-          recordingTimer.current = null;
-        }
-        
-        setIsRecording(false);
-        setAudioStream(null);
-        setRecordingDuration(0);
-      } else {
-        console.log('MediaRecorder is not recording. Current state:', mediaRecorder.current.state);
+      console.log('Stopping recording...');
+      mediaRecorder.current.stop();
+      
+      // Stop all tracks
+      if (audioStream) {
+        audioStream.getTracks().forEach(track => track.stop());
       }
-    } catch (error) {
-      console.error('Error stopping recording:', error);
-      // Reset state even if there's an error
+      
       setIsRecording(false);
       setAudioStream(null);
-      setRecordingDuration(0);
+      
+    } catch (error) {
+      console.error('Error stopping recording:', error);
+      setError('Failed to stop recording');
+      cleanup();
     }
-  }, [audioStream]);
+  }, [audioStream, setError, setIsRecording, setAudioStream, cleanup]);
 
   const checkMediaSupport = useCallback(async () => {
     console.log('Checking media support...');
@@ -150,90 +190,132 @@ export const RecordingProvider = ({ children }) => {
   
   const startRecording = useCallback(async (maxDuration) => {
     console.log('Starting recording process...');
+    let stream;
     
-    // Prevent multiple recordings
-    if (isRecording || (mediaRecorder.current && mediaRecorder.current.state === 'recording')) {
-      console.log('Recording already in progress');
-      return;
-    }
-
     try {
       const isSupported = await checkMediaSupport();
-      if (!isSupported) {
-        console.log('Media support check failed, cannot proceed');
-        return;
-      }
+      if (!isSupported) return;
 
       console.log('Media support confirmed, proceeding with recording setup');
       
-      // Get the stream again for actual recording
-      const stream = await navigator.mediaDevices.getUserMedia({
+      // Request high-quality audio stream
+      stream = await navigator.mediaDevices.getUserMedia({
         audio: {
           echoCancellation: true,
           noiseSuppression: true,
+          autoGainControl: true,
           sampleRate: 44100
         }
       });
 
-      // Check if MediaRecorder is supported
-      if (typeof MediaRecorder === 'undefined') {
-        throw new Error('MediaRecorder is not supported in this browser');
-      }
+      // Create MediaRecorder with supported mime type
+      const mimeType = MediaRecorder.isTypeSupported('audio/webm')
+        ? 'audio/webm'
+        : 'audio/mp4';
 
-      // Create and configure MediaRecorder
+      console.log('Using MIME type:', mimeType);
+      
       const recorder = new MediaRecorder(stream, {
-        mimeType: MediaRecorder.isTypeSupported('audio/webm;codecs=opus')
-          ? 'audio/webm;codecs=opus'
-          : 'audio/webm'
+        mimeType,
+        audioBitsPerSecond: 128000
       });
 
-      console.log('MediaRecorder created:', recorder.state);
-
-      mediaRecorder.current = recorder;
       audioChunks.current = [];
 
-      // Pause video if playing
-      if (videoRef.current) {
-        videoRef.current.pause();
-      }
-
-      // Setup data handling
       recorder.ondataavailable = (event) => {
-        console.log('Data available event:', event.data.size);
         if (event.data.size > 0) {
+          console.log('Received chunk:', event.data.size, 'bytes');
           audioChunks.current.push(event.data);
         }
       };
 
-      // Handle recording stop
-      recorder.onstop = () => {
-        const audioBlob = new Blob(audioChunks.current, { type: 'audio/webm' });
-        const audioUrl = URL.createObjectURL(audioBlob);
-        
-        setDialogues(prev => prev.map((dialogue, index) => 
-          index === currentIndex
-            ? { ...dialogue, audioURL: audioUrl, status: 'recorded' }
-            : dialogue
-        ));
+      recorder.onstop = async () => {
+        try {
+          console.log('Processing recorded audio...');
+          const audioBlob = new Blob(audioChunks.current, { type: mimeType });
+          console.log('Created blob:', audioBlob.size, 'bytes');
 
-        stream.getTracks().forEach(track => track.stop());
-        setIsRecording(false);
-        setAudioStream(null);
-        setRecordingDuration(0);
+          // Revoke any existing URLs
+          if (dialogues[currentIndex]?.audioURL) {
+            URL.revokeObjectURL(dialogues[currentIndex].audioURL);
+          }
+
+          // Create audio element to validate the blob
+          const testAudio = new Audio();
+          const audioUrl = URL.createObjectURL(audioBlob);
+          
+          // Get duration using Web Audio API
+          const duration = await new Promise((resolve) => {
+            const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+            const reader = new FileReader();
+            
+            reader.onload = async (e) => {
+              try {
+                const audioBuffer = await audioContext.decodeAudioData(e.target.result);
+                console.log('Actual duration:', audioBuffer.duration);
+
+                // Validate audio playback
+                testAudio.src = audioUrl;
+                await new Promise((loadResolve) => {
+                  testAudio.onloadedmetadata = () => {
+                    console.log('Test audio loaded, duration:', testAudio.duration);
+                    loadResolve();
+                  };
+                });
+
+                resolve(audioBuffer.duration);
+                audioContext.close();
+              } catch (error) {
+                console.error('Error decoding audio:', error);
+                resolve(recordingDuration / 1000);
+              }
+            };
+            
+            reader.onerror = () => {
+              console.error('Error reading file');
+              resolve(recordingDuration / 1000);
+            };
+            
+            reader.readAsArrayBuffer(audioBlob);
+          });
+
+          console.log('Final duration:', duration);
+
+          // Create a new blob with proper MIME type
+          const finalBlob = new Blob([audioBlob], { 
+            type: 'audio/webm;codecs=opus' 
+          });
+          const finalUrl = URL.createObjectURL(finalBlob);
+
+          // Update dialogues with new audio
+          setDialogues(prev => prev.map((dialogue, index) => {
+            if (index === currentIndex) {
+              return {
+                ...dialogue,
+                audioURL: finalUrl,
+                status: 'recorded',
+                duration: duration,
+                mimeType: 'audio/webm;codecs=opus'
+              };
+            }
+            return dialogue;
+          }));
+
+          // Clean up test audio
+          testAudio.src = '';
+          URL.revokeObjectURL(audioUrl);
+
+        } catch (error) {
+          console.error('Error processing audio:', error);
+          setError('Failed to process recording');
+        }
       };
 
-      // Start recording timer
-      let startTime = Date.now();
-      recordingTimer.current = setInterval(() => {
-        const duration = Math.floor((Date.now() - startTime) / 1000);
-        if (duration >= maxDuration) {
-          stopRecording();
-        } else {
-          setRecordingDuration(duration);
-        }
-      }, 1000);
-
-      recorder.start(100); // Record in 100ms chunks
+      // Store recorder reference
+      mediaRecorder.current = recorder;
+      
+      // Start recording
+      recorder.start(100); // Collect data every 100ms
       console.log('Recording started:', recorder.state);
       
       setIsRecording(true);
@@ -243,9 +325,12 @@ export const RecordingProvider = ({ children }) => {
     } catch (error) {
       console.error('Recording setup failed:', error);
       setError(`Recording failed: ${error.message}`);
-      setIsRecording(false);
+      if (stream) {
+        stream.getTracks().forEach(track => track.stop());
+      }
+      cleanup();
     }
-  }, [currentIndex, checkMediaSupport]);
+  }, [currentIndex, cleanup, setError, setIsRecording, setAudioStream, setDialogues]);
 
   
 
@@ -301,25 +386,60 @@ export const RecordingProvider = ({ children }) => {
   }, []);
 
   const videoNotRequired = useCallback(() => {
-    videoRef.current.pause();
-
+    if (videoRef.current) {
+      videoRef.current.pause();
+    }
     setNoVideo(true);
   }, []);
+
+  // Add cleanup effect for recording timer
+  useEffect(() => {
+    return () => {
+      if (recordingTimer.current) {
+        clearInterval(recordingTimer.current);
+        recordingTimer.current = null;
+      }
+    };
+  }, []);
+
+  // Add handleDeleteRecording function
+  const handleDeleteRecording = useCallback(() => {
+    if (!currentDialogue) return;
+    
+    if (currentDialogue.audioURL) {
+      URL.revokeObjectURL(currentDialogue.audioURL);
+    }
+    
+    updateDialogue(currentIndex, {
+      audioURL: null,
+      status: 'pending',
+      duration: null
+    });
+  }, [currentIndex, currentDialogue, updateDialogue]);
+
+  // Add handleReRecord function
+  const handleReRecord = useCallback(() => {
+    if (!currentDialogue) return;
+    
+    handleDeleteRecording();
+    startRecording();
+  }, [currentDialogue, handleDeleteRecording, startRecording]);
 
   // Context value
   const value = {
     // State
     dialogues,
     currentIndex,
+    currentDialogue,
     isRecording,
     audioStream,
     error,
     recordingDuration,
-    currentDialogue: dialogues[currentIndex],
     videoRef,
     audioElement,
     isPlaying,
     noVideo,
+    
     // State setters
     setDialogues,
     setCurrentIndex,
@@ -328,24 +448,30 @@ export const RecordingProvider = ({ children }) => {
     setAudioElement,
     setIsPlaying,
     setNoVideo,
+    
     // Recording functions
     startRecording,
     stopRecording,
+
+    // Video functions
+    syncVideoTime,
+    videoNotRequired,
+    
+    // Dialogue management
+    updateDialogue,
+    approveDialogue,
+    rejectDialogue,
+
+    // Delete and re-record functions
+    handleDeleteRecording,
+    handleReRecord,
 
     // Navigation functions
     moveToNext,
     moveToPrevious,
     jumpToScene,
 
-    // Dialogue management
-    updateDialogue,
-    approveDialogue,
-    rejectDialogue,
-
-
-    // Video functions
-    syncVideoTime,
-    videoNotRequired,
+    // ... rest of your context value
   };
 
   return (
@@ -363,3 +489,55 @@ export const useRecording = () => {
   }
   return context;
 };
+
+// Helper function to create WAV blob
+async function createWavBlob(chunks, sampleRate) {
+  // Convert chunks to single buffer
+  const audioData = chunks.flat();
+  const numChannels = audioData[0].length;
+  const length = audioData.length * audioData[0].length;
+  const buffer = new Float32Array(length);
+
+  let offset = 0;
+  for (const chunk of audioData) {
+    for (let channel = 0; channel < numChannels; channel++) {
+      buffer.set(chunk[channel], offset);
+      offset += chunk[channel].length;
+    }
+  }
+
+  // Create WAV header
+  const wavHeader = createWavHeader(length, numChannels, sampleRate);
+  
+  // Combine header and audio data
+  const wavBlob = new Blob([wavHeader, buffer], { type: 'audio/wav' });
+  return wavBlob;
+}
+
+// Helper function to create WAV header
+function createWavHeader(dataLength, numChannels, sampleRate) {
+  const buffer = new ArrayBuffer(44);
+  const view = new DataView(buffer);
+
+  writeString(view, 0, 'RIFF');
+  view.setUint32(4, 36 + dataLength * 2, true);
+  writeString(view, 8, 'WAVE');
+  writeString(view, 12, 'fmt ');
+  view.setUint32(16, 16, true);
+  view.setUint16(20, 1, true);
+  view.setUint16(22, numChannels, true);
+  view.setUint32(24, sampleRate, true);
+  view.setUint32(28, sampleRate * numChannels * 2, true);
+  view.setUint16(32, numChannels * 2, true);
+  view.setUint16(34, 16, true);
+  writeString(view, 36, 'data');
+  view.setUint32(40, dataLength * 2, true);
+
+  return buffer;
+}
+
+function writeString(view, offset, string) {
+  for (let i = 0; i < string.length; i++) {
+    view.setUint8(offset + i, string.charCodeAt(i));
+  }
+}
