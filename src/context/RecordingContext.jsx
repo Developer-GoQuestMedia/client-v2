@@ -109,7 +109,7 @@ export const RecordingProvider = ({ children }) => {
   const stopRecording = useCallback(() => {
     console.log('Stop recording called');
     
-    if (!mediaRecorder.current || mediaRecorder.current.state === 'inactive') {
+    if (!mediaRecorder.current || !mediaRecorder.current.isRecording) {
       console.log('No active recording found');
       return;
     }
@@ -123,6 +123,7 @@ export const RecordingProvider = ({ children }) => {
         audioStream.getTracks().forEach(track => track.stop());
       }
       
+      console.log('Recording stopped successfully');
       setIsRecording(false);
       setAudioStream(null);
       
@@ -139,6 +140,7 @@ export const RecordingProvider = ({ children }) => {
     try {
       // Initialize media devices
       initializeMediaDevices();
+      console.log('Media devices initialized');
       
       // Only check for secure context in production
       if (!window.isSecureContext && process.env.NODE_ENV === 'production') {
@@ -191,6 +193,8 @@ export const RecordingProvider = ({ children }) => {
   const startRecording = useCallback(async (maxDuration) => {
     console.log('Starting recording process...');
     let stream;
+    let audioContext;
+    let workletNode;
     
     try {
       const isSupported = await checkMediaSupport();
@@ -208,125 +212,102 @@ export const RecordingProvider = ({ children }) => {
         }
       });
 
-      // Create MediaRecorder with supported mime type
-      const mimeType = MediaRecorder.isTypeSupported('audio/webm')
-        ? 'audio/webm'
-        : 'audio/mp4';
+      console.log('Audio stream obtained');
 
-      console.log('Using MIME type:', mimeType);
-      
-      const recorder = new MediaRecorder(stream, {
-        mimeType,
-        audioBitsPerSecond: 128000
+      // Create Audio Context and Source
+      audioContext = new (window.AudioContext || window.webkitAudioContext)({
+        sampleRate: 44100,
+        channelCount: 2
       });
+      const source = audioContext.createMediaStreamSource(stream);
 
-      audioChunks.current = [];
+      // Create and connect the worker
+      workletNode = await createWorker(audioContext);
+      
+      // Connect the nodes properly
+      source.connect(workletNode);
+      // Remove the connection to destination to prevent echo
+      // workletNode.connect(audioContext.destination);
 
-      recorder.ondataavailable = (event) => {
-        if (event.data.size > 0) {
-          console.log('Received chunk:', event.data.size, 'bytes');
-          audioChunks.current.push(event.data);
+      const recordedChunks = [];
+      
+      workletNode.port.onmessage = (event) => {
+        if (event.data.audioData) {
+          recordedChunks.push(event.data.audioData);
         }
       };
 
-      recorder.onstop = async () => {
-        try {
-          console.log('Processing recorded audio...');
-          const audioBlob = new Blob(audioChunks.current, { type: mimeType });
-          console.log('Created blob:', audioBlob.size, 'bytes');
+      // Store recorder state
+      mediaRecorder.current = {
+        stream,
+        audioContext,
+        workletNode,
+        isRecording: true,
+        stop: async () => {
+          console.log('Stopping media recorder...');
+          mediaRecorder.current.isRecording = false;
+          source.disconnect(workletNode);
+          workletNode.disconnect();
+          
+          if (recordedChunks.length === 0) {
+            throw new Error('No audio data recorded');
+          }
 
-          // Revoke any existing URLs
+          // Combine all chunks into continuous arrays per channel
+          const numChannels = recordedChunks[0].length;
+          const combinedChannels = Array(numChannels).fill().map(() => []);
+          
+          for (const chunk of recordedChunks) {
+            for (let channel = 0; channel < numChannels; channel++) {
+              combinedChannels[channel].push(...chunk[channel]);
+            }
+          }
+
+          const wavBlob = createWavBlob(
+            combinedChannels.map(channel => new Float32Array(channel)),
+            numChannels,
+            audioContext.sampleRate
+          );
+
+          // Log the recorded audio type
+          console.log('Recorded audio type:', wavBlob.type);
+
           if (dialogues[currentIndex]?.audioURL) {
             URL.revokeObjectURL(dialogues[currentIndex].audioURL);
           }
 
-          // Create audio element to validate the blob
-          const testAudio = new Audio();
-          const audioUrl = URL.createObjectURL(audioBlob);
-          
-          // Get duration using Web Audio API
-          const duration = await new Promise((resolve) => {
-            const audioContext = new (window.AudioContext || window.webkitAudioContext)();
-            const reader = new FileReader();
-            
-            reader.onload = async (e) => {
-              try {
-                const audioBuffer = await audioContext.decodeAudioData(e.target.result);
-                console.log('Actual duration:', audioBuffer.duration);
+          const audioUrl = URL.createObjectURL(wavBlob);
+          const duration = combinedChannels[0].length / audioContext.sampleRate;
 
-                // Validate audio playback
-                testAudio.src = audioUrl;
-                await new Promise((loadResolve) => {
-                  testAudio.onloadedmetadata = () => {
-                    console.log('Test audio loaded, duration:', testAudio.duration);
-                    loadResolve();
-                  };
-                });
-
-                resolve(audioBuffer.duration);
-                audioContext.close();
-              } catch (error) {
-                console.error('Error decoding audio:', error);
-                resolve(recordingDuration / 1000);
-              }
-            };
-            
-            reader.onerror = () => {
-              console.error('Error reading file');
-              resolve(recordingDuration / 1000);
-            };
-            
-            reader.readAsArrayBuffer(audioBlob);
-          });
-
-          console.log('Final duration:', duration);
-
-          // Create a new blob with proper MIME type
-          const finalBlob = new Blob([audioBlob], { 
-            type: 'audio/webm;codecs=opus' 
-          });
-          const finalUrl = URL.createObjectURL(finalBlob);
-
-          // Update dialogues with new audio
           setDialogues(prev => prev.map((dialogue, index) => {
             if (index === currentIndex) {
               return {
                 ...dialogue,
-                audioURL: finalUrl,
+                audioURL: audioUrl,
                 status: 'recorded',
                 duration: duration,
-                mimeType: 'audio/webm;codecs=opus'
+                mimeType: 'audio/wav'
               };
             }
             return dialogue;
           }));
-
-          // Clean up test audio
-          testAudio.src = '';
-          URL.revokeObjectURL(audioUrl);
-
-        } catch (error) {
-          console.error('Error processing audio:', error);
-          setError('Failed to process recording');
+          console.log('Media recorder stopped');
         }
       };
-
-      // Store recorder reference
-      mediaRecorder.current = recorder;
-      
-      // Start recording
-      recorder.start(100); // Collect data every 100ms
-      console.log('Recording started:', recorder.state);
       
       setIsRecording(true);
       setAudioStream(stream);
       setError(null);
+      console.log('Recording started successfully');
 
     } catch (error) {
       console.error('Recording setup failed:', error);
       setError(`Recording failed: ${error.message}`);
       if (stream) {
         stream.getTracks().forEach(track => track.stop());
+      }
+      if (audioContext) {
+        audioContext.close();
       }
       cleanup();
     }
@@ -490,54 +471,57 @@ export const useRecording = () => {
   return context;
 };
 
-// Helper function to create WAV blob
-async function createWavBlob(chunks, sampleRate) {
-  // Convert chunks to single buffer
-  const audioData = chunks.flat();
-  const numChannels = audioData[0].length;
-  const length = audioData.length * audioData[0].length;
-  const buffer = new Float32Array(length);
-
-  let offset = 0;
-  for (const chunk of audioData) {
-    for (let channel = 0; channel < numChannels; channel++) {
-      buffer.set(chunk[channel], offset);
-      offset += chunk[channel].length;
-    }
-  }
-
-  // Create WAV header
-  const wavHeader = createWavHeader(length, numChannels, sampleRate);
-  
-  // Combine header and audio data
-  const wavBlob = new Blob([wavHeader, buffer], { type: 'audio/wav' });
-  return wavBlob;
-}
-
-// Helper function to create WAV header
-function createWavHeader(dataLength, numChannels, sampleRate) {
-  const buffer = new ArrayBuffer(44);
-  const view = new DataView(buffer);
-
-  writeString(view, 0, 'RIFF');
-  view.setUint32(4, 36 + dataLength * 2, true);
-  writeString(view, 8, 'WAVE');
-  writeString(view, 12, 'fmt ');
-  view.setUint32(16, 16, true);
-  view.setUint16(20, 1, true);
-  view.setUint16(22, numChannels, true);
-  view.setUint32(24, sampleRate, true);
-  view.setUint32(28, sampleRate * numChannels * 2, true);
-  view.setUint16(32, numChannels * 2, true);
-  view.setUint16(34, 16, true);
-  writeString(view, 36, 'data');
-  view.setUint32(40, dataLength * 2, true);
-
-  return buffer;
-}
-
+// Update the WAV creation functions
 function writeString(view, offset, string) {
   for (let i = 0; i < string.length; i++) {
     view.setUint8(offset + i, string.charCodeAt(i));
   }
+}
+
+function floatTo16BitPCM(output, offset, input) {
+  for (let i = 0; i < input.length; i++, offset += 2) {
+    const s = Math.max(-1, Math.min(1, input[i]));
+    output.setInt16(offset, s < 0 ? s * 0x8000 : s * 0x7FFF, true);
+  }
+}
+
+function createWavBlob(audioData, numChannels, sampleRate) {
+  const bytesPerSample = 2;
+  const frameLength = audioData[0].length;
+  const numberOfFrames = frameLength * numChannels;
+  const headerLength = 44;
+  const dataLength = numberOfFrames * bytesPerSample;
+  const bufferLength = headerLength + dataLength;
+  const arrayBuffer = new ArrayBuffer(bufferLength);
+  const view = new DataView(arrayBuffer);
+
+  // RIFF chunk descriptor
+  writeString(view, 0, 'RIFF');
+  view.setUint32(4, 36 + dataLength, true);
+  writeString(view, 8, 'WAVE');
+
+  // FMT sub-chunk
+  writeString(view, 12, 'fmt ');
+  view.setUint32(16, 16, true); // subchunk1size
+  view.setUint16(20, 1, true); // audio format (PCM)
+  view.setUint16(22, numChannels, true);
+  view.setUint32(24, sampleRate, true);
+  view.setUint32(28, sampleRate * numChannels * bytesPerSample, true); // byte rate
+  view.setUint16(32, numChannels * bytesPerSample, true); // block align
+  view.setUint16(34, 16, true); // bits per sample
+
+  // Data sub-chunk
+  writeString(view, 36, 'data');
+  view.setUint32(40, dataLength, true);
+
+  // Write the PCM samples
+  const offset = 44;
+  for (let i = 0; i < frameLength; i++) {
+    for (let channel = 0; channel < numChannels; channel++) {
+      const sample = audioData[channel][i];
+      floatTo16BitPCM(view, offset + ((i * numChannels + channel) * bytesPerSample), [sample]);
+    }
+  }
+
+  return new Blob([arrayBuffer], { type: 'audio/wav' });
 }

@@ -3,10 +3,10 @@ import { Button } from "@/components/ui/button";
 import {
   Mic,
   Square,
-  Trash2, // For delete
-  RotateCcw, // For re-record
-  Play, // For play
-  Pause, // For pause
+  Trash2,
+  RotateCcw,
+  Play,
+  Pause,
 } from "lucide-react";
 import { useRecording } from "../../context/RecordingContext";
 import AudioVisualizer from "./AudioVisualizer";
@@ -26,11 +26,29 @@ const RecordingControls = () => {
     isPlaying,
     setAudioElement,
     setIsPlaying,
+    error,
   } = useRecording();
 
   const [isProcessing, setIsProcessing] = useState(false);
+  const [countdown, setCountdown] = useState(0);
   const mediaStreamRef = useRef(null);
   const timeoutRef = useRef(null);
+  const countdownIntervalRef = useRef(null);
+
+  useEffect(() => {
+    if (error) {
+      console.error("Recording error:", error);
+    }
+  }, [error]);
+
+  useEffect(() => {
+    // Cleanup countdown interval on unmount
+    return () => {
+      if (countdownIntervalRef.current) {
+        clearInterval(countdownIntervalRef.current);
+      }
+    };
+  }, []);
 
   const handleStopRecording = useCallback(() => {
     try {
@@ -45,7 +63,6 @@ const RecordingControls = () => {
       stopRecording();
       console.log('Recording stopped');
       
-      // Clean up the media stream
       if (mediaStreamRef.current) {
         console.log('Cleaning up media stream...');
         mediaStreamRef.current.getTracks().forEach(track => track.stop());
@@ -62,12 +79,29 @@ const RecordingControls = () => {
     }
   }, [stopRecording, setIsPlaying, audioElement]);
 
+  const startCountdown = useCallback(() => {
+    setCountdown(3);
+    countdownIntervalRef.current = setInterval(() => {
+      setCountdown(prev => {
+        if (prev <= 1) {
+          clearInterval(countdownIntervalRef.current);
+          return 0;
+        }
+        return prev - 1;
+      });
+    }, 1000);
+  }, []);
+
   const handleStartRecording = useCallback(async () => {
     if (isProcessing) return;
     
     try {
-      console.log('Starting recording process...');
+      console.log('Starting countdown...');
       setIsProcessing(true);
+      startCountdown();
+
+      // Wait for countdown
+      await new Promise(resolve => setTimeout(resolve, 3000));
       
       console.log('Requesting media stream...');
       const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
@@ -95,11 +129,10 @@ const RecordingControls = () => {
     } finally {
       setIsProcessing(false);
     }
-  }, [currentDialogue, startRecording, handleStopRecording, isProcessing]);
+  }, [currentDialogue, startRecording, handleStopRecording, isProcessing, startCountdown]);
 
   const handleDeleteRecording = () => {
     if (window.confirm("Are you sure you want to delete this recording?")) {
-      // Remove from localStorage when deleted
       localStorage.removeItem(`recording_${currentIndex}`);
       
       updateDialogue(currentIndex, {
@@ -146,27 +179,12 @@ const RecordingControls = () => {
     }
   };
 
-  // Add new function to handle successful upload
   const handleSuccessfulUpload = useCallback(() => {
-    // Clear localStorage after successful upload and approval
     localStorage.removeItem(`recording_${currentIndex}`);
   }, [currentIndex]);
 
-  // Load saved recording from localStorage on component mount
-  // useEffect(() => {
-  //   const savedRecording = localStorage.getItem(`recording_${currentIndex}`);
-  //   if (savedRecording && currentDialogue) {
-  //     updateDialogue(currentIndex, {
-  //       audioURL: savedRecording,
-  //       status: "pending",
-  //     });
-  //   }
-  // }, [currentIndex, currentDialogue, updateDialogue]);
-
-
   useEffect(() => {
     if (audioElement) {
-      // audioElement.pause();
       setAudioElement(null);
       setIsPlaying(false);
     }
@@ -174,7 +192,6 @@ const RecordingControls = () => {
 
   return (
     <div className="fixed bottom-0 left-0 right-0 bg-white border-t p-4 space-y-4">
-      {/* Audio Visualization */}
       {isRecording && audioStream && (
         <>
           <AudioVisualizer
@@ -188,24 +205,23 @@ const RecordingControls = () => {
         </>
       )}
 
-      {/* Control Buttons */}
       <div className="flex gap-4 max-w-lg mx-auto">
-        {/* Record/Stop Button */}
         <Button
           className="flex-1 p-2"
           variant={isRecording ? "destructive" : "default"}
           onClick={() =>
             isRecording ? handleStopRecording() : handleStartRecording()
           }
-          disabled={!currentDialogue || isPlaying}
+          disabled={!currentDialogue || isPlaying || isProcessing}
         >
-          {isRecording ? (
+          {isProcessing && countdown > 0 ? (
+            <span className="flex items-center">
+              <span className="text-lg font-bold mr-2">{countdown}</span>
+              Starting...
+            </span>
+          ) : isRecording ? (
             <>
-              <Square
-                onClick={console.log("clicekd")}
-                className="mr-2 h-4 w-4"
-              />{" "}
-              Stop
+              <Square className="mr-2 h-4 w-4" /> Stop
             </>
           ) : (
             <>
@@ -214,7 +230,6 @@ const RecordingControls = () => {
           )}
         </Button>
 
-        {/* Play/Pause Button */}
         <Button
           variant="outline"
           onClick={handlePlayback}
@@ -232,7 +247,6 @@ const RecordingControls = () => {
           )}
         </Button>
 
-        {/* Re-record Button */}
         <Button
           variant="outline"
           onClick={handleReRecord}
@@ -243,7 +257,6 @@ const RecordingControls = () => {
           <RotateCcw className="mr-2 h-4 w-4" /> Retry
         </Button>
 
-        {/* Delete Button */}
         <Button
           variant="outline"
           onClick={handleDeleteRecording}
@@ -255,7 +268,6 @@ const RecordingControls = () => {
         </Button>
       </div>
 
-      {/* Current Dialogue Info */}
       {currentDialogue && (
         <div className="text-xs text-gray-500 text-center mt-2">
           Recording time limit: {calculateMaxDuration(currentDialogue)} seconds
