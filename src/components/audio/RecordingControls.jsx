@@ -190,6 +190,50 @@ const RecordingControls = () => {
     }
   }, [currentIndex, audioElement]);
 
+  const handleSamplePlayback = async () => {
+    const audioPath = `${process.env.PUBLIC_URL || '/client-v2'}/Kuma/audio.wav`;
+    
+    try {
+        console.log(`Checking audio file at: ${audioPath}`);
+        const response = await fetch(audioPath);
+        
+        if (!response.ok) {
+            throw new Error(`File not found: ${audioPath}`);
+        } else {
+            console.log("File found");
+        }
+
+        // Check the content type of the response
+        const contentType = response.headers.get('Content-Type');
+        console.log("Content-Type:", contentType);
+        
+        // Ensure the content type is a supported audio format
+        if (!contentType || !contentType.startsWith('audio/')) {
+            throw new Error(`Unsupported audio format: ${contentType}`);
+        }
+
+        const sampleAudio = new Audio(audioPath);
+        sampleAudio.addEventListener('error', (e) => {
+            console.error("Audio playback error:", e);
+            
+        });
+
+        // Wait for the audio to load before playing
+        sampleAudio.addEventListener('canplaythrough', async () => {
+            try {
+                await sampleAudio.play();
+                console.log("Sample audio is playing");
+            } catch (playError) {
+                console.error("Error playing audio:", playError);
+                alert("Failed to play audio. Please check the console for details.");
+            }
+        });
+    } catch (error) {
+        console.error("Error playing sample audio:", error);
+        alert("Failed to play audio. Please check the file path and format.");
+    }
+  };
+
   return (
     <div className="fixed bottom-0 left-0 right-0 bg-white border-t p-4 space-y-4">
       {isRecording && audioStream && (
@@ -265,6 +309,14 @@ const RecordingControls = () => {
           className="w-24"
         >
           <Trash2 className="mr-2 h-4 w-4" /> Delete
+        </Button>
+
+        <Button
+          variant="outline"
+          onClick={handleSamplePlayback}
+          className="w-24"
+        >
+          Test Sample
         </Button>
       </div>
 
