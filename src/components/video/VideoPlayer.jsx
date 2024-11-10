@@ -116,11 +116,6 @@ const VideoPlayer = () => {
       return;
     }
 
-    // console.log('Video metadata loaded:', {
-    //   duration: e.target.duration,
-    //   videoWidth: e.target.videoWidth,
-    //   videoHeight: e.target.videoHeight
-    // });
     setIsVideoReady(true);
   };
 
@@ -133,8 +128,6 @@ const VideoPlayer = () => {
         preload="auto"
         playsInline
         onLoadedMetadata={handleMetadataLoaded}
-        // onLoadStart={() => console.log('Video load started')}
-        // onCanPlay={() => console.log('Video can play')}
         onError={(e) => {
           console.error("Video error:", e);
           setIsVideoReady(false);
@@ -171,19 +164,19 @@ const VideoPlayer = () => {
       )}
 
       <VideoProgress videoRef={videoRef} isReady={isVideoReady} />
-      <div className="controls flex  gap-3 py-2.5 h-24 w-full border-2 justify-center content-center text-black">
-        <button className="bg-slate-600 text-white px-5 mb-8 hover:bg-fuchsia-600" onClick={handlePlay} disabled={!isVideoReady}>
+      <div className="controls flex flex-wrap gap-3 py-2.5 h-24 w-full border-2 justify-center content-center text-black">
+        <button className="bg-slate-600 text-white px-4 py-2 mb-2 hover:bg-fuchsia-600 w-full sm:w-auto" onClick={handlePlay} disabled={!isVideoReady}>
           Play
         </button>
         <button
-          className="bg-slate-600 text-white px-5 mb-8 hover:bg-fuchsia-600"
+          className="bg-slate-600 text-white px-4 py-2 mb-2 hover:bg-fuchsia-600 w-full sm:w-auto"
           onClick={handleStop}
           disabled={!isVideoReady}
         >
           Stop
         </button>
         <button
-          className={`bg-slate-600 text-white px-5 mb-8 hover:bg-fuchsia-600 ${!isVideoReady || !currentDialogue?.audioURL ? 'opacity-50 cursor-not-allowed' : ''}`}
+          className={`bg-slate-600 text-white px-4 py-2 mb-2 hover:bg-fuchsia-600 w-full sm:w-auto ${!isVideoReady || !currentDialogue?.audioURL ? 'opacity-50 cursor-not-allowed' : ''}`}
           onClick={handlePlayWithRecordedAudio}
           disabled={!isVideoReady || !currentDialogue?.audioURL}
         >
