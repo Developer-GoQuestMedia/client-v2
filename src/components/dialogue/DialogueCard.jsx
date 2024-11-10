@@ -1,6 +1,6 @@
 // src/components/dialogue/DialogueCard.jsx
 import React, { useRef, useState } from 'react';
-import { Card } from '@/components/ui/card';
+import { Card } from '../ui/card';
 import { useRecording } from '../../context/RecordingContext';
 import DialogueText from './DialogueText';
 import ContextInfo from './ContextInfo';

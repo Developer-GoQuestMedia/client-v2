@@ -3,7 +3,6 @@ import { RecordingProvider } from './context/RecordingContext';
 import VideoPlayer from './components/video/VideoPlayer';
 import DialogueCard from './components/dialogue/DialogueCard';
 import RecordingControls from './components/audio/RecordingControls';
-import './styles/globals.css';
 
 const App = () => {
   return (

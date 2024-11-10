@@ -1,6 +1,6 @@
 // src/components/dialogue/DialogueText.jsx
 import React, { useState, forwardRef, useImperativeHandle, useEffect } from 'react';
-import { Input } from '@/components/ui/input';
+import { Input } from '../ui/input';
 
 const DialogueText = forwardRef(({ dialogue }, ref) => {
   const [original, setOriginal] = useState(dialogue.original);

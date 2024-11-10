@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Alert } from '@/components/ui/alert';
+import { Alert } from '../ui/alert';
 
 const RecordingTimer = ({ isRecording, maxDuration }) => {
   const [time, setTime] = useState(0);
