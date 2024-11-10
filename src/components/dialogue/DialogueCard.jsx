@@ -1,4 +1,3 @@
-// src/components/dialogue/DialogueCard.jsx
 import React, { useRef, useState } from 'react';
 import { Card } from '../ui/card';
 import { useRecording } from '../../context/RecordingContext';
@@ -118,11 +117,13 @@ const DialogueCard = () => {
       </div>
 
       {isModalOpen && (
-        <div className="modal">
-          <div className="modal-content">
-            <p>Do you want to approve or re-record this dialogue?</p>
-            <button onClick={() => handleConfirm(true)}>Approve</button>
-            <button onClick={() => handleConfirm(false)}>Re-record</button>
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+          <div className="modal-content bg-white p-6 rounded-lg shadow-lg w-4/5">
+            <p className="text-lg font-semibold">Do you want to approve or re-record this dialogue?</p>
+            <div className="mt-4 flex justify-center">
+              <button className="mr-2 px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600" onClick={() => handleConfirm(true)}>Approve</button>
+              <button className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600" onClick={() => handleConfirm(false)}>Re-record</button>
+            </div>
           </div>
         </div>
       )}
