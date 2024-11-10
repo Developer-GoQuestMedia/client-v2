@@ -2,7 +2,7 @@ import React from 'react';
 
 const ContextInfo = ({ context, primary, secondary, technical, cultural }) => {
   return (
-    <div className="p-4 bg-gray-50 space-y-4">
+    <div className="p-4 bg-white space-y-4 h-80">
       <h3 className="font-medium">Context Information</h3>
       
       <div>

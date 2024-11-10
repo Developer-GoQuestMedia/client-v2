@@ -176,14 +176,14 @@ const VideoPlayer = () => {
           Play
         </button>
         <button
-          className="bg-slate-600 text-white px-5 mb-8 hover:bg-fuchsia-600"
+          className="bg-slate-600 text-white px-5 mb-8 hover:bg-fuchsia-600 "
           onClick={handleStop}
           disabled={!isVideoReady}
         >
           Stop
         </button>
         <button
-          className={`bg-slate-600 text-white px-5 mb-8 hover:bg-fuchsia-600 ${!isVideoReady || !currentDialogue?.audioURL ? 'opacity-50 cursor-not-allowed' : ''}`}
+          className={`bg-slate-600 text-white px-5 mb-8 text-sm sm:text-base sm:px-6 hover:bg-fuchsia-600 ${!isVideoReady || !currentDialogue?.audioURL ? 'opacity-50 cursor-not-allowed' : ''}`}
           onClick={handlePlayWithRecordedAudio}
           disabled={!isVideoReady || !currentDialogue?.audioURL}
         >

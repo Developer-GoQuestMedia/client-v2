@@ -107,7 +107,7 @@ const DialogueCard = () => {
           />
 
           {currentDialogue.audioURL && (
-            <div className="p-4 border-t">
+            <div className="p-4 border-t bg-red-600 h-32 mb-2">
               <audio controls className="w-full">
                 <source src={currentDialogue.audioURL} type="audio/wav" />
               </audio>
