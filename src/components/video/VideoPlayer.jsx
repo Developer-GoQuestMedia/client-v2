@@ -41,6 +41,7 @@ const fetchVideo = async() =>{
     
   }
 }
+
 const xyz = fetchVideo()
 console.log(xyz);
 console.log(fetchVideo());
