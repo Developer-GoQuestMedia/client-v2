@@ -75,6 +75,11 @@ const DialogueCard = () => {
     onSwipeRight: handleSwipeRight
   });
 
+    // console.log("context",   currentDialogue)
+    // console.log("Primary",   currentDialogue.emotions.primary)
+    // console.log("secondary", currentDialogue)
+    // console.log("technicle notes", currentDialogue)
+    // console.log("caltural", currentDialogue)
   return (
     <>
       <div
@@ -89,7 +94,7 @@ const DialogueCard = () => {
           <div className="p-4 border-b">
             <div className="flex justify-between text-sm">
               <span>Character: {currentDialogue.character}</span>
-              <span>{currentDialogue.time_start} - {currentDialogue.time_end}</span>
+              <span>{currentDialogue.timeStart} - {currentDialogue.timeEnd}</span>
             </div>
           </div>
 
@@ -99,15 +104,19 @@ const DialogueCard = () => {
           />
           
           <ContextInfo 
-            context={currentDialogue.context}
-            primary={currentDialogue.primary}
-            secondary={currentDialogue.secondary}
-            technical={currentDialogue.technical_notes}
-            cultural={currentDialogue.cultural_notes}
+            context={{
+              sceneContext: currentDialogue.sceneContext,
+              emotions: {
+                  primary: currentDialogue.emotions.primary,
+                  secondary: currentDialogue.emotions.secondary,
+              },
+              technical: currentDialogue.technicalNotes,
+              cultural: currentDialogue.culturalNotes,
+          }}
           />
 
           {currentDialogue.audioURL && (
-            <div className="p-4 border-t">
+            <div className="p-4 border-t bg-red-600 h-32 mb-2">
               <audio controls className="w-full">
                 <source src={currentDialogue.audioURL} type="audio/wav" />
               </audio>

@@ -2,6 +2,7 @@ import React, { useRef, useEffect, useState } from "react";
 import { useRecording } from "../../context/RecordingContext";
 import VideoProgress from "./VideoProgress";
 import "../../styles/globals.css";
+import axios from "axios";
 
 const VideoPlayer = () => {
   const {
@@ -12,6 +13,38 @@ const VideoPlayer = () => {
   const videoRef = useRef(null);
   const [isVideoReady, setIsVideoReady] = useState(false);
   const localAudioRef = useRef(null); // Local backup audio ref
+
+  // video API as per current Dialogue
+  // console.log(currentDialogue)
+  // console.log(currentDialogue.videoUrl)
+  // const videoApi = `https://server-v2-akga.onrender.com/api/videos/${currentDialogue.videoUrl}`;
+
+// const projectId = '672b48ef936eaa6e6710fa6e';
+// const fetchDialogues = async () => {
+//     try {
+//         const response = await axios.get(`https://server-v2-akga.onrender.com/api/dialogues/list/${projectId}`);
+//         return response.data; // Assuming the response data is in the expected format
+//     } catch (error) {
+//         console.error('Error fetching dialogues:', error);
+//         return []; // Return an empty array or handle the error as needed
+//     }
+// };
+// Replace defaultDialogues with the fetched data
+// const defaultDialogues = await fetchDialogues();
+// console.log(videoApi.toString())
+const videoPath = currentDialogue.videoUrl;
+const fetchVideo = async() =>{
+  try{
+      const response = await axios.get(`https://server-v2-akga.onrender.com/api/videos/${videoPath}`);    
+      return response.data
+  }catch(e){
+    
+  }
+}
+
+const xyz = fetchVideo()
+console.log(xyz);
+console.log(fetchVideo());
 
   // Use either context audio ref or local ref
   const audioRef = contextAudioRef || localAudioRef;
@@ -122,7 +155,8 @@ const VideoPlayer = () => {
     //   videoHeight: e.target.videoHeight
     // });
     setIsVideoReady(true);
-  };
+  }; 
+
 
   return (
     <div className="relative w-full text-yellow-500 mt-2">
@@ -141,8 +175,8 @@ const VideoPlayer = () => {
         }}
       >
         <source
-          src={`${process.env.PUBLIC_URL || "/client-v2"}${
-            currentDialogue?.videoURL || "/Kuma/Kuma%20Clip%2001.mp4"
+          src={`${process.env.PUBLIC_URL || "/client-v2/"}${
+            currentDialogue?.videoUrl || "/Kuma/Kuma%20Clip%2001.mp4"
           }`}
           type="video/mp4"
         />
@@ -176,14 +210,14 @@ const VideoPlayer = () => {
           Play
         </button>
         <button
-          className="bg-slate-600 text-white px-5 mb-8 hover:bg-fuchsia-600"
+          className="bg-slate-600 text-white px-5 mb-8 hover:bg-fuchsia-600 "
           onClick={handleStop}
           disabled={!isVideoReady}
         >
           Stop
         </button>
         <button
-          className={`bg-slate-600 text-white px-5 mb-8 hover:bg-fuchsia-600 ${!isVideoReady || !currentDialogue?.audioURL ? 'opacity-50 cursor-not-allowed' : ''}`}
+          className={`bg-slate-600 text-white px-5 mb-8 text-sm sm:text-base sm:px-6 hover:bg-fuchsia-600 ${!isVideoReady || !currentDialogue?.audioURL ? 'opacity-50 cursor-not-allowed' : ''}`}
           onClick={handlePlayWithRecordedAudio}
           disabled={!isVideoReady || !currentDialogue?.audioURL}
         >

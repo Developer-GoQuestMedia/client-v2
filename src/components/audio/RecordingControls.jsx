@@ -12,6 +12,8 @@ import { useRecording } from "../../context/RecordingContext";
 import AudioVisualizer from "./AudioVisualizer";
 import RecordingTimer from "./RecordingTimer";
 import { calculateMaxDuration } from "../../utils/timeUtils";
+// for React Icons library importing
+ 
 
 const RecordingControls = () => {
   const {
@@ -235,7 +237,7 @@ const RecordingControls = () => {
   };
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 bg-white border-t p-4 space-y-4">
+    <div className="fixed bottom-0 left-0 right-0  border-t p-4 space-y-4 bg-white h-40" >
       {isRecording && audioStream && (
         <>
           <AudioVisualizer
@@ -249,7 +251,7 @@ const RecordingControls = () => {
         </>
       )}
 
-      <div className="flex gap-4 max-w-lg mx-auto">
+      <div className="flex gap-2 flex-wrap justify-center max-w-lg mx-auto">
         <Button
           className="flex-1 p-2"
           variant={isRecording ? "destructive" : "default"}
@@ -265,7 +267,7 @@ const RecordingControls = () => {
             </span>
           ) : isRecording ? (
             <>
-              <Square className="mr-2 h-4 w-4" /> Stop
+              <Square className="mr-2 h-4  w-4" /> Stop
             </>
           ) : (
             <>
