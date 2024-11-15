@@ -13,38 +13,42 @@ const VideoPlayer = () => {
   const videoRef = useRef(null);
   const [isVideoReady, setIsVideoReady] = useState(false);
   const localAudioRef = useRef(null); // Local backup audio ref
+  const [videoUrl, setVideoUrl] = useState(''); // Add this state
 
-  // video API as per current Dialogue
-  // console.log(currentDialogue)
-  // console.log(currentDialogue.videoUrl)
-  // const videoApi = `https://server-v2-akga.onrender.com/api/videos/${currentDialogue.videoUrl}`;
+  const fetchVideo = async () => {
+    try {
+      const response = await axios.get(`https://server-v2-akga.onrender.com/api/videos/${currentDialogue.videoUrl}`);    
+      return response.data;
+    } catch (e) {
+      console.error('Error fetching video:', e);
+      return null;
+    }
+  };
 
-// const projectId = '672b48ef936eaa6e6710fa6e';
-// const fetchDialogues = async () => {
-//     try {
-//         const response = await axios.get(`https://server-v2-akga.onrender.com/api/dialogues/list/${projectId}`);
-//         return response.data; // Assuming the response data is in the expected format
-//     } catch (error) {
-//         console.error('Error fetching dialogues:', error);
-//         return []; // Return an empty array or handle the error as needed
-//     }
-// };
-// Replace defaultDialogues with the fetched data
-// const defaultDialogues = await fetchDialogues();
-// console.log(videoApi.toString())
-const videoPath = currentDialogue.videoUrl;
-const fetchVideo = async() =>{
-  try{
-      const response = await axios.get(`https://server-v2-akga.onrender.com/api/videos/${videoPath}`);    
-      return response.data
-  }catch(e){
+  // Use useEffect to handle the async call
+  useEffect(() => {
+    const getVideo = async () => {
+      const result = await fetchVideo();
+      if (result && result.url) {
+        // Decode the URL to make it cleaner
+        const decodedUrl = decodeURIComponent(result.url);
+        console.log('Setting video URL:', decodedUrl);
+        setVideoUrl(decodedUrl);
+        
+        // Test URL accessibility
+        try {
+          const response = await fetch(decodedUrl, { method: 'HEAD' });
+          if (!response.ok) {
+            console.error('Video URL is not accessible:', response.status, response.statusText);
+          }
+        } catch (error) {
+          console.error('Error checking video URL:', error);
+        }
+      }
+    };
     
-  }
-}
-
-const xyz = fetchVideo()
-console.log(xyz);
-console.log(fetchVideo());
+    getVideo();
+  }, [currentDialogue.videoUrl]); // Add dependency
 
   // Use either context audio ref or local ref
   const audioRef = contextAudioRef || localAudioRef;
@@ -166,19 +170,28 @@ console.log(fetchVideo());
         style={{ width: "100%", height: "40%" }}
         preload="auto"
         playsInline
+        crossOrigin="anonymous"
         onLoadedMetadata={handleMetadataLoaded}
-        // onLoadStart={() => console.log('Video load started')}
-        // onCanPlay={() => console.log('Video can play')}
+        onLoadStart={() => console.log('Video load started')}
+        onCanPlay={() => console.log('Video can play')}
         onError={(e) => {
           console.error("Video error:", e);
+          console.error("Video error details:", videoRef.current?.error?.message);
+          console.error("Current video URL:", videoUrl);
           setIsVideoReady(false);
         }}
       >
         <source
-          src={`${process.env.PUBLIC_URL || "/client-v2/"}${
-            currentDialogue?.videoUrl || "/Kuma/Kuma%20Clip%2001.mp4"
-          }`}
+          src={videoUrl}
           type="video/mp4"
+          onError={(e) => {
+            console.error("Source error:", e);
+            console.error("Failed URL:", videoUrl);
+            // Try to fetch the URL directly to check response
+            fetch(videoUrl)
+              .then(response => console.log('URL response:', response.status, response.statusText))
+              .catch(error => console.error('URL fetch error:', error));
+          }}
         />
         Your browser does not support the video tag.
       </video>
