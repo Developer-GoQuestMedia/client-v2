@@ -2,6 +2,7 @@
 import React, { createContext, useContext, useState, useRef, useCallback, useEffect, useMemo } from 'react';
 import '../styles/globals.css';
 import { createWorker } from '../utils/audioWorker';
+import axios from 'axios';
 
 // Add this at the top of your file, before the component
 const initializeMediaDevices = () => {
@@ -30,7 +31,20 @@ const initializeMediaDevices = () => {
   }
 };
 
-const defaultDialogues = require('../data/Sample.json');
+// const defaultDialogues = require('../data/Sample.json');
+
+const projectId = '672b48ef936eaa6e6710fa6e';
+const fetchDialogues = async () => {
+    try {
+        const response = await axios.get(`https://server-v2-akga.onrender.com/api/dialogues/list/${projectId}`);
+        return response.data; // Assuming the response data is in the expected format
+    } catch (error) {
+        console.error('Error fetching dialogues:', error);
+        return []; // Return an empty array or handle the error as needed
+    }
+};
+// Replace defaultDialogues with the fetched data
+const defaultDialogues = await fetchDialogues();
 
 const RecordingContext = createContext(null);
 

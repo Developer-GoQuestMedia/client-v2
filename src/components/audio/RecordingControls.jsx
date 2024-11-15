@@ -13,7 +13,7 @@ import AudioVisualizer from "./AudioVisualizer";
 import RecordingTimer from "./RecordingTimer";
 import { calculateMaxDuration } from "../../utils/timeUtils";
 // for React Icons library importing
-import { FaRegPauseCircle } from "react-icons/fa";
+ 
 
 const RecordingControls = () => {
   const {
