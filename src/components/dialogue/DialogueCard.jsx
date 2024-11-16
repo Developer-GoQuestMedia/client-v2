@@ -4,6 +4,7 @@ import { useRecording } from '../../context/RecordingContext';
 import DialogueText from './DialogueText';
 import ContextInfo from './ContextInfo';
 import { useSwipeGesture } from '../../hooks/useSwipeGesture';
+import axios from 'axios';
 
 const DialogueCard = () => {
   const { currentDialogue, moveToNext, moveToPrevious, updateDialogue, currentIndex,audioElement,setIsPlaying,
@@ -16,27 +17,47 @@ const DialogueCard = () => {
     setIsModalOpen(true);
   };
 
-  const handleConfirm = (isApproved) => {
+  const handleConfirm = async (isApproved) => {
     if (dialogueTextRef.current) {
       const { original, translated, adapted } = dialogueTextRef.current.getTextValues();
-      updateDialogue(currentIndex, {
-        dialogue: {
-          original,
-          translated,
-          adapted
-        },
-        isCompleted: true,
-        status: isApproved ? 'approved' : 're-recorded'
-      });
-    }
-    if (isApproved) {
-      moveToNext();
-    } else {
-      if (typeof handleDeleteRecording === 'function') {
-        handleDeleteRecording();
+      
+      try {
+        // Make API call to update dialogue
+        const response = await axios.put(`https://server-v2-akga.onrender.com/api/dialogues/${currentDialogue._id}`, {
+          dialogue: {
+            original,
+            translated,
+            adapted
+          },
+          status: isApproved ? 'approved' : 'pending'
+        });
+        
+        console.log('API Response:', response.data); // Log the response data
+
+        // Update local state after successful API call
+        updateDialogue(currentIndex, {
+          dialogue: {
+            original,
+            translated,
+            adapted
+          },
+          isCompleted: true,
+          status: isApproved ? 'approved' : 'pending'
+        });
+
+        if (isApproved) {
+          moveToNext();
+        } else {
+          if (typeof handleDeleteRecording === 'function') {
+            handleDeleteRecording();
+          }
+        }
+        setIsModalOpen(false);
+      } catch (error) {
+        console.error('Error updating dialogue:', error);
+        // Optionally add error handling UI here
       }
     }
-    setIsModalOpen(false);
   };
 
   const handleDeleteRecording = () => {

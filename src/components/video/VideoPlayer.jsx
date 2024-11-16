@@ -151,12 +151,6 @@ useEffect(() => {
       console.log("Video ref not available for metadata");
       return;
     }
-
-    // console.log('Video metadata loaded:', {
-    //   duration: e.target.duration,
-    //   videoWidth: e.target.videoWidth,
-    //   videoHeight: e.target.videoHeight
-    // });
     setIsVideoReady(true);
   }; 
 
