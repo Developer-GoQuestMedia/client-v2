@@ -13,38 +13,41 @@ const VideoPlayer = () => {
   const videoRef = useRef(null);
   const [isVideoReady, setIsVideoReady] = useState(false);
   const localAudioRef = useRef(null); // Local backup audio ref
+  const [isLoading, setIsLoading] = useState(false);
 
-  // video API as per current Dialogue
-  // console.log(currentDialogue)
-  // console.log(currentDialogue.videoUrl)
-  // const videoApi = `https://server-v2-akga.onrender.com/api/videos/${currentDialogue.videoUrl}`;
-
-// const projectId = '672b48ef936eaa6e6710fa6e';
-// const fetchDialogues = async () => {
-//     try {
-//         const response = await axios.get(`https://server-v2-akga.onrender.com/api/dialogues/list/${projectId}`);
-//         return response.data; // Assuming the response data is in the expected format
-//     } catch (error) {
-//         console.error('Error fetching dialogues:', error);
-//         return []; // Return an empty array or handle the error as needed
-//     }
-// };
-// Replace defaultDialogues with the fetched data
-// const defaultDialogues = await fetchDialogues();
-// console.log(videoApi.toString())
 const videoPath = currentDialogue.videoUrl;
-const fetchVideo = async() =>{
-  try{
-      const response = await axios.get(`https://server-v2-akga.onrender.com/api/videos/${videoPath}`);    
-      return response.data
-  }catch(e){
-    
+
+const fetchVideo = async () => {
+  try {
+    setIsLoading(true);
+    const response = await axios.get(`https://server-v2-akga.onrender.com/api/videos/stream/${videoPath}`, {
+      responseType: 'blob'  // Important for video streaming
+    });    
+    return response.data;
+  } catch (error) {
+    console.error('Error fetching video:', error.message);
+    throw new Error('Failed to fetch video');
+  } finally {
+    setIsLoading(false);
   }
 }
 
-const xyz = fetchVideo()
-console.log(xyz);
-console.log(fetchVideo());
+useEffect(() => {
+  const loadVideo = async () => {
+    try {
+      const videoData = await fetchVideo();
+      if (videoRef.current) {
+        videoRef.current.src = URL.createObjectURL(videoData);
+      }
+    } catch (error) {
+      console.error('Error loading video:', error);
+    }
+  };
+
+  if (videoPath) {
+    loadVideo();
+  }
+}, [videoPath]);
 
   // Use either context audio ref or local ref
   const audioRef = contextAudioRef || localAudioRef;
@@ -160,6 +163,11 @@ console.log(fetchVideo());
 
   return (
     <div className="relative w-full text-yellow-500 mt-2">
+      {isLoading && (
+        <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 z-10">
+          <div className="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-yellow-500"></div>
+        </div>
+      )}
       <video
         ref={videoRef}
         className="w-full rounded-t-lg"
