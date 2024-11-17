@@ -12,6 +12,7 @@ import { useRecording } from "../../context/RecordingContext";
 import AudioVisualizer from "./AudioVisualizer";
 import RecordingTimer from "./RecordingTimer";
 import { calculateMaxDuration } from "../../utils/timeUtils";
+import axios from "axios";
 // for React Icons library importing
  
 
@@ -180,10 +181,6 @@ const RecordingControls = () => {
       }
     }
   };
-
-  const handleSuccessfulUpload = useCallback(() => {
-    localStorage.removeItem(`recording_${currentIndex}`);
-  }, [currentIndex]);
 
   useEffect(() => {
     if (audioElement) {

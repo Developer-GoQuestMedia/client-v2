@@ -8,9 +8,10 @@ import axios from 'axios';
 
 const DialogueCard = () => {
   const { currentDialogue, moveToNext, moveToPrevious, updateDialogue, currentIndex,audioElement,setIsPlaying,
-    setAudioElement, } = useRecording();
+    setAudioElement, handleSuccessfulUpload } = useRecording();
   const dialogueTextRef = useRef(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleSwipeLeft = () => {
     console.log("handleSwipeLeft");
@@ -19,6 +20,7 @@ const DialogueCard = () => {
 
   const handleConfirm = async (isApproved) => {
     if (dialogueTextRef.current) {
+      setIsLoading(true);
       const { original, translated, adapted } = dialogueTextRef.current.getTextValues();
       
       try {
@@ -32,8 +34,6 @@ const DialogueCard = () => {
           status: isApproved ? 'approved' : 'pending'
         });
         
-        console.log('API Response:', response.data); // Log the response data
-
         // Update local state after successful API call
         updateDialogue(currentIndex, {
           dialogue: {
@@ -46,7 +46,20 @@ const DialogueCard = () => {
         });
 
         if (isApproved) {
-          moveToNext();
+          try {
+            // Call handleSuccessfulUpload before moving to next
+            if (handleSuccessfulUpload) {
+              console.log("handleSuccessfulUpload");
+              await handleSuccessfulUpload();
+              console.log("handleSuccessfulUpload completed");
+            }
+            moveToNext();
+          } catch (uploadError) {
+            console.error('Error uploading audio:', uploadError);
+            console.log('Failed to upload audio. Please try again.');
+            setIsModalOpen(false);
+            return;
+          }
         } else {
           if (typeof handleDeleteRecording === 'function') {
             handleDeleteRecording();
@@ -55,7 +68,9 @@ const DialogueCard = () => {
         setIsModalOpen(false);
       } catch (error) {
         console.error('Error updating dialogue:', error);
-        // Optionally add error handling UI here
+        console.log('Failed to update dialogue. Please try again.');
+      } finally {
+        setIsLoading(false);
       }
     }
   };
@@ -151,7 +166,13 @@ const DialogueCard = () => {
           <div className="modal-content bg-white p-6 rounded-lg shadow-lg w-4/5">
             <p className="text-lg font-semibold">Do you want to approve or re-record this dialogue?</p>
             <div className="mt-4 flex justify-center">
-              <button className="mr-2 px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600" onClick={() => handleConfirm(true)}>Approve</button>
+              <button 
+                className="mr-2 px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600 disabled:opacity-50" 
+                onClick={() => handleConfirm(true)}
+                disabled={isLoading}
+              >
+                {isLoading ? 'Approving...' : 'Approve'}
+              </button>
               <button className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600" onClick={() => handleConfirm(false)}>Re-record</button>
             </div>
           </div>
