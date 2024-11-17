@@ -15,39 +15,39 @@ const VideoPlayer = () => {
   const localAudioRef = useRef(null); // Local backup audio ref
   const [isLoading, setIsLoading] = useState(false);
 
-const videoPath = currentDialogue.videoUrl;
+  const videoPath = currentDialogue.videoUrl;
 
-const fetchVideo = async () => {
-  try {
-    setIsLoading(true);
-    const response = await axios.get(`https://server-v2-akga.onrender.com/api/videos/stream/${videoPath}`, {
-      responseType: 'blob'  // Important for video streaming
-    });    
-    return response.data;
-  } catch (error) {
-    console.error('Error fetching video:', error.message);
-    throw new Error('Failed to fetch video');
-  } finally {
-    setIsLoading(false);
-  }
-}
-
-useEffect(() => {
-  const loadVideo = async () => {
+  const fetchVideo = async () => {
     try {
-      const videoData = await fetchVideo();
-      if (videoRef.current) {
-        videoRef.current.src = URL.createObjectURL(videoData);
-      }
+      setIsLoading(true);
+      const response = await axios.get(`https://server-v2-akga.onrender.com/api/videos/stream/${videoPath}`, {
+        responseType: 'blob'  // Important for video streaming
+      });
+      return response.data;
     } catch (error) {
-      console.error('Error loading video:', error);
+      console.error('Error fetching video:', error.message);
+      throw new Error('Failed to fetch video');
+    } finally {
+      setIsLoading(false);
     }
   };
 
-  if (videoPath) {
-    loadVideo();
-  }
-}, [videoPath]);
+  useEffect(() => {
+    const loadVideo = async () => {
+      try {
+        const videoData = await fetchVideo();
+        if (videoRef.current) {
+          videoRef.current.src = URL.createObjectURL(videoData);
+        }
+      } catch (error) {
+        console.error('Error loading video:', error);
+      }
+    };
+
+    if (videoPath) {
+      loadVideo();
+    }
+  }, [videoPath]);
 
   // Use either context audio ref or local ref
   const audioRef = contextAudioRef || localAudioRef;
@@ -152,8 +152,7 @@ useEffect(() => {
       return;
     }
     setIsVideoReady(true);
-  }; 
-
+  };
 
   return (
     <div className="relative w-full text-yellow-500 mt-2">
@@ -162,15 +161,14 @@ useEffect(() => {
           <div className="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-yellow-500"></div>
         </div>
       )}
+      
       <video
         ref={videoRef}
         className="w-full rounded-t-lg"
-        style={{ width: "100%", height: "40%" }}
+        style={{ width: "100%", height: "60%" }} // Set height for the video
         preload="auto"
         playsInline
         onLoadedMetadata={handleMetadataLoaded}
-        // onLoadStart={() => console.log('Video load started')}
-        // onCanPlay={() => console.log('Video can play')}
         onError={(e) => {
           console.error("Video error:", e);
           setIsVideoReady(false);
@@ -192,34 +190,30 @@ useEffect(() => {
           src={currentDialogue.audioURL}
           onError={(e) => {
             console.error("Audio error:", e);
-            console.log("Audio state:", {
-              error: e.target.error,
-              src: e.target.src,
-            });
-          }}
-          onLoadedMetadata={() => {
-            console.log("Audio metadata loaded:", {
-              duration: audioRef.current?.duration,
-              src: audioRef.current?.src,
-            });
           }}
         />
       )}
 
-      <VideoProgress videoRef={videoRef} isReady={isVideoReady} />
-      <div className="controls flex  gap-3 py-2.5 h-24 w-full border-2 justify-center content-center text-black">
-        <button className="bg-slate-600 text-white px-5 mb-8 hover:bg-fuchsia-600" onClick={handlePlay} disabled={!isVideoReady}>
+      <VideoProgress videoRef={videoRef} isReady={isVideoReady}/>
+
+      {/* Controls positioned at the bottom of the video */}
+      <div className="controls flex gap-3 h-20 w-full justify-center content-center text-black absolute bottom-0 left-0 right-0 z-10  border-t-0"   >
+        <button
+          className="bg-slate-60 text-white px-5 mb-8 text-sm sm:text-base sm:px-6 hover:bg-fuchsia-600"
+          onClick={handlePlay}
+          disabled={!isVideoReady}
+        >
           Play
         </button>
         <button
-          className="bg-slate-600 text-white px-5 mb-8 hover:bg-fuchsia-600 "
+          className="bg-slate-60 text-white px-5 mb-8 text-sm sm:text-base sm:px-6 hover:bg-fuchsia-600"
           onClick={handleStop}
           disabled={!isVideoReady}
         >
           Stop
         </button>
         <button
-          className={`bg-slate-600 text-white px-5 mb-8 text-sm sm:text-base sm:px-6 hover:bg-fuchsia-600 ${!isVideoReady || !currentDialogue?.audioURL ? 'opacity-50 cursor-not-allowed' : ''}`}
+          className={`bg-slate-60 text-white px-5 mb-8 text-sm sm:text-base sm:px-6 hover:bg-fuchsia-600 ${!isVideoReady || !currentDialogue?.audioURL ? 'opacity-50 cursor-not-allowed' : ''}`}
           onClick={handlePlayWithRecordedAudio}
           disabled={!isVideoReady || !currentDialogue?.audioURL}
         >

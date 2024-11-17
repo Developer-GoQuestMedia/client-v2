@@ -43,10 +43,10 @@ import React from 'react';
         <p className="text-sm text-gray-600">{cultural}</p>
       </div> */}  
 
-      <p>Scene Context: {sceneContext}</p>
-      <p>Emotional State: {primary.emotion}</p>
-      <p>Technical Notes: {technical}</p>
-      <p>Cultural Notes: {technical}</p>
+      <p className='block text-sm font-medium'>Scene Context: <span className='text-gray-700 text-xs'>{sceneContext}</span></p>
+      <p className='block text-sm font-medium'>Emotional State: <span className='text-gray-700 text-xs'>{primary.emotion}</span></p>
+      <p className='block text-sm font-medium'>Technical Notes: <span className='text-gray-700 text-xs'>{technical}</span></p>
+      <p className='block text-sm font-medium'>Cultural Notes: <span className='text-gray-700 text-xs'>{technical}</span></p>
     </div>
   );
 };

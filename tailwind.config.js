@@ -8,7 +8,14 @@ module.exports = {
       center: true,
       padding: "2rem",
       screens: {
-        "2xl": "1400px",
+        tablet: "640px",
+        // => @media (min-width: 640px) { ... }
+
+        laptop: "1024px",
+        // => @media (min-width: 1024px) { ... }
+
+        desktop: "1280px",
+        // => @media (min-width: 1280px) { ... }
       },
     },
     extend: {
@@ -62,21 +69,21 @@ module.exports = {
           to: { height: 0 },
         },
         slideLeft: {
-          '0%': { transform: 'translateX(0)', opacity: 1 },
-          '100%': { transform: 'translateX(-100%)', opacity: 0 },
+          "0%": { transform: "translateX(0)", opacity: 1 },
+          "100%": { transform: "translateX(-100%)", opacity: 0 },
         },
         slideRight: {
-          '0%': { transform: 'translateX(0)', opacity: 1 },
-          '100%': { transform: 'translateX(100%)', opacity: 0 },
-        }
+          "0%": { transform: "translateX(0)", opacity: 1 },
+          "100%": { transform: "translateX(100%)", opacity: 0 },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         "slide-left": "slideLeft 0.3s forwards",
-        "slide-right": "slideRight 0.3s forwards"
+        "slide-right": "slideRight 0.3s forwards",
       },
     },
   },
   plugins: [require("tailwindcss-animate")],
-}
+};
