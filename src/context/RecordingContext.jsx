@@ -224,7 +224,7 @@ export const RecordingProvider = ({ children }) => {
         audio: {
           echoCancellation: true,
           noiseSuppression: true,
-          sampleRate: 44100,
+          sampleRate: 48000,
         },
       });
 
@@ -263,7 +263,7 @@ export const RecordingProvider = ({ children }) => {
             echoCancellation: true,
             noiseSuppression: true,
             autoGainControl: true,
-            sampleRate: 44100,
+            sampleRate: 48000,
           },
         });
 
@@ -271,8 +271,8 @@ export const RecordingProvider = ({ children }) => {
 
         // Create Audio Context and Source
         audioContext = new (window.AudioContext || window.webkitAudioContext)({
-          sampleRate: 44100,
-          channelCount: 2,
+          sampleRate: 48000,
+          channelCount: 1,
         });
         const source = audioContext.createMediaStreamSource(stream);
 

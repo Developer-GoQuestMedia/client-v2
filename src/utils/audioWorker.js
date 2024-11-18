@@ -13,7 +13,7 @@ export const createWorker = async (audioContext) => {
           // Process each channel
           const processedData = input.map(channel => {
             // Apply gain to each sample
-            const gainFactor = 50;
+            const gainFactor = 1;
             return Array.from(channel).map(sample => sample * gainFactor);
           });
           
@@ -37,7 +37,7 @@ export const createWorker = async (audioContext) => {
   const workletNode = new AudioWorkletNode(audioContext, 'recorder-processor', {
     numberOfInputs: 1,
     numberOfOutputs: 1,
-    channelCount: 2,
+    channelCount: 1,
     processorOptions: {
       sampleRate: audioContext.sampleRate
     }
