@@ -155,7 +155,7 @@ const VideoPlayer = () => {
   };
 
   return (
-    <div className="relative w-full text-yellow-500 mt-2">
+    <div className="relative w-full text-yellow-500 ">
       {isLoading && (
         <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 z-10">
           <div className="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-yellow-500"></div>
