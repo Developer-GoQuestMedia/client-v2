@@ -7,7 +7,7 @@ import { useSwipeGesture } from '../../hooks/useSwipeGesture';
 import axios from 'axios';
 
 const DialogueCard = () => {
-  const { currentDialogue, moveToNext, moveToPrevious, updateDialogue, currentIndex,audioElement,setIsPlaying,
+  const { currentDialogue, moveToNext, moveToPrevious, updateDialogue, currentIndex, audioElement, setIsPlaying,
     setAudioElement, handleSuccessfulUpload } = useRecording();
   const dialogueTextRef = useRef(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -22,7 +22,7 @@ const DialogueCard = () => {
     if (dialogueTextRef.current) {
       setIsLoading(true);
       const { original, translated, adapted } = dialogueTextRef.current.getTextValues();
-      
+
       try {
         // Make API call to update dialogue
         const response = await axios.put(`https://server-v2-akga.onrender.com/api/dialogues/${currentDialogue._id}`, {
@@ -33,7 +33,7 @@ const DialogueCard = () => {
           },
           status: isApproved ? 'approved' : 'pending'
         });
-        
+
         // Update local state after successful API call
         updateDialogue(currentIndex, {
           dialogue: {
@@ -91,7 +91,7 @@ const DialogueCard = () => {
 
   const handleSwipeRight = () => {
     console.log("handleSwipeRight");
-    
+
     // Save current text before moving back
     if (dialogueTextRef.current) {
       const { original, translated, adapted } = dialogueTextRef.current.getTextValues();
@@ -111,11 +111,11 @@ const DialogueCard = () => {
     onSwipeRight: handleSwipeRight
   });
 
-    // console.log("context",   currentDialogue)
-    // console.log("Primary",   currentDialogue.emotions.primary)
-    // console.log("secondary", currentDialogue)
-    // console.log("technicle notes", currentDialogue)
-    // console.log("caltural", currentDialogue)
+  // console.log("context",   currentDialogue)
+  // console.log("Primary",   currentDialogue.emotions.primary)
+  // console.log("secondary", currentDialogue)
+  // console.log("technicle notes", currentDialogue)
+  // console.log("caltural", currentDialogue)
   return (
     <>
       <div
@@ -132,24 +132,31 @@ const DialogueCard = () => {
               <span>Character: {currentDialogue.character}</span>
               <span>{currentDialogue.timeStart} - {currentDialogue.timeEnd}</span>
             </div>
+            <div>
+              <p className='block text-sm font-medium'>Emotional State:
+                <span className='text-gray-700 text-xs p-2'>
+                  {currentDialogue.emotions.primary.emotion}
+                </span>
+              </p>
+            </div>
           </div>
 
-          <DialogueText 
-            dialogue={currentDialogue.dialogue} 
+          <DialogueText
+            dialogue={currentDialogue.dialogue}
             ref={dialogueTextRef}
           />
-          
-          <ContextInfo 
+
+          {/* <ContextInfo
             context={{
               sceneContext: currentDialogue.sceneContext,
               emotions: {
-                  primary: currentDialogue.emotions.primary,
-                  secondary: currentDialogue.emotions.secondary,
+                primary: currentDialogue.emotions.primary,
+                secondary: currentDialogue.emotions.secondary,
               },
               technical: currentDialogue.technicalNotes,
               cultural: currentDialogue.culturalNotes,
-          }}
-          />
+            }}
+          /> */}
 
           {currentDialogue.audioURL && (
             <div className="p-4 border-t bg-red-600 h-32 mb-2">
@@ -166,8 +173,8 @@ const DialogueCard = () => {
           <div className="modal-content bg-white p-6 rounded-lg shadow-lg w-4/5">
             <p className="text-lg font-semibold">Do you want to approve or re-record this dialogue?</p>
             <div className="mt-4 flex justify-center">
-              <button 
-                className="mr-2 px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600 disabled:opacity-50" 
+              <button
+                className="mr-2 px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600 disabled:opacity-50"
                 onClick={() => handleConfirm(true)}
                 disabled={isLoading}
               >

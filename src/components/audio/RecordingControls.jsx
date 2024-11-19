@@ -300,7 +300,7 @@ const RecordingControls = () => {
           <RotateCcw className="mr-2 h-4 w-4" /> Retry
         </Button>
 
-        <Button
+        {/* <Button
           variant="outline"
           onClick={handleDeleteRecording}
           disabled={!currentDialogue?.audioURL || isRecording}
@@ -308,15 +308,15 @@ const RecordingControls = () => {
           className="w-24"
         >
           <Trash2 className="mr-2 h-4 w-4" /> Delete
-        </Button>
+        </Button> */}
 
-        <Button
+        {/* <Button
           variant="outline"
           onClick={handleSamplePlayback}
           className="w-24"
         >
           Test Sample
-        </Button>
+        </Button> */}
       </div>
 
       {currentDialogue && (
