@@ -234,7 +234,7 @@ const RecordingControls = () => {
   };
 
   return (
-    <div className="fixed bottom-0 left-0 right-0  border-t p-4 space-y-4 bg-white h-40" >
+    <div className="bottom-0 left-0 right-0  border-t p-4 space-y-4 bg-white h-40" >
       {isRecording && audioStream && (
         <>
           <AudioVisualizer
