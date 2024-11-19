@@ -10,6 +10,7 @@ import React, {
 } from "react";
 import "../styles/globals.css";
 import { createWorker } from "../utils/audioWorker";
+import { ElevenLabsClient } from "elevenlabs";
 import axios from "axios";
 
 // Add this at the top of your file, before the component
@@ -60,6 +61,30 @@ const fetchDialogues = async () => {
 const defaultDialogues = await fetchDialogues();
 
 const RecordingContext = createContext(null);
+
+// Add this function before createWavBlob
+const audioIsolation = async (audioBlob) => {
+  try {
+    console.log("Audio isolation started");
+    const client = new ElevenLabsClient({ 
+      apiKey: "eeff688eea60a16d86ead08dfa33e336" 
+    });
+
+    // Convert Blob to ReadableStream
+    const stream = audioBlob.stream();
+    
+    // Perform audio isolation
+    const isolatedAudio = await client.audioIsolation.audioIsolationStream({
+      audio: stream
+    });
+
+    // Convert the response to a Blob
+    return new Blob([isolatedAudio], { type: 'audio/wav' });
+  } catch (error) {
+    console.error("Audio isolation failed:", error);
+    return audioBlob; // Return original blob if isolation fails
+  }
+};
 
 export const RecordingProvider = ({ children }) => {
   // State management
@@ -272,7 +297,7 @@ export const RecordingProvider = ({ children }) => {
         // Create Audio Context and Source
         audioContext = new (window.AudioContext || window.webkitAudioContext)({
           sampleRate: 48000,
-          channelCount: 1,
+          channelCount: 2,
         });
         const source = audioContext.createMediaStreamSource(stream);
 
@@ -326,20 +351,24 @@ export const RecordingProvider = ({ children }) => {
               audioContext.sampleRate
             );
 
+            // Add audio isolation step
+            const processedBlob = await audioIsolation(wavBlob);
+            // const processedBlob = wavBlob;
+            
             // Log the recorded audio type
             const reader = new FileReader();
             reader.onloadend = () => {
               localStorage.setItem('recording', reader.result);
               console.log("WAV Blob stored in localStorage under 'recording'");
             };
-            reader.readAsDataURL(wavBlob);
-            console.log("Recorded audio type:", wavBlob.type);
+            reader.readAsDataURL(processedBlob);
+            console.log("Recorded audio type:", processedBlob.type);
 
             if (dialogues[currentIndex]?.audioURL) {
               URL.revokeObjectURL(dialogues[currentIndex].audioURL);
             }
 
-            const audioUrl = URL.createObjectURL(wavBlob);
+            const audioUrl = URL.createObjectURL(processedBlob);
             const duration =
               combinedChannels[0].length / audioContext.sampleRate;
 

@@ -8,5 +8,5 @@ export const calculateMaxDuration = (currentDialogue) => {
 
     return endSeconds - startSeconds;
   }
-  return 2; // Default duration if times aren't available
+  return 6; // Default duration if times aren't available
 };

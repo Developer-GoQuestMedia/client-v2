@@ -37,7 +37,7 @@ export const createWorker = async (audioContext) => {
   const workletNode = new AudioWorkletNode(audioContext, 'recorder-processor', {
     numberOfInputs: 1,
     numberOfOutputs: 1,
-    channelCount: 1,
+    channelCount: 2,
     processorOptions: {
       sampleRate: audioContext.sampleRate
     }
