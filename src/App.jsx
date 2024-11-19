@@ -8,7 +8,7 @@ const App = () => {
   return (
     <RecordingProvider>
       <div className="min-h-screen bg-gray-100 ">
-        <div className="max-w-sm mx-auto pb-24"> {/* pb-24 for RecordingControls space */}
+        <div className="max-w-sm mx-auto "> {/* pb-24 for RecordingControls space */}
           <VideoPlayer />
           <div className="p-4">
             <DialogueCard />
