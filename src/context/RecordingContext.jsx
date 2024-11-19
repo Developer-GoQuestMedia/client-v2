@@ -352,8 +352,8 @@ export const RecordingProvider = ({ children }) => {
             );
 
             // Add audio isolation step
-            const processedBlob = await audioIsolation(wavBlob);
-            // const processedBlob = wavBlob;
+            // const processedBlob = await audioIsolation(wavBlob);
+            const processedBlob = wavBlob;
             
             // Log the recorded audio type
             const reader = new FileReader();
