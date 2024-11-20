@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react';
 import { Card } from '../ui/card';
-import { useRecording } from '../../context/RecordingContext';
+import { useRecording } from '../../context/RecordingContext1';
 import DialogueText from './DialogueText';
 import ContextInfo from './ContextInfo';
 import { useSwipeGesture } from '../../hooks/useSwipeGesture';

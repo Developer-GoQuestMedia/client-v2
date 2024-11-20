@@ -1,5 +1,5 @@
 import React, { useRef, useEffect, useState } from "react";
-import { useRecording } from "../../context/RecordingContext";
+import { useRecording } from "../../context/RecordingContext1";
 import VideoProgress from "./VideoProgress";
 import "../../styles/globals.css";
 import axios from "axios";

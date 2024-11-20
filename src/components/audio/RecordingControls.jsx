@@ -8,7 +8,7 @@ import {
   Play,
   Pause,
 } from "lucide-react";
-import { useRecording } from "../../context/RecordingContext";
+import { useRecording } from "../../context/RecordingContext1";
 import AudioVisualizer from "./AudioVisualizer";
 import RecordingTimer from "./RecordingTimer";
 import { calculateMaxDuration } from "../../utils/timeUtils";
