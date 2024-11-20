@@ -86,7 +86,7 @@ const audioIsolation = async (audioBlob) => {
   }
 };
 
-export const RecordingProvider = ({ children }) => {
+export const RecordingProvider1 = ({ children }) => {
   // State management
   const [dialogues, setDialogues] = useState(defaultDialogues);
   const [currentIndex, setCurrentIndex] = useState(0);
