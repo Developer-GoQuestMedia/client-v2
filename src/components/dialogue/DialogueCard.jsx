@@ -173,7 +173,16 @@ const DialogueCard = () => {
       </div>
 
       {(isModalOpen || showDeleteConfirm) && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+        <div 
+          className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50"
+          onClick={(e) => {
+            // Close modal only if clicking the backdrop (not the modal content)
+            if (e.target === e.currentTarget) {
+              setIsModalOpen(false);
+              setShowDeleteConfirm(false);
+            }
+          }}
+        >
           <div className="modal-content bg-white p-6 rounded-lg shadow-lg w-4/5">
             {showDeleteConfirm ? (
               <>
