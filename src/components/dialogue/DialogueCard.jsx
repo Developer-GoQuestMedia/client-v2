@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react';
 import { Card } from '../ui/card';
-import { useRecording } from '../../context/RecordingContext1';
+import { useRecording } from '../../context/RecordingContext';
 import DialogueText from './DialogueText';
 import ContextInfo from './ContextInfo';
 import { useSwipeGesture } from '../../hooks/useSwipeGesture';
@@ -12,6 +12,7 @@ const DialogueCard = () => {
   const dialogueTextRef = useRef(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
 
   const handleSwipeLeft = () => {
     console.log("handleSwipeLeft");
@@ -76,17 +77,20 @@ const DialogueCard = () => {
   };
 
   const handleDeleteRecording = () => {
-    if (window.confirm('Are you sure you want to delete this recording?')) {
-      updateDialogue(currentIndex, {
-        audioURL: null,
-        status: 'pending'
-      });
-      if (audioElement) {
-        audioElement.pause();
-        setAudioElement(null);
-      }
-      setIsPlaying(false);
+    setShowDeleteConfirm(true);
+  };
+
+  const confirmDelete = () => {
+    updateDialogue(currentIndex, {
+      audioURL: null,
+      status: 'pending'
+    });
+    if (audioElement) {
+      audioElement.pause();
+      setAudioElement(null);
     }
+    setIsPlaying(false);
+    setShowDeleteConfirm(false);
   };
 
   const handleSwipeRight = () => {
@@ -168,20 +172,47 @@ const DialogueCard = () => {
         </Card>
       </div>
 
-      {isModalOpen && (
+      {(isModalOpen || showDeleteConfirm) && (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
           <div className="modal-content bg-white p-6 rounded-lg shadow-lg w-4/5">
-            <p className="text-lg font-semibold">Do you want to approve or re-record this dialogue?</p>
-            <div className="mt-4 flex justify-center">
-              <button
-                className="mr-2 px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600 disabled:opacity-50"
-                onClick={() => handleConfirm(true)}
-                disabled={isLoading}
-              >
-                {isLoading ? 'Approving...' : 'Approve'}
-              </button>
-              <button className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600" onClick={() => handleConfirm(false)}>Re-record</button>
-            </div>
+            {showDeleteConfirm ? (
+              <>
+                <p className="text-lg font-semibold">Are you sure you want to delete this recording?</p>
+                <div className="mt-4 flex justify-center">
+                  <button
+                    className="mr-2 px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600"
+                    onClick={confirmDelete}
+                  >
+                    Delete
+                  </button>
+                  <button 
+                    className="px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-600"
+                    onClick={() => setShowDeleteConfirm(false)}
+                  >
+                    Cancel
+                  </button>
+                </div>
+              </>
+            ) : (
+              <>
+                <p className="text-lg font-semibold">Do you want to approve or re-record this dialogue?</p>
+                <div className="mt-4 flex justify-center">
+                  <button
+                    className="mr-2 px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600 disabled:opacity-50"
+                    onClick={() => handleConfirm(true)}
+                    disabled={isLoading}
+                  >
+                    {isLoading ? 'Approving...' : 'Approve'}
+                  </button>
+                  <button 
+                    className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600" 
+                    onClick={() => handleConfirm(false)}
+                  >
+                    Re-record
+                  </button>
+                </div>
+              </>
+            )}
           </div>
         </div>
       )}

@@ -1,7 +1,7 @@
 import React from 'react';
 import { DialoguesProvider } from './context/DialoguesContext';
-import { RecordingProvider1 } from './context/RecordingContext1';
 import { RecordingProvider } from './context/RecordingContext';
+import { AudioProvider } from './context/AudioContext';
 import { VideoProvider } from './context/VideoContext';
 import { ErrorProvider } from './context/ErrorContext';
 import VideoPlayer from './components/video/VideoPlayer';
@@ -10,10 +10,10 @@ import RecordingControls from './components/audio/RecordingControls';
 
 const App = () => {
   return (
-    <RecordingProvider1>
+    <RecordingProvider>
 
     <DialoguesProvider>
-      <RecordingProvider>
+      <AudioProvider>
         <VideoProvider>
           <ErrorProvider>
             <div className="min-h-screen bg-gray-100">
@@ -27,9 +27,9 @@ const App = () => {
             </div>
           </ErrorProvider>
         </VideoProvider>
-      </RecordingProvider>
+      </AudioProvider>
     </DialoguesProvider>
-    </RecordingProvider1>
+    </RecordingProvider>
   );
 };
 

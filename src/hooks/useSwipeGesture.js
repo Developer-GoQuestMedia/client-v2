@@ -21,8 +21,8 @@ export const useSwipeGesture = ({ onSwipeLeft, onSwipeRight }) => {
     if (!touchStart.current || !touchEnd.current) return;
 
     const distance = touchEnd.current - touchStart.current;
-    const isLeftSwipe = distance < -100;
-    const isRightSwipe = distance > 100;
+    const isLeftSwipe = distance < -0.4 * window.innerWidth;
+    const isRightSwipe = distance > 0.4 * window.innerWidth;
 
     if (isLeftSwipe) {
       onSwipeLeft?.();

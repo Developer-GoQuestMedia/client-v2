@@ -1,5 +1,5 @@
 import React from 'react';
-import { useRecording } from '../../context/RecordingContext1';
+import { useRecording } from '../../context/RecordingContext';
 
 const VideoProgress = ({ videoRef }) => {
   const { currentDialogue } = useRecording();
