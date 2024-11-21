@@ -62,30 +62,6 @@ const defaultDialogues = await fetchDialogues();
 
 const RecordingContext = createContext(null);
 
-// Add this function before createWavBlob
-// const audioIsolation = async (audioBlob) => {
-//   try {
-//     console.log("Audio isolation started");
-//     const client = new ElevenLabsClient({ 
-//       apiKey: "eeff688eea60a16d86ead08dfa33e336" 
-//     });
-
-//     // Convert Blob to ReadableStream
-//     const stream = audioBlob.stream();
-    
-//     // Perform audio isolation
-//     const isolatedAudio = await client.audioIsolation.audioIsolationStream({
-//       audio: stream
-//     });
-
-//     // Convert the response to a Blob
-//     return new Blob([isolatedAudio], { type: 'audio/wav' });
-//   } catch (error) {
-//     console.error("Audio isolation failed:", error);
-//     return audioBlob; // Return original blob if isolation fails
-//   }
-// };
-
 export const RecordingProvider = ({ children }) => {
   // State management
   const [dialogues, setDialogues] = useState(defaultDialogues);
@@ -109,48 +85,6 @@ export const RecordingProvider = ({ children }) => {
     () => dialogues[currentIndex] || null,
     [dialogues, currentIndex]
   );
-
-  // Helper function to create audio processor
-  // const createAudioProcessor = async (audioContext) => {
-  //   await audioContext.audioWorklet.addModule(
-  //     URL.createObjectURL(
-  //       new Blob(
-  //         [
-  //           `
-  //     class RecorderProcessor extends AudioWorkletProcessor {
-  //       constructor() {
-  //         super();
-  //         this.chunks = [];
-  //       }
-
-  //       process(inputs) {
-  //         const input = inputs[0];
-  //         if (input.length > 0) {
-  //           this.chunks.push(input);
-  //           this.port.postMessage({ chunks: input });
-  //         }
-  //         return true;
-  //       }
-  //     }
-
-  //     registerProcessor('recorder-processor', RecorderProcessor);
-  //   `,
-  //         ],
-  //         { type: "application/javascript" }
-  //       )
-  //     )
-  //   );
-
-  //   const processor = new AudioWorkletNode(audioContext, "recorder-processor");
-
-  //   processor.port.onmessage = (e) => {
-  //     if (mediaRecorder.current?.isRecording && e.data.chunks) {
-  //       mediaRecorder.current.chunks.push(e.data.chunks);
-  //     }
-  //   };
-
-  //   return processor;
-  // };
 
   // Helper function for cleanup
   const cleanup = useCallback(() => {
@@ -505,47 +439,6 @@ export const RecordingProvider = ({ children }) => {
     handleDeleteRecording();
     startRecording();
   }, [currentDialogue, handleDeleteRecording, startRecording]);
-
-  // const uploadRecordedAudio = useCallback(async () => {
-  //   console.log("Uploading recorded audio");
-  //   // if (!dialogues[currentIndex]?.audioURL) {
-  //   //   console.error('No audio URL found for current dialogue');
-  //   //   return;
-  //   // }
-
-  //   try {
-  //     const response = await fetch(dialogues[currentIndex].audioURL);
-  //     const audioBlob = await response.blob();
-
-  //     const formData = new FormData();
-  //     formData.append('audio', audioBlob, 'recording.wav');
-  //     formData.append('dialogueId', dialogues[currentIndex].id);
-
-  //     const uploadResponse = await axios.post(
-  //       'https://server-v2-akga.onrender.com/api/dialogues',
-  //       formData,
-  //       {
-  //         headers: {
-  //           'Content-Type': 'multipart/form-data',
-  //         },
-  //       }
-  //     );
-
-  //     if (uploadResponse.data.success) {
-  //       console.log('Audio uploaded successfully');
-  //       updateDialogue(currentIndex, {
-  //         serverAudioUrl: uploadResponse.data.audioUrl,
-  //         uploadStatus: 'success'
-  //       });
-  //     }
-  //   } catch (error) {
-  //     console.error('Error uploading audio:', error);
-  //     setError('Failed to upload audio');
-  //     updateDialogue(currentIndex, {
-  //       uploadStatus: 'failed'
-  //     });
-  //   }
-  // }, [dialogues, currentIndex, updateDialogue, setError]);
 
   const handleSuccessfulUpload = useCallback(async () => {
     try {
