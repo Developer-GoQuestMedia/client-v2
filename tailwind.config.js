@@ -70,10 +70,12 @@ module.exports = {
         },
         slideLeft: {
           "0%": { transform: "translateX(0)", opacity: 1 },
+          "40%": { transform: "translateX(40%)", opacity: 0.5 },
           "100%": { transform: "translateX(-100%)", opacity: 0 },
         },
         slideRight: {
           "0%": { transform: "translateX(0)", opacity: 1 },
+          "40%": { transform: "translateX(40%)", opacity: 0.5 },
           "100%": { transform: "translateX(100%)", opacity: 0 },
         },
       },
