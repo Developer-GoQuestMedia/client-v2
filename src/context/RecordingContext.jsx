@@ -45,11 +45,11 @@ const initializeMediaDevices = () => {
 
 // const defaultDialogues = require('../data/Sample.json');
 
-const projectId = "672b48ef936eaa6e6710fa6e";
+const projectId = "123456789123456789123456";
 const fetchDialogues = async () => {
   try {
     const response = await axios.get(
-      `https://server-v2-akga.onrender.com/api/dialogues/list/${projectId}`
+      `http://localhost:5000/api/dialogues/list/${projectId}`
     );
     return response.data; // Assuming the response data is in the expected format
   } catch (error) {
@@ -59,6 +59,8 @@ const fetchDialogues = async () => {
 };
 // Replace defaultDialogues with the fetched data
 const defaultDialogues = await fetchDialogues();
+// const defaultDialogues = require('../data/Sample.json');
+console.log(defaultDialogues);
 
 const RecordingContext = createContext(null);
 

@@ -1,0 +1,3902 @@
+[
+    {
+        "project": "123456789",
+        "index": {
+            "$numberInt": "1"
+        },
+        "timeStart": "00:00:00:280",
+        "timeEnd": "00:00:01:280",
+        "character": "Character Name",
+        "videoUrl": null,
+        "dialogue": {
+            "original": "Nadire.",
+            "translated": "Nadire.",
+            "adapted": "Nadire."
+        },
+        "emotions": {
+            "primary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            },
+            "secondary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            }
+        },
+        "direction": "Normal tone",
+        "lipMovements": {
+            "$numberInt": "0"
+        },
+        "sceneContext": "Character speaking",
+        "technicalNotes": "Neutral tone",
+        "culturalNotes": "General conversation",
+        "audioUrl": null,
+        "status": "recorded",
+        "recordingStatus": "pending"
+    },
+    {
+        "project": "123456789",
+        "index": {
+            "$numberInt": "2"
+        },
+        "timeStart": "00:00:02:120",
+        "timeEnd": "00:00:04:120",
+        "character": "Character Name",
+        "videoUrl": null,
+        "dialogue": {
+            "original": "-Nadire.\n-Yes, my Lady.",
+            "translated": "-Nadire.\n-Yes, my Lady.",
+            "adapted": "-Nadire.\n-Yes, my Lady."
+        },
+        "emotions": {
+            "primary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            },
+            "secondary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            }
+        },
+        "direction": "Normal tone",
+        "lipMovements": {
+            "$numberInt": "0"
+        },
+        "sceneContext": "Character speaking",
+        "technicalNotes": "Neutral tone",
+        "culturalNotes": "General conversation",
+        "audioUrl": null,
+        "status": "recorded",
+        "recordingStatus": "pending"
+    },
+    {
+        "project": "123456789",
+        "index": {
+            "$numberInt": "3"
+        },
+        "timeStart": "00:00:04:600",
+        "timeEnd": "00:00:06:640",
+        "character": "Character Name",
+        "videoUrl": null,
+        "dialogue": {
+            "original": "-Is Karan's room ready?\n-Yes, my Lady.",
+            "translated": "-Is Karan's room ready?\n-Yes, my Lady.",
+            "adapted": "-Is Karan's room ready?\n-Yes, my Lady."
+        },
+        "emotions": {
+            "primary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            },
+            "secondary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            }
+        },
+        "direction": "Normal tone",
+        "lipMovements": {
+            "$numberInt": "0"
+        },
+        "sceneContext": "Character speaking",
+        "technicalNotes": "Neutral tone",
+        "culturalNotes": "General conversation",
+        "audioUrl": null,
+        "status": "recorded",
+        "recordingStatus": "pending"
+    },
+    {
+        "project": "123456789",
+        "index": {
+            "$numberInt": "4"
+        },
+        "timeStart": "00:00:06:720",
+        "timeEnd": "00:00:08:680",
+        "character": "Character Name",
+        "videoUrl": null,
+        "dialogue": {
+            "original": "-Is everything okay in the kitchen?\n-Yes, it is.",
+            "translated": "-Is everything okay in the kitchen?\n-Yes, it is.",
+            "adapted": "-Is everything okay in the kitchen?\n-Yes, it is."
+        },
+        "emotions": {
+            "primary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            },
+            "secondary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            }
+        },
+        "direction": "Normal tone",
+        "lipMovements": {
+            "$numberInt": "0"
+        },
+        "sceneContext": "Character speaking",
+        "technicalNotes": "Neutral tone",
+        "culturalNotes": "General conversation",
+        "audioUrl": null,
+        "status": "recorded",
+        "recordingStatus": "pending"
+    },
+    {
+        "project": "123456789",
+        "index": {
+            "$numberInt": "5"
+        },
+        "timeStart": "00:00:08:760",
+        "timeEnd": "00:00:11:360",
+        "character": "Character Name",
+        "videoUrl": null,
+        "dialogue": {
+            "original": "-Will you please recheck it?\n-Sure, my Lady.",
+            "translated": "-Will you please recheck it?\n-Sure, my Lady.",
+            "adapted": "-Will you please recheck it?\n-Sure, my Lady."
+        },
+        "emotions": {
+            "primary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            },
+            "secondary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            }
+        },
+        "direction": "Normal tone",
+        "lipMovements": {
+            "$numberInt": "0"
+        },
+        "sceneContext": "Character speaking",
+        "technicalNotes": "Neutral tone",
+        "culturalNotes": "General conversation",
+        "audioUrl": null,
+        "status": "recorded",
+        "recordingStatus": "pending"
+    },
+    {
+        "project": "123456789",
+        "index": {
+            "$numberInt": "6"
+        },
+        "timeStart": "00:00:11:440",
+        "timeEnd": "00:00:13:920",
+        "character": "Character Name",
+        "videoUrl": null,
+        "dialogue": {
+            "original": "Well, make sure\neverything is alright..",
+            "translated": "Well, make sure\neverything is alright..",
+            "adapted": "Well, make sure\neverything is alright.."
+        },
+        "emotions": {
+            "primary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            },
+            "secondary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            }
+        },
+        "direction": "Normal tone",
+        "lipMovements": {
+            "$numberInt": "0"
+        },
+        "sceneContext": "Character speaking",
+        "technicalNotes": "Neutral tone",
+        "culturalNotes": "General conversation",
+        "audioUrl": null,
+        "status": "recorded",
+        "recordingStatus": "pending"
+    },
+    {
+        "project": "123456789",
+        "index": {
+            "$numberInt": "7"
+        },
+        "timeStart": "00:00:14:520",
+        "timeEnd": "00:00:15:520",
+        "character": "Character Name",
+        "videoUrl": null,
+        "dialogue": {
+            "original": "Ayse!",
+            "translated": "Ayse!",
+            "adapted": "Ayse!"
+        },
+        "emotions": {
+            "primary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            },
+            "secondary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            }
+        },
+        "direction": "Normal tone",
+        "lipMovements": {
+            "$numberInt": "0"
+        },
+        "sceneContext": "Character speaking",
+        "technicalNotes": "Neutral tone",
+        "culturalNotes": "General conversation",
+        "audioUrl": null,
+        "status": "recorded",
+        "recordingStatus": "pending"
+    },
+    {
+        "project": "123456789",
+        "index": {
+            "$numberInt": "8"
+        },
+        "timeStart": "00:00:15:760",
+        "timeEnd": "00:00:17:600",
+        "character": "Character Name",
+        "videoUrl": null,
+        "dialogue": {
+            "original": "-Yes, my Lady.\n-Clean everywhere.",
+            "translated": "-Yes, my Lady.\n-Clean everywhere.",
+            "adapted": "-Yes, my Lady.\n-Clean everywhere."
+        },
+        "emotions": {
+            "primary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            },
+            "secondary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            }
+        },
+        "direction": "Normal tone",
+        "lipMovements": {
+            "$numberInt": "0"
+        },
+        "sceneContext": "Character speaking",
+        "technicalNotes": "Neutral tone",
+        "culturalNotes": "General conversation",
+        "audioUrl": null,
+        "status": "recorded",
+        "recordingStatus": "pending"
+    },
+    {
+        "project": "123456789",
+        "index": {
+            "$numberInt": "9"
+        },
+        "timeStart": "00:00:17:640",
+        "timeEnd": "00:00:20:000",
+        "character": "Character Name",
+        "videoUrl": null,
+        "dialogue": {
+            "original": "I don't want to see\neven a little dust.",
+            "translated": "I don't want to see\neven a little dust.",
+            "adapted": "I don't want to see\neven a little dust."
+        },
+        "emotions": {
+            "primary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            },
+            "secondary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            }
+        },
+        "direction": "Normal tone",
+        "lipMovements": {
+            "$numberInt": "0"
+        },
+        "sceneContext": "Character speaking",
+        "technicalNotes": "Neutral tone",
+        "culturalNotes": "General conversation",
+        "audioUrl": null,
+        "status": "recorded",
+        "recordingStatus": "pending"
+    },
+    {
+        "project": "123456789",
+        "index": {
+            "$numberInt": "10"
+        },
+        "timeStart": "00:00:20:000",
+        "timeEnd": "00:00:22:120",
+        "character": "Character Name",
+        "videoUrl": null,
+        "dialogue": {
+            "original": "-Alright, my Lady.\n-I want it spotless.",
+            "translated": "-Alright, my Lady.\n-I want it spotless.",
+            "adapted": "-Alright, my Lady.\n-I want it spotless."
+        },
+        "emotions": {
+            "primary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            },
+            "secondary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            }
+        },
+        "direction": "Normal tone",
+        "lipMovements": {
+            "$numberInt": "0"
+        },
+        "sceneContext": "Character speaking",
+        "technicalNotes": "Neutral tone",
+        "culturalNotes": "General conversation",
+        "audioUrl": null,
+        "status": "recorded",
+        "recordingStatus": "pending"
+    },
+    {
+        "project": "123456789",
+        "index": {
+            "$numberInt": "11"
+        },
+        "timeStart": "00:00:23:400",
+        "timeEnd": "00:00:25:240",
+        "character": "Character Name",
+        "videoUrl": null,
+        "dialogue": {
+            "original": "Why is this picture\nhung so crooked?",
+            "translated": "Why is this picture\nhung so crooked?",
+            "adapted": "Why is this picture\nhung so crooked?"
+        },
+        "emotions": {
+            "primary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            },
+            "secondary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            }
+        },
+        "direction": "Normal tone",
+        "lipMovements": {
+            "$numberInt": "0"
+        },
+        "sceneContext": "Character speaking",
+        "technicalNotes": "Neutral tone",
+        "culturalNotes": "General conversation",
+        "audioUrl": null,
+        "status": "recorded",
+        "recordingStatus": "pending"
+    },
+    {
+        "project": "123456789",
+        "index": {
+            "$numberInt": "12"
+        },
+        "timeStart": "00:00:25:280",
+        "timeEnd": "00:00:27:640",
+        "character": "Character Name",
+        "videoUrl": null,
+        "dialogue": {
+            "original": "Why don't you straighten\nit after dusting it?",
+            "translated": "Why don't you straighten\nit after dusting it?",
+            "adapted": "Why don't you straighten\nit after dusting it?"
+        },
+        "emotions": {
+            "primary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            },
+            "secondary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            }
+        },
+        "direction": "Normal tone",
+        "lipMovements": {
+            "$numberInt": "0"
+        },
+        "sceneContext": "Character speaking",
+        "technicalNotes": "Neutral tone",
+        "culturalNotes": "General conversation",
+        "audioUrl": null,
+        "status": "recorded",
+        "recordingStatus": "pending"
+    },
+    {
+        "project": "123456789",
+        "index": {
+            "$numberInt": "13"
+        },
+        "timeStart": "00:00:27:720",
+        "timeEnd": "00:00:29:280",
+        "character": "Character Name",
+        "videoUrl": null,
+        "dialogue": {
+            "original": "I\u2019ll fix it right away.",
+            "translated": "I\u2019ll fix it right away.",
+            "adapted": "I\u2019ll fix it right away."
+        },
+        "emotions": {
+            "primary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            },
+            "secondary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            }
+        },
+        "direction": "Normal tone",
+        "lipMovements": {
+            "$numberInt": "0"
+        },
+        "sceneContext": "Character speaking",
+        "technicalNotes": "Neutral tone",
+        "culturalNotes": "General conversation",
+        "audioUrl": null,
+        "status": "recorded",
+        "recordingStatus": "pending"
+    },
+    {
+        "project": "123456789",
+        "index": {
+            "$numberInt": "14"
+        },
+        "timeStart": "00:00:41:360",
+        "timeEnd": "00:00:42:320",
+        "character": "Character Name",
+        "videoUrl": null,
+        "dialogue": {
+            "original": "Hello?",
+            "translated": "Hello?",
+            "adapted": "Hello?"
+        },
+        "emotions": {
+            "primary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            },
+            "secondary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            }
+        },
+        "direction": "Normal tone",
+        "lipMovements": {
+            "$numberInt": "0"
+        },
+        "sceneContext": "Character speaking",
+        "technicalNotes": "Neutral tone",
+        "culturalNotes": "General conversation",
+        "audioUrl": null,
+        "status": "recorded",
+        "recordingStatus": "pending"
+    },
+    {
+        "project": "123456789",
+        "index": {
+            "$numberInt": "15"
+        },
+        "timeStart": "00:00:42:480",
+        "timeEnd": "00:00:43:640",
+        "character": "Character Name",
+        "videoUrl": null,
+        "dialogue": {
+            "original": "<i>Greetings,</i>",
+            "translated": "<i>Greetings,</i>",
+            "adapted": "<i>Greetings,</i>"
+        },
+        "emotions": {
+            "primary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            },
+            "secondary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            }
+        },
+        "direction": "Normal tone",
+        "lipMovements": {
+            "$numberInt": "0"
+        },
+        "sceneContext": "Character speaking",
+        "technicalNotes": "Neutral tone",
+        "culturalNotes": "General conversation",
+        "audioUrl": null,
+        "status": "recorded",
+        "recordingStatus": "pending"
+    },
+    {
+        "project": "123456789",
+        "index": {
+            "$numberInt": "16"
+        },
+        "timeStart": "00:00:44:200",
+        "timeEnd": "00:00:45:000",
+        "character": "Character Name",
+        "videoUrl": null,
+        "dialogue": {
+            "original": "Salih Agha.",
+            "translated": "Salih Agha.",
+            "adapted": "Salih Agha."
+        },
+        "emotions": {
+            "primary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            },
+            "secondary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            }
+        },
+        "direction": "Normal tone",
+        "lipMovements": {
+            "$numberInt": "0"
+        },
+        "sceneContext": "Character speaking",
+        "technicalNotes": "Neutral tone",
+        "culturalNotes": "General conversation",
+        "audioUrl": null,
+        "status": "recorded",
+        "recordingStatus": "pending"
+    },
+    {
+        "project": "123456789",
+        "index": {
+            "$numberInt": "17"
+        },
+        "timeStart": "00:00:45:880",
+        "timeEnd": "00:00:46:880",
+        "character": "Character Name",
+        "videoUrl": null,
+        "dialogue": {
+            "original": "<i>What is this?</i>",
+            "translated": "<i>What is this?</i>",
+            "adapted": "<i>What is this?</i>"
+        },
+        "emotions": {
+            "primary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            },
+            "secondary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            }
+        },
+        "direction": "Normal tone",
+        "lipMovements": {
+            "$numberInt": "0"
+        },
+        "sceneContext": "Character speaking",
+        "technicalNotes": "Neutral tone",
+        "culturalNotes": "General conversation",
+        "audioUrl": null,
+        "status": "recorded",
+        "recordingStatus": "pending"
+    },
+    {
+        "project": "123456789",
+        "index": {
+            "$numberInt": "18"
+        },
+        "timeStart": "00:00:47:000",
+        "timeEnd": "00:00:49:760",
+        "character": "Character Name",
+        "videoUrl": null,
+        "dialogue": {
+            "original": "You call me \"bro\" in Canada,\n\"agha\" in Turkey?",
+            "translated": "You call me \"bro\" in Canada,\n\"agha\" in Turkey?",
+            "adapted": "You call me \"bro\" in Canada,\n\"agha\" in Turkey?"
+        },
+        "emotions": {
+            "primary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            },
+            "secondary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            }
+        },
+        "direction": "Normal tone",
+        "lipMovements": {
+            "$numberInt": "0"
+        },
+        "sceneContext": "Character speaking",
+        "technicalNotes": "Neutral tone",
+        "culturalNotes": "General conversation",
+        "audioUrl": null,
+        "status": "recorded",
+        "recordingStatus": "pending"
+    },
+    {
+        "project": "123456789",
+        "index": {
+            "$numberInt": "19"
+        },
+        "timeStart": "00:00:50:040",
+        "timeEnd": "00:00:50:960",
+        "character": "Character Name",
+        "videoUrl": null,
+        "dialogue": {
+            "original": "Yeah.",
+            "translated": "Yeah.",
+            "adapted": "Yeah."
+        },
+        "emotions": {
+            "primary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            },
+            "secondary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            }
+        },
+        "direction": "Normal tone",
+        "lipMovements": {
+            "$numberInt": "0"
+        },
+        "sceneContext": "Character speaking",
+        "technicalNotes": "Neutral tone",
+        "culturalNotes": "General conversation",
+        "audioUrl": null,
+        "status": "recorded",
+        "recordingStatus": "pending"
+    },
+    {
+        "project": "123456789",
+        "index": {
+            "$numberInt": "20"
+        },
+        "timeStart": "00:00:51:760",
+        "timeEnd": "00:00:54:600",
+        "character": "Character Name",
+        "videoUrl": null,
+        "dialogue": {
+            "original": "The moment I crossed the border,\nI returned to my old self.",
+            "translated": "The moment I crossed the border,\nI returned to my old self.",
+            "adapted": "The moment I crossed the border,\nI returned to my old self."
+        },
+        "emotions": {
+            "primary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            },
+            "secondary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            }
+        },
+        "direction": "Normal tone",
+        "lipMovements": {
+            "$numberInt": "0"
+        },
+        "sceneContext": "Character speaking",
+        "technicalNotes": "Neutral tone",
+        "culturalNotes": "General conversation",
+        "audioUrl": null,
+        "status": "recorded",
+        "recordingStatus": "pending"
+    },
+    {
+        "project": "123456789",
+        "index": {
+            "$numberInt": "21"
+        },
+        "timeStart": "00:00:54:680",
+        "timeEnd": "00:00:55:800",
+        "character": "Character Name",
+        "videoUrl": null,
+        "dialogue": {
+            "original": "Well, where are you?",
+            "translated": "Well, where are you?",
+            "adapted": "Well, where are you?"
+        },
+        "emotions": {
+            "primary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            },
+            "secondary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            }
+        },
+        "direction": "Normal tone",
+        "lipMovements": {
+            "$numberInt": "0"
+        },
+        "sceneContext": "Character speaking",
+        "technicalNotes": "Neutral tone",
+        "culturalNotes": "General conversation",
+        "audioUrl": null,
+        "status": "recorded",
+        "recordingStatus": "pending"
+    },
+    {
+        "project": "123456789",
+        "index": {
+            "$numberInt": "22"
+        },
+        "timeStart": "00:00:57:080",
+        "timeEnd": "00:00:58:160",
+        "character": "Character Name",
+        "videoUrl": null,
+        "dialogue": {
+            "original": "I came to \u00dcrg\u00fcp.",
+            "translated": "I came to \u00dcrg\u00fcp.",
+            "adapted": "I came to \u00dcrg\u00fcp."
+        },
+        "emotions": {
+            "primary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            },
+            "secondary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            }
+        },
+        "direction": "Normal tone",
+        "lipMovements": {
+            "$numberInt": "0"
+        },
+        "sceneContext": "Character speaking",
+        "technicalNotes": "Neutral tone",
+        "culturalNotes": "General conversation",
+        "audioUrl": null,
+        "status": "recorded",
+        "recordingStatus": "pending"
+    },
+    {
+        "project": "123456789",
+        "index": {
+            "$numberInt": "23"
+        },
+        "timeStart": "00:00:59:480",
+        "timeEnd": "00:01:01:360",
+        "character": "Character Name",
+        "videoUrl": null,
+        "dialogue": {
+            "original": "I wanted to visit our father.",
+            "translated": "I wanted to visit our father.",
+            "adapted": "I wanted to visit our father."
+        },
+        "emotions": {
+            "primary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            },
+            "secondary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            }
+        },
+        "direction": "Normal tone",
+        "lipMovements": {
+            "$numberInt": "0"
+        },
+        "sceneContext": "Character speaking",
+        "technicalNotes": "Neutral tone",
+        "culturalNotes": "General conversation",
+        "audioUrl": null,
+        "status": "recorded",
+        "recordingStatus": "pending"
+    },
+    {
+        "project": "123456789",
+        "index": {
+            "$numberInt": "24"
+        },
+        "timeStart": "00:01:02:040",
+        "timeEnd": "00:01:04:640",
+        "character": "Character Name",
+        "videoUrl": null,
+        "dialogue": {
+            "original": "You know, today is the\nday he passed away.",
+            "translated": "You know, today is the\nday he passed away.",
+            "adapted": "You know, today is the\nday he passed away."
+        },
+        "emotions": {
+            "primary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            },
+            "secondary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            }
+        },
+        "direction": "Normal tone",
+        "lipMovements": {
+            "$numberInt": "0"
+        },
+        "sceneContext": "Character speaking",
+        "technicalNotes": "Neutral tone",
+        "culturalNotes": "General conversation",
+        "audioUrl": null,
+        "status": "recorded",
+        "recordingStatus": "pending"
+    },
+    {
+        "project": "123456789",
+        "index": {
+            "$numberInt": "25"
+        },
+        "timeStart": "00:01:04:720",
+        "timeEnd": "00:01:05:720",
+        "character": "Character Name",
+        "videoUrl": null,
+        "dialogue": {
+            "original": "I know.",
+            "translated": "I know.",
+            "adapted": "I know."
+        },
+        "emotions": {
+            "primary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            },
+            "secondary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            }
+        },
+        "direction": "Normal tone",
+        "lipMovements": {
+            "$numberInt": "0"
+        },
+        "sceneContext": "Character speaking",
+        "technicalNotes": "Neutral tone",
+        "culturalNotes": "General conversation",
+        "audioUrl": null,
+        "status": "recorded",
+        "recordingStatus": "pending"
+    },
+    {
+        "project": "123456789",
+        "index": {
+            "$numberInt": "26"
+        },
+        "timeStart": "00:01:05:720",
+        "timeEnd": "00:01:08:520",
+        "character": "Character Name",
+        "videoUrl": null,
+        "dialogue": {
+            "original": "Hard to believe it\u2019s\nbeen fifteen years.",
+            "translated": "Hard to believe it\u2019s\nbeen fifteen years.",
+            "adapted": "Hard to believe it\u2019s\nbeen fifteen years."
+        },
+        "emotions": {
+            "primary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            },
+            "secondary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            }
+        },
+        "direction": "Normal tone",
+        "lipMovements": {
+            "$numberInt": "0"
+        },
+        "sceneContext": "Character speaking",
+        "technicalNotes": "Neutral tone",
+        "culturalNotes": "General conversation",
+        "audioUrl": null,
+        "status": "recorded",
+        "recordingStatus": "pending"
+    },
+    {
+        "project": "123456789",
+        "index": {
+            "$numberInt": "27"
+        },
+        "timeStart": "00:01:09:640",
+        "timeEnd": "00:01:10:680",
+        "character": "Character Name",
+        "videoUrl": null,
+        "dialogue": {
+            "original": "How is mom doing?",
+            "translated": "How is mom doing?",
+            "adapted": "How is mom doing?"
+        },
+        "emotions": {
+            "primary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            },
+            "secondary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            }
+        },
+        "direction": "Normal tone",
+        "lipMovements": {
+            "$numberInt": "0"
+        },
+        "sceneContext": "Character speaking",
+        "technicalNotes": "Neutral tone",
+        "culturalNotes": "General conversation",
+        "audioUrl": null,
+        "status": "recorded",
+        "recordingStatus": "pending"
+    },
+    {
+        "project": "123456789",
+        "index": {
+            "$numberInt": "28"
+        },
+        "timeStart": "00:01:11:360",
+        "timeEnd": "00:01:12:920",
+        "character": "Character Name",
+        "videoUrl": null,
+        "dialogue": {
+            "original": "Does she know that I'm here?",
+            "translated": "Does she know that I'm here?",
+            "adapted": "Does she know that I'm here?"
+        },
+        "emotions": {
+            "primary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            },
+            "secondary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            }
+        },
+        "direction": "Normal tone",
+        "lipMovements": {
+            "$numberInt": "0"
+        },
+        "sceneContext": "Character speaking",
+        "technicalNotes": "Neutral tone",
+        "culturalNotes": "General conversation",
+        "audioUrl": null,
+        "status": "recorded",
+        "recordingStatus": "pending"
+    },
+    {
+        "project": "123456789",
+        "index": {
+            "$numberInt": "29"
+        },
+        "timeStart": "00:01:13:480",
+        "timeEnd": "00:01:16:600",
+        "character": "Character Name",
+        "videoUrl": null,
+        "dialogue": {
+            "original": "Of course, she doesn't know you\nare visiting our father's grave.",
+            "translated": "Of course, she doesn't know you\nare visiting our father's grave.",
+            "adapted": "Of course, she doesn't know you\nare visiting our father's grave."
+        },
+        "emotions": {
+            "primary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            },
+            "secondary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            }
+        },
+        "direction": "Normal tone",
+        "lipMovements": {
+            "$numberInt": "0"
+        },
+        "sceneContext": "Character speaking",
+        "technicalNotes": "Neutral tone",
+        "culturalNotes": "General conversation",
+        "audioUrl": null,
+        "status": "recorded",
+        "recordingStatus": "pending"
+    },
+    {
+        "project": "123456789",
+        "index": {
+            "$numberInt": "30"
+        },
+        "timeStart": "00:01:16:680",
+        "timeEnd": "00:01:20:880",
+        "character": "Character Name",
+        "videoUrl": null,
+        "dialogue": {
+            "original": "This grudge has been going\non since my childhood, you know.",
+            "translated": "This grudge has been going\non since my childhood, you know.",
+            "adapted": "This grudge has been going\non since my childhood, you know."
+        },
+        "emotions": {
+            "primary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            },
+            "secondary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            }
+        },
+        "direction": "Normal tone",
+        "lipMovements": {
+            "$numberInt": "0"
+        },
+        "sceneContext": "Character speaking",
+        "technicalNotes": "Neutral tone",
+        "culturalNotes": "General conversation",
+        "audioUrl": null,
+        "status": "recorded",
+        "recordingStatus": "pending"
+    },
+    {
+        "project": "123456789",
+        "index": {
+            "$numberInt": "31"
+        },
+        "timeStart": "00:01:22:240",
+        "timeEnd": "00:01:25:520",
+        "character": "Character Name",
+        "videoUrl": null,
+        "dialogue": {
+            "original": "\"If someone wrongs you...",
+            "translated": "\"If someone wrongs you...",
+            "adapted": "\"If someone wrongs you..."
+        },
+        "emotions": {
+            "primary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            },
+            "secondary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            }
+        },
+        "direction": "Normal tone",
+        "lipMovements": {
+            "$numberInt": "0"
+        },
+        "sceneContext": "Character speaking",
+        "technicalNotes": "Neutral tone",
+        "culturalNotes": "General conversation",
+        "audioUrl": null,
+        "status": "recorded",
+        "recordingStatus": "pending"
+    },
+    {
+        "project": "123456789",
+        "index": {
+            "$numberInt": "32"
+        },
+        "timeStart": "00:01:25:800",
+        "timeEnd": "00:01:27:400",
+        "character": "Character Name",
+        "videoUrl": null,
+        "dialogue": {
+            "original": "never forgive them!\u201d",
+            "translated": "never forgive them!\u201d",
+            "adapted": "never forgive them!\u201d"
+        },
+        "emotions": {
+            "primary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            },
+            "secondary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            }
+        },
+        "direction": "Normal tone",
+        "lipMovements": {
+            "$numberInt": "0"
+        },
+        "sceneContext": "Character speaking",
+        "technicalNotes": "Neutral tone",
+        "culturalNotes": "General conversation",
+        "audioUrl": null,
+        "status": "recorded",
+        "recordingStatus": "pending"
+    },
+    {
+        "project": "123456789",
+        "index": {
+            "$numberInt": "33"
+        },
+        "timeStart": "00:01:29:720",
+        "timeEnd": "00:01:31:400",
+        "character": "Character Name",
+        "videoUrl": null,
+        "dialogue": {
+            "original": "Anyway, that\u2019s their business.",
+            "translated": "Anyway, that\u2019s their business.",
+            "adapted": "Anyway, that\u2019s their business."
+        },
+        "emotions": {
+            "primary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            },
+            "secondary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            }
+        },
+        "direction": "Normal tone",
+        "lipMovements": {
+            "$numberInt": "0"
+        },
+        "sceneContext": "Character speaking",
+        "technicalNotes": "Neutral tone",
+        "culturalNotes": "General conversation",
+        "audioUrl": null,
+        "status": "recorded",
+        "recordingStatus": "pending"
+    },
+    {
+        "project": "123456789",
+        "index": {
+            "$numberInt": "34"
+        },
+        "timeStart": "00:01:31:480",
+        "timeEnd": "00:01:36:160",
+        "character": "Character Name",
+        "videoUrl": null,
+        "dialogue": {
+            "original": "I respect our mother, and do our\nduty to our father as his sons.",
+            "translated": "I respect our mother, and do our\nduty to our father as his sons.",
+            "adapted": "I respect our mother, and do our\nduty to our father as his sons."
+        },
+        "emotions": {
+            "primary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            },
+            "secondary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            }
+        },
+        "direction": "Normal tone",
+        "lipMovements": {
+            "$numberInt": "0"
+        },
+        "sceneContext": "Character speaking",
+        "technicalNotes": "Neutral tone",
+        "culturalNotes": "General conversation",
+        "audioUrl": null,
+        "status": "recorded",
+        "recordingStatus": "pending"
+    },
+    {
+        "project": "123456789",
+        "index": {
+            "$numberInt": "35"
+        },
+        "timeStart": "00:01:37:160",
+        "timeEnd": "00:01:38:520",
+        "character": "Character Name",
+        "videoUrl": null,
+        "dialogue": {
+            "original": "Mom is so jumpy.",
+            "translated": "Mom is so jumpy.",
+            "adapted": "Mom is so jumpy."
+        },
+        "emotions": {
+            "primary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            },
+            "secondary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            }
+        },
+        "direction": "Normal tone",
+        "lipMovements": {
+            "$numberInt": "0"
+        },
+        "sceneContext": "Character speaking",
+        "technicalNotes": "Neutral tone",
+        "culturalNotes": "General conversation",
+        "audioUrl": null,
+        "status": "recorded",
+        "recordingStatus": "pending"
+    },
+    {
+        "project": "123456789",
+        "index": {
+            "$numberInt": "36"
+        },
+        "timeStart": "00:01:39:120",
+        "timeEnd": "00:01:40:120",
+        "character": "Character Name",
+        "videoUrl": null,
+        "dialogue": {
+            "original": "<i>Don't be late.</i>",
+            "translated": "<i>Don't be late.</i>",
+            "adapted": "<i>Don't be late.</i>"
+        },
+        "emotions": {
+            "primary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            },
+            "secondary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            }
+        },
+        "direction": "Normal tone",
+        "lipMovements": {
+            "$numberInt": "0"
+        },
+        "sceneContext": "Character speaking",
+        "technicalNotes": "Neutral tone",
+        "culturalNotes": "General conversation",
+        "audioUrl": null,
+        "status": "recorded",
+        "recordingStatus": "pending"
+    },
+    {
+        "project": "123456789",
+        "index": {
+            "$numberInt": "37"
+        },
+        "timeStart": "00:01:40:880",
+        "timeEnd": "00:01:42:960",
+        "character": "Character Name",
+        "videoUrl": null,
+        "dialogue": {
+            "original": "She\u2019s been driving everyone\ncrazy since you\u2019re coming home..",
+            "translated": "She\u2019s been driving everyone\ncrazy since you\u2019re coming home..",
+            "adapted": "She\u2019s been driving everyone\ncrazy since you\u2019re coming home.."
+        },
+        "emotions": {
+            "primary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            },
+            "secondary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            }
+        },
+        "direction": "Normal tone",
+        "lipMovements": {
+            "$numberInt": "0"
+        },
+        "sceneContext": "Character speaking",
+        "technicalNotes": "Neutral tone",
+        "culturalNotes": "General conversation",
+        "audioUrl": null,
+        "status": "recorded",
+        "recordingStatus": "pending"
+    },
+    {
+        "project": "123456789",
+        "index": {
+            "$numberInt": "38"
+        },
+        "timeStart": "00:01:43:040",
+        "timeEnd": "00:01:44:880",
+        "character": "Character Name",
+        "videoUrl": null,
+        "dialogue": {
+            "original": "Anyway, I'm waiting for you.",
+            "translated": "Anyway, I'm waiting for you.",
+            "adapted": "Anyway, I'm waiting for you."
+        },
+        "emotions": {
+            "primary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            },
+            "secondary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            }
+        },
+        "direction": "Normal tone",
+        "lipMovements": {
+            "$numberInt": "0"
+        },
+        "sceneContext": "Character speaking",
+        "technicalNotes": "Neutral tone",
+        "culturalNotes": "General conversation",
+        "audioUrl": null,
+        "status": "recorded",
+        "recordingStatus": "pending"
+    },
+    {
+        "project": "123456789",
+        "index": {
+            "$numberInt": "39"
+        },
+        "timeStart": "00:01:44:960",
+        "timeEnd": "00:01:47:160",
+        "character": "Character Name",
+        "videoUrl": null,
+        "dialogue": {
+            "original": "Okay, don't worry, see you.",
+            "translated": "Okay, don't worry, see you.",
+            "adapted": "Okay, don't worry, see you."
+        },
+        "emotions": {
+            "primary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            },
+            "secondary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            }
+        },
+        "direction": "Normal tone",
+        "lipMovements": {
+            "$numberInt": "0"
+        },
+        "sceneContext": "Character speaking",
+        "technicalNotes": "Neutral tone",
+        "culturalNotes": "General conversation",
+        "audioUrl": null,
+        "status": "recorded",
+        "recordingStatus": "pending"
+    },
+    {
+        "project": "123456789",
+        "index": {
+            "$numberInt": "40"
+        },
+        "timeStart": "00:02:06:960",
+        "timeEnd": "00:02:08:000",
+        "character": "Character Name",
+        "videoUrl": null,
+        "dialogue": {
+            "original": "See you later, dad.",
+            "translated": "See you later, dad.",
+            "adapted": "See you later, dad."
+        },
+        "emotions": {
+            "primary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            },
+            "secondary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            }
+        },
+        "direction": "Normal tone",
+        "lipMovements": {
+            "$numberInt": "0"
+        },
+        "sceneContext": "Character speaking",
+        "technicalNotes": "Neutral tone",
+        "culturalNotes": "General conversation",
+        "audioUrl": null,
+        "status": "recorded",
+        "recordingStatus": "pending"
+    },
+    {
+        "project": "123456789",
+        "index": {
+            "$numberInt": "41"
+        },
+        "timeStart": "00:02:45:120",
+        "timeEnd": "00:02:46:120",
+        "character": "Character Name",
+        "videoUrl": null,
+        "dialogue": {
+            "original": "Mommy.",
+            "translated": "Mommy.",
+            "adapted": "Mommy."
+        },
+        "emotions": {
+            "primary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            },
+            "secondary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            }
+        },
+        "direction": "Normal tone",
+        "lipMovements": {
+            "$numberInt": "0"
+        },
+        "sceneContext": "Character speaking",
+        "technicalNotes": "Neutral tone",
+        "culturalNotes": "General conversation",
+        "audioUrl": null,
+        "status": "recorded",
+        "recordingStatus": "pending"
+    },
+    {
+        "project": "123456789",
+        "index": {
+            "$numberInt": "42"
+        },
+        "timeStart": "00:02:54:080",
+        "timeEnd": "00:02:55:200",
+        "character": "Character Name",
+        "videoUrl": null,
+        "dialogue": {
+            "original": "After so many years!",
+            "translated": "After so many years!",
+            "adapted": "After so many years!"
+        },
+        "emotions": {
+            "primary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            },
+            "secondary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            }
+        },
+        "direction": "Normal tone",
+        "lipMovements": {
+            "$numberInt": "0"
+        },
+        "sceneContext": "Character speaking",
+        "technicalNotes": "Neutral tone",
+        "culturalNotes": "General conversation",
+        "audioUrl": null,
+        "status": "recorded",
+        "recordingStatus": "pending"
+    },
+    {
+        "project": "123456789",
+        "index": {
+            "$numberInt": "43"
+        },
+        "timeStart": "00:03:02:720",
+        "timeEnd": "00:03:04:280",
+        "character": "Character Name",
+        "videoUrl": null,
+        "dialogue": {
+            "original": "Finally, I came to you.",
+            "translated": "Finally, I came to you.",
+            "adapted": "Finally, I came to you."
+        },
+        "emotions": {
+            "primary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            },
+            "secondary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            }
+        },
+        "direction": "Normal tone",
+        "lipMovements": {
+            "$numberInt": "0"
+        },
+        "sceneContext": "Character speaking",
+        "technicalNotes": "Neutral tone",
+        "culturalNotes": "General conversation",
+        "audioUrl": null,
+        "status": "recorded",
+        "recordingStatus": "pending"
+    },
+    {
+        "project": "123456789",
+        "index": {
+            "$numberInt": "44"
+        },
+        "timeStart": "00:03:07:760",
+        "timeEnd": "00:03:09:280",
+        "character": "Character Name",
+        "videoUrl": null,
+        "dialogue": {
+            "original": "I fled to come here.",
+            "translated": "I fled to come here.",
+            "adapted": "I fled to come here."
+        },
+        "emotions": {
+            "primary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            },
+            "secondary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            }
+        },
+        "direction": "Normal tone",
+        "lipMovements": {
+            "$numberInt": "0"
+        },
+        "sceneContext": "Character speaking",
+        "technicalNotes": "Neutral tone",
+        "culturalNotes": "General conversation",
+        "audioUrl": null,
+        "status": "recorded",
+        "recordingStatus": "pending"
+    },
+    {
+        "project": "123456789",
+        "index": {
+            "$numberInt": "45"
+        },
+        "timeStart": "00:03:13:240",
+        "timeEnd": "00:03:16:200",
+        "character": "Character Name",
+        "videoUrl": null,
+        "dialogue": {
+            "original": "It's so difficult to be without\nyou, M other.",
+            "translated": "It's so difficult to be without\nyou, M other.",
+            "adapted": "It's so difficult to be without\nyou, M other."
+        },
+        "emotions": {
+            "primary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            },
+            "secondary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            }
+        },
+        "direction": "Normal tone",
+        "lipMovements": {
+            "$numberInt": "0"
+        },
+        "sceneContext": "Character speaking",
+        "technicalNotes": "Neutral tone",
+        "culturalNotes": "General conversation",
+        "audioUrl": null,
+        "status": "recorded",
+        "recordingStatus": "pending"
+    },
+    {
+        "project": "123456789",
+        "index": {
+            "$numberInt": "46"
+        },
+        "timeStart": "00:03:26:960",
+        "timeEnd": "00:03:27:960",
+        "character": "Character Name",
+        "videoUrl": null,
+        "dialogue": {
+            "original": "Yakup.",
+            "translated": "Yakup.",
+            "adapted": "Yakup."
+        },
+        "emotions": {
+            "primary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            },
+            "secondary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            }
+        },
+        "direction": "Normal tone",
+        "lipMovements": {
+            "$numberInt": "0"
+        },
+        "sceneContext": "Character speaking",
+        "technicalNotes": "Neutral tone",
+        "culturalNotes": "General conversation",
+        "audioUrl": null,
+        "status": "recorded",
+        "recordingStatus": "pending"
+    },
+    {
+        "project": "123456789",
+        "index": {
+            "$numberInt": "47"
+        },
+        "timeStart": "00:03:28:400",
+        "timeEnd": "00:03:31:360",
+        "character": "Character Name",
+        "videoUrl": null,
+        "dialogue": {
+            "original": "Call your sister and tell her\nto come home immediately.",
+            "translated": "Call your sister and tell her\nto come home immediately.",
+            "adapted": "Call your sister and tell her\nto come home immediately."
+        },
+        "emotions": {
+            "primary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            },
+            "secondary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            }
+        },
+        "direction": "Normal tone",
+        "lipMovements": {
+            "$numberInt": "0"
+        },
+        "sceneContext": "Character speaking",
+        "technicalNotes": "Neutral tone",
+        "culturalNotes": "General conversation",
+        "audioUrl": null,
+        "status": "recorded",
+        "recordingStatus": "pending"
+    },
+    {
+        "project": "123456789",
+        "index": {
+            "$numberInt": "48"
+        },
+        "timeStart": "00:03:31:440",
+        "timeEnd": "00:03:34:920",
+        "character": "Character Name",
+        "videoUrl": null,
+        "dialogue": {
+            "original": "I swear to God, I'm terrified.\nWhat would we tell your father?",
+            "translated": "I swear to God, I'm terrified.\nWhat would we tell your father?",
+            "adapted": "I swear to God, I'm terrified.\nWhat would we tell your father?"
+        },
+        "emotions": {
+            "primary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            },
+            "secondary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            }
+        },
+        "direction": "Normal tone",
+        "lipMovements": {
+            "$numberInt": "0"
+        },
+        "sceneContext": "Character speaking",
+        "technicalNotes": "Neutral tone",
+        "culturalNotes": "General conversation",
+        "audioUrl": null,
+        "status": "recorded",
+        "recordingStatus": "pending"
+    },
+    {
+        "project": "123456789",
+        "index": {
+            "$numberInt": "49"
+        },
+        "timeStart": "00:03:35:000",
+        "timeEnd": "00:03:36:680",
+        "character": "Character Name",
+        "videoUrl": null,
+        "dialogue": {
+            "original": "We'll tell the truth, Songful.",
+            "translated": "We'll tell the truth, Songful.",
+            "adapted": "We'll tell the truth, Songful."
+        },
+        "emotions": {
+            "primary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            },
+            "secondary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            }
+        },
+        "direction": "Normal tone",
+        "lipMovements": {
+            "$numberInt": "0"
+        },
+        "sceneContext": "Character speaking",
+        "technicalNotes": "Neutral tone",
+        "culturalNotes": "General conversation",
+        "audioUrl": null,
+        "status": "recorded",
+        "recordingStatus": "pending"
+    },
+    {
+        "project": "123456789",
+        "index": {
+            "$numberInt": "50"
+        },
+        "timeStart": "00:03:36:840",
+        "timeEnd": "00:03:38:680",
+        "character": "Character Name",
+        "videoUrl": null,
+        "dialogue": {
+            "original": "She visited Suna to\nsay, \u201cGet well soon.\u201d",
+            "translated": "She visited Suna to\nsay, \u201cGet well soon.\u201d",
+            "adapted": "She visited Suna to\nsay, \u201cGet well soon.\u201d"
+        },
+        "emotions": {
+            "primary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            },
+            "secondary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            }
+        },
+        "direction": "Normal tone",
+        "lipMovements": {
+            "$numberInt": "0"
+        },
+        "sceneContext": "Character speaking",
+        "technicalNotes": "Neutral tone",
+        "culturalNotes": "General conversation",
+        "audioUrl": null,
+        "status": "recorded",
+        "recordingStatus": "pending"
+    },
+    {
+        "project": "123456789",
+        "index": {
+            "$numberInt": "51"
+        },
+        "timeStart": "00:03:38:760",
+        "timeEnd": "00:03:40:800",
+        "character": "Character Name",
+        "videoUrl": null,
+        "dialogue": {
+            "original": "Father Tayyar will be mad at us.",
+            "translated": "Father Tayyar will be mad at us.",
+            "adapted": "Father Tayyar will be mad at us."
+        },
+        "emotions": {
+            "primary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            },
+            "secondary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            }
+        },
+        "direction": "Normal tone",
+        "lipMovements": {
+            "$numberInt": "0"
+        },
+        "sceneContext": "Character speaking",
+        "technicalNotes": "Neutral tone",
+        "culturalNotes": "General conversation",
+        "audioUrl": null,
+        "status": "recorded",
+        "recordingStatus": "pending"
+    },
+    {
+        "project": "123456789",
+        "index": {
+            "$numberInt": "52"
+        },
+        "timeStart": "00:03:41:160",
+        "timeEnd": "00:03:44:000",
+        "character": "Character Name",
+        "videoUrl": null,
+        "dialogue": {
+            "original": "You might be\nfooled, but I\u2019m not.",
+            "translated": "You might be\nfooled, but I\u2019m not.",
+            "adapted": "You might be\nfooled, but I\u2019m not."
+        },
+        "emotions": {
+            "primary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            },
+            "secondary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            }
+        },
+        "direction": "Normal tone",
+        "lipMovements": {
+            "$numberInt": "0"
+        },
+        "sceneContext": "Character speaking",
+        "technicalNotes": "Neutral tone",
+        "culturalNotes": "General conversation",
+        "audioUrl": null,
+        "status": "recorded",
+        "recordingStatus": "pending"
+    },
+    {
+        "project": "123456789",
+        "index": {
+            "$numberInt": "53"
+        },
+        "timeStart": "00:03:44:520",
+        "timeEnd": "00:03:45:800",
+        "character": "Character Name",
+        "videoUrl": null,
+        "dialogue": {
+            "original": "Ceylan is merciful.",
+            "translated": "Ceylan is merciful.",
+            "adapted": "Ceylan is merciful."
+        },
+        "emotions": {
+            "primary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            },
+            "secondary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            }
+        },
+        "direction": "Normal tone",
+        "lipMovements": {
+            "$numberInt": "0"
+        },
+        "sceneContext": "Character speaking",
+        "technicalNotes": "Neutral tone",
+        "culturalNotes": "General conversation",
+        "audioUrl": null,
+        "status": "recorded",
+        "recordingStatus": "pending"
+    },
+    {
+        "project": "123456789",
+        "index": {
+            "$numberInt": "54"
+        },
+        "timeStart": "00:03:46:440",
+        "timeEnd": "00:03:48:920",
+        "character": "Character Name",
+        "videoUrl": null,
+        "dialogue": {
+            "original": "She didn't want to\nleave her friend like that.",
+            "translated": "She didn't want to\nleave her friend like that.",
+            "adapted": "She didn't want to\nleave her friend like that."
+        },
+        "emotions": {
+            "primary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            },
+            "secondary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            }
+        },
+        "direction": "Normal tone",
+        "lipMovements": {
+            "$numberInt": "0"
+        },
+        "sceneContext": "Character speaking",
+        "technicalNotes": "Neutral tone",
+        "culturalNotes": "General conversation",
+        "audioUrl": null,
+        "status": "recorded",
+        "recordingStatus": "pending"
+    },
+    {
+        "project": "123456789",
+        "index": {
+            "$numberInt": "55"
+        },
+        "timeStart": "00:03:49:000",
+        "timeEnd": "00:03:50:880",
+        "character": "Character Name",
+        "videoUrl": null,
+        "dialogue": {
+            "original": "She wanted to\nmake a soup for her.",
+            "translated": "She wanted to\nmake a soup for her.",
+            "adapted": "She wanted to\nmake a soup for her."
+        },
+        "emotions": {
+            "primary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            },
+            "secondary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            }
+        },
+        "direction": "Normal tone",
+        "lipMovements": {
+            "$numberInt": "0"
+        },
+        "sceneContext": "Character speaking",
+        "technicalNotes": "Neutral tone",
+        "culturalNotes": "General conversation",
+        "audioUrl": null,
+        "status": "recorded",
+        "recordingStatus": "pending"
+    },
+    {
+        "project": "123456789",
+        "index": {
+            "$numberInt": "56"
+        },
+        "timeStart": "00:03:50:960",
+        "timeEnd": "00:03:52:160",
+        "character": "Character Name",
+        "videoUrl": null,
+        "dialogue": {
+            "original": "And I just let her go.",
+            "translated": "And I just let her go.",
+            "adapted": "And I just let her go."
+        },
+        "emotions": {
+            "primary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            },
+            "secondary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            }
+        },
+        "direction": "Normal tone",
+        "lipMovements": {
+            "$numberInt": "0"
+        },
+        "sceneContext": "Character speaking",
+        "technicalNotes": "Neutral tone",
+        "culturalNotes": "General conversation",
+        "audioUrl": null,
+        "status": "recorded",
+        "recordingStatus": "pending"
+    },
+    {
+        "project": "123456789",
+        "index": {
+            "$numberInt": "57"
+        },
+        "timeStart": "00:03:52:920",
+        "timeEnd": "00:03:55:200",
+        "character": "Character Name",
+        "videoUrl": null,
+        "dialogue": {
+            "original": "They live in the upper street,\nby the way.",
+            "translated": "They live in the upper street,\nby the way.",
+            "adapted": "They live in the upper street,\nby the way."
+        },
+        "emotions": {
+            "primary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            },
+            "secondary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            }
+        },
+        "direction": "Normal tone",
+        "lipMovements": {
+            "$numberInt": "0"
+        },
+        "sceneContext": "Character speaking",
+        "technicalNotes": "Neutral tone",
+        "culturalNotes": "General conversation",
+        "audioUrl": null,
+        "status": "recorded",
+        "recordingStatus": "pending"
+    },
+    {
+        "project": "123456789",
+        "index": {
+            "$numberInt": "58"
+        },
+        "timeStart": "00:03:55:440",
+        "timeEnd": "00:03:56:520",
+        "character": "Character Name",
+        "videoUrl": null,
+        "dialogue": {
+            "original": "I know their house.",
+            "translated": "I know their house.",
+            "adapted": "I know their house."
+        },
+        "emotions": {
+            "primary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            },
+            "secondary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            }
+        },
+        "direction": "Normal tone",
+        "lipMovements": {
+            "$numberInt": "0"
+        },
+        "sceneContext": "Character speaking",
+        "technicalNotes": "Neutral tone",
+        "culturalNotes": "General conversation",
+        "audioUrl": null,
+        "status": "recorded",
+        "recordingStatus": "pending"
+    },
+    {
+        "project": "123456789",
+        "index": {
+            "$numberInt": "59"
+        },
+        "timeStart": "00:03:57:400",
+        "timeEnd": "00:03:59:120",
+        "character": "Character Name",
+        "videoUrl": null,
+        "dialogue": {
+            "original": "I'll tell my father if he asks.",
+            "translated": "I'll tell my father if he asks.",
+            "adapted": "I'll tell my father if he asks."
+        },
+        "emotions": {
+            "primary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            },
+            "secondary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            }
+        },
+        "direction": "Normal tone",
+        "lipMovements": {
+            "$numberInt": "0"
+        },
+        "sceneContext": "Character speaking",
+        "technicalNotes": "Neutral tone",
+        "culturalNotes": "General conversation",
+        "audioUrl": null,
+        "status": "recorded",
+        "recordingStatus": "pending"
+    },
+    {
+        "project": "123456789",
+        "index": {
+            "$numberInt": "60"
+        },
+        "timeStart": "00:03:59:360",
+        "timeEnd": "00:04:00:840",
+        "character": "Character Name",
+        "videoUrl": null,
+        "dialogue": {
+            "original": "I'm her brother, after all.",
+            "translated": "I'm her brother, after all.",
+            "adapted": "I'm her brother, after all."
+        },
+        "emotions": {
+            "primary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            },
+            "secondary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            }
+        },
+        "direction": "Normal tone",
+        "lipMovements": {
+            "$numberInt": "0"
+        },
+        "sceneContext": "Character speaking",
+        "technicalNotes": "Neutral tone",
+        "culturalNotes": "General conversation",
+        "audioUrl": null,
+        "status": "recorded",
+        "recordingStatus": "pending"
+    },
+    {
+        "project": "123456789",
+        "index": {
+            "$numberInt": "61"
+        },
+        "timeStart": "00:04:01:280",
+        "timeEnd": "00:04:03:040",
+        "character": "Character Name",
+        "videoUrl": null,
+        "dialogue": {
+            "original": "Come on, don't talk so big!",
+            "translated": "Come on, don't talk so big!",
+            "adapted": "Come on, don't talk so big!"
+        },
+        "emotions": {
+            "primary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            },
+            "secondary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            }
+        },
+        "direction": "Normal tone",
+        "lipMovements": {
+            "$numberInt": "0"
+        },
+        "sceneContext": "Character speaking",
+        "technicalNotes": "Neutral tone",
+        "culturalNotes": "General conversation",
+        "audioUrl": null,
+        "status": "recorded",
+        "recordingStatus": "pending"
+    },
+    {
+        "project": "123456789",
+        "index": {
+            "$numberInt": "62"
+        },
+        "timeStart": "00:04:04:000",
+        "timeEnd": "00:04:06:840",
+        "character": "Character Name",
+        "videoUrl": null,
+        "dialogue": {
+            "original": "As if your father cares\nwhat you say.",
+            "translated": "As if your father cares\nwhat you say.",
+            "adapted": "As if your father cares\nwhat you say."
+        },
+        "emotions": {
+            "primary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            },
+            "secondary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            }
+        },
+        "direction": "Normal tone",
+        "lipMovements": {
+            "$numberInt": "0"
+        },
+        "sceneContext": "Character speaking",
+        "technicalNotes": "Neutral tone",
+        "culturalNotes": "General conversation",
+        "audioUrl": null,
+        "status": "recorded",
+        "recordingStatus": "pending"
+    },
+    {
+        "project": "123456789",
+        "index": {
+            "$numberInt": "63"
+        },
+        "timeStart": "00:04:11:560",
+        "timeEnd": "00:04:13:800",
+        "character": "Character Name",
+        "videoUrl": null,
+        "dialogue": {
+            "original": "You made me worried now,\nout of the blue.",
+            "translated": "You made me worried now,\nout of the blue.",
+            "adapted": "You made me worried now,\nout of the blue."
+        },
+        "emotions": {
+            "primary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            },
+            "secondary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            }
+        },
+        "direction": "Normal tone",
+        "lipMovements": {
+            "$numberInt": "0"
+        },
+        "sceneContext": "Character speaking",
+        "technicalNotes": "Neutral tone",
+        "culturalNotes": "General conversation",
+        "audioUrl": null,
+        "status": "recorded",
+        "recordingStatus": "pending"
+    },
+    {
+        "project": "123456789",
+        "index": {
+            "$numberInt": "64"
+        },
+        "timeStart": "00:04:14:680",
+        "timeEnd": "00:04:15:800",
+        "character": "Character Name",
+        "videoUrl": null,
+        "dialogue": {
+            "original": "Let me call her.",
+            "translated": "Let me call her.",
+            "adapted": "Let me call her."
+        },
+        "emotions": {
+            "primary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            },
+            "secondary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            }
+        },
+        "direction": "Normal tone",
+        "lipMovements": {
+            "$numberInt": "0"
+        },
+        "sceneContext": "Character speaking",
+        "technicalNotes": "Neutral tone",
+        "culturalNotes": "General conversation",
+        "audioUrl": null,
+        "status": "recorded",
+        "recordingStatus": "pending"
+    },
+    {
+        "project": "123456789",
+        "index": {
+            "$numberInt": "65"
+        },
+        "timeStart": "00:04:16:760",
+        "timeEnd": "00:04:17:960",
+        "character": "Character Name",
+        "videoUrl": null,
+        "dialogue": {
+            "original": "And see where she is.",
+            "translated": "And see where she is.",
+            "adapted": "And see where she is."
+        },
+        "emotions": {
+            "primary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            },
+            "secondary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            }
+        },
+        "direction": "Normal tone",
+        "lipMovements": {
+            "$numberInt": "0"
+        },
+        "sceneContext": "Character speaking",
+        "technicalNotes": "Neutral tone",
+        "culturalNotes": "General conversation",
+        "audioUrl": null,
+        "status": "recorded",
+        "recordingStatus": "pending"
+    },
+    {
+        "project": "123456789",
+        "index": {
+            "$numberInt": "66"
+        },
+        "timeStart": "00:04:18:200",
+        "timeEnd": "00:04:19:200",
+        "character": "Character Name",
+        "videoUrl": null,
+        "dialogue": {
+            "original": "Where is my phone?",
+            "translated": "Where is my phone?",
+            "adapted": "Where is my phone?"
+        },
+        "emotions": {
+            "primary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            },
+            "secondary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            }
+        },
+        "direction": "Normal tone",
+        "lipMovements": {
+            "$numberInt": "0"
+        },
+        "sceneContext": "Character speaking",
+        "technicalNotes": "Neutral tone",
+        "culturalNotes": "General conversation",
+        "audioUrl": null,
+        "status": "recorded",
+        "recordingStatus": "pending"
+    },
+    {
+        "project": "123456789",
+        "index": {
+            "$numberInt": "67"
+        },
+        "timeStart": "00:04:20:600",
+        "timeEnd": "00:04:22:720",
+        "character": "Character Name",
+        "videoUrl": null,
+        "dialogue": {
+            "original": "I could only come now.",
+            "translated": "I could only come now.",
+            "adapted": "I could only come now."
+        },
+        "emotions": {
+            "primary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            },
+            "secondary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            }
+        },
+        "direction": "Normal tone",
+        "lipMovements": {
+            "$numberInt": "0"
+        },
+        "sceneContext": "Character speaking",
+        "technicalNotes": "Neutral tone",
+        "culturalNotes": "General conversation",
+        "audioUrl": null,
+        "status": "recorded",
+        "recordingStatus": "pending"
+    },
+    {
+        "project": "123456789",
+        "index": {
+            "$numberInt": "68"
+        },
+        "timeStart": "00:04:25:400",
+        "timeEnd": "00:04:28:120",
+        "character": "Character Name",
+        "videoUrl": null,
+        "dialogue": {
+            "original": "Dad didn't want me to visit you.",
+            "translated": "Dad didn't want me to visit you.",
+            "adapted": "Dad didn't want me to visit you."
+        },
+        "emotions": {
+            "primary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            },
+            "secondary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            }
+        },
+        "direction": "Normal tone",
+        "lipMovements": {
+            "$numberInt": "0"
+        },
+        "sceneContext": "Character speaking",
+        "technicalNotes": "Neutral tone",
+        "culturalNotes": "General conversation",
+        "audioUrl": null,
+        "status": "recorded",
+        "recordingStatus": "pending"
+    },
+    {
+        "project": "123456789",
+        "index": {
+            "$numberInt": "69"
+        },
+        "timeStart": "00:04:29:640",
+        "timeEnd": "00:04:30:640",
+        "character": "Character Name",
+        "videoUrl": null,
+        "dialogue": {
+            "original": "Because you...",
+            "translated": "Because you...",
+            "adapted": "Because you..."
+        },
+        "emotions": {
+            "primary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            },
+            "secondary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            }
+        },
+        "direction": "Normal tone",
+        "lipMovements": {
+            "$numberInt": "0"
+        },
+        "sceneContext": "Character speaking",
+        "technicalNotes": "Neutral tone",
+        "culturalNotes": "General conversation",
+        "audioUrl": null,
+        "status": "recorded",
+        "recordingStatus": "pending"
+    },
+    {
+        "project": "123456789",
+        "index": {
+            "$numberInt": "70"
+        },
+        "timeStart": "00:04:31:440",
+        "timeEnd": "00:04:32:640",
+        "character": "Character Name",
+        "videoUrl": null,
+        "dialogue": {
+            "original": "killed yourself.",
+            "translated": "killed yourself.",
+            "adapted": "killed yourself."
+        },
+        "emotions": {
+            "primary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            },
+            "secondary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            }
+        },
+        "direction": "Normal tone",
+        "lipMovements": {
+            "$numberInt": "0"
+        },
+        "sceneContext": "Character speaking",
+        "technicalNotes": "Neutral tone",
+        "culturalNotes": "General conversation",
+        "audioUrl": null,
+        "status": "recorded",
+        "recordingStatus": "pending"
+    },
+    {
+        "project": "123456789",
+        "index": {
+            "$numberInt": "71"
+        },
+        "timeStart": "00:04:36:160",
+        "timeEnd": "00:04:38:800",
+        "character": "Character Name",
+        "videoUrl": null,
+        "dialogue": {
+            "original": "He never mentions you,\nnor does he let us do so.",
+            "translated": "He never mentions you,\nnor does he let us do so.",
+            "adapted": "He never mentions you,\nnor does he let us do so."
+        },
+        "emotions": {
+            "primary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            },
+            "secondary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            }
+        },
+        "direction": "Normal tone",
+        "lipMovements": {
+            "$numberInt": "0"
+        },
+        "sceneContext": "Character speaking",
+        "technicalNotes": "Neutral tone",
+        "culturalNotes": "General conversation",
+        "audioUrl": null,
+        "status": "recorded",
+        "recordingStatus": "pending"
+    },
+    {
+        "project": "123456789",
+        "index": {
+            "$numberInt": "72"
+        },
+        "timeStart": "00:04:42:800",
+        "timeEnd": "00:04:44:280",
+        "character": "Character Name",
+        "videoUrl": null,
+        "dialogue": {
+            "original": "Who knows what happened?",
+            "translated": "Who knows what happened?",
+            "adapted": "Who knows what happened?"
+        },
+        "emotions": {
+            "primary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            },
+            "secondary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            }
+        },
+        "direction": "Normal tone",
+        "lipMovements": {
+            "$numberInt": "0"
+        },
+        "sceneContext": "Character speaking",
+        "technicalNotes": "Neutral tone",
+        "culturalNotes": "General conversation",
+        "audioUrl": null,
+        "status": "recorded",
+        "recordingStatus": "pending"
+    },
+    {
+        "project": "123456789",
+        "index": {
+            "$numberInt": "73"
+        },
+        "timeStart": "00:04:44:760",
+        "timeEnd": "00:04:46:760",
+        "character": "Character Name",
+        "videoUrl": null,
+        "dialogue": {
+            "original": "Why did you take your own life?",
+            "translated": "Why did you take your own life?",
+            "adapted": "Why did you take your own life?"
+        },
+        "emotions": {
+            "primary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            },
+            "secondary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            }
+        },
+        "direction": "Normal tone",
+        "lipMovements": {
+            "$numberInt": "0"
+        },
+        "sceneContext": "Character speaking",
+        "technicalNotes": "Neutral tone",
+        "culturalNotes": "General conversation",
+        "audioUrl": null,
+        "status": "recorded",
+        "recordingStatus": "pending"
+    },
+    {
+        "project": "123456789",
+        "index": {
+            "$numberInt": "74"
+        },
+        "timeStart": "00:04:47:320",
+        "timeEnd": "00:04:48:520",
+        "character": "Character Name",
+        "videoUrl": null,
+        "dialogue": {
+            "original": "With you gone...",
+            "translated": "With you gone...",
+            "adapted": "With you gone..."
+        },
+        "emotions": {
+            "primary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            },
+            "secondary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            }
+        },
+        "direction": "Normal tone",
+        "lipMovements": {
+            "$numberInt": "0"
+        },
+        "sceneContext": "Character speaking",
+        "technicalNotes": "Neutral tone",
+        "culturalNotes": "General conversation",
+        "audioUrl": null,
+        "status": "recorded",
+        "recordingStatus": "pending"
+    },
+    {
+        "project": "123456789",
+        "index": {
+            "$numberInt": "75"
+        },
+        "timeStart": "00:04:51:160",
+        "timeEnd": "00:04:52:760",
+        "character": "Character Name",
+        "videoUrl": null,
+        "dialogue": {
+            "original": "Grandma took care of me.",
+            "translated": "Grandma took care of me.",
+            "adapted": "Grandma took care of me."
+        },
+        "emotions": {
+            "primary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            },
+            "secondary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            }
+        },
+        "direction": "Normal tone",
+        "lipMovements": {
+            "$numberInt": "0"
+        },
+        "sceneContext": "Character speaking",
+        "technicalNotes": "Neutral tone",
+        "culturalNotes": "General conversation",
+        "audioUrl": null,
+        "status": "recorded",
+        "recordingStatus": "pending"
+    },
+    {
+        "project": "123456789",
+        "index": {
+            "$numberInt": "76"
+        },
+        "timeStart": "00:05:02:160",
+        "timeEnd": "00:05:04:040",
+        "character": "Character Name",
+        "videoUrl": null,
+        "dialogue": {
+            "original": "Brother, did something happen?",
+            "translated": "Brother, did something happen?",
+            "adapted": "Brother, did something happen?"
+        },
+        "emotions": {
+            "primary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            },
+            "secondary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            }
+        },
+        "direction": "Normal tone",
+        "lipMovements": {
+            "$numberInt": "0"
+        },
+        "sceneContext": "Character speaking",
+        "technicalNotes": "Neutral tone",
+        "culturalNotes": "General conversation",
+        "audioUrl": null,
+        "status": "recorded",
+        "recordingStatus": "pending"
+    },
+    {
+        "project": "123456789",
+        "index": {
+            "$numberInt": "77"
+        },
+        "timeStart": "00:05:04:600",
+        "timeEnd": "00:05:06:720",
+        "character": "Character Name",
+        "videoUrl": null,
+        "dialogue": {
+            "original": "Ceylan dear, I'm\nworried about you.",
+            "translated": "Ceylan dear, I'm\nworried about you.",
+            "adapted": "Ceylan dear, I'm\nworried about you."
+        },
+        "emotions": {
+            "primary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            },
+            "secondary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            }
+        },
+        "direction": "Normal tone",
+        "lipMovements": {
+            "$numberInt": "0"
+        },
+        "sceneContext": "Character speaking",
+        "technicalNotes": "Neutral tone",
+        "culturalNotes": "General conversation",
+        "audioUrl": null,
+        "status": "recorded",
+        "recordingStatus": "pending"
+    },
+    {
+        "project": "123456789",
+        "index": {
+            "$numberInt": "78"
+        },
+        "timeStart": "00:05:08:640",
+        "timeEnd": "00:05:10:440",
+        "character": "Character Name",
+        "videoUrl": null,
+        "dialogue": {
+            "original": "Grandma passed away.",
+            "translated": "Grandma passed away.",
+            "adapted": "Grandma passed away."
+        },
+        "emotions": {
+            "primary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            },
+            "secondary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            }
+        },
+        "direction": "Normal tone",
+        "lipMovements": {
+            "$numberInt": "0"
+        },
+        "sceneContext": "Character speaking",
+        "technicalNotes": "Neutral tone",
+        "culturalNotes": "General conversation",
+        "audioUrl": null,
+        "status": "recorded",
+        "recordingStatus": "pending"
+    },
+    {
+        "project": "123456789",
+        "index": {
+            "$numberInt": "79"
+        },
+        "timeStart": "00:05:11:920",
+        "timeEnd": "00:05:14:840",
+        "character": "Character Name",
+        "videoUrl": null,
+        "dialogue": {
+            "original": "<i>I couldn't be with her</i>\n<i>until her last breath.</i>",
+            "translated": "<i>I couldn't be with her</i>\n<i>until her last breath.</i>",
+            "adapted": "<i>I couldn't be with her</i>\n<i>until her last breath.</i>"
+        },
+        "emotions": {
+            "primary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            },
+            "secondary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            }
+        },
+        "direction": "Normal tone",
+        "lipMovements": {
+            "$numberInt": "0"
+        },
+        "sceneContext": "Character speaking",
+        "technicalNotes": "Neutral tone",
+        "culturalNotes": "General conversation",
+        "audioUrl": null,
+        "status": "recorded",
+        "recordingStatus": "pending"
+    },
+    {
+        "project": "123456789",
+        "index": {
+            "$numberInt": "80"
+        },
+        "timeStart": "00:05:14:920",
+        "timeEnd": "00:05:16:520",
+        "character": "Character Name",
+        "videoUrl": null,
+        "dialogue": {
+            "original": "Her funeral was yesterday.",
+            "translated": "Her funeral was yesterday.",
+            "adapted": "Her funeral was yesterday."
+        },
+        "emotions": {
+            "primary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            },
+            "secondary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            }
+        },
+        "direction": "Normal tone",
+        "lipMovements": {
+            "$numberInt": "0"
+        },
+        "sceneContext": "Character speaking",
+        "technicalNotes": "Neutral tone",
+        "culturalNotes": "General conversation",
+        "audioUrl": null,
+        "status": "recorded",
+        "recordingStatus": "pending"
+    },
+    {
+        "project": "123456789",
+        "index": {
+            "$numberInt": "81"
+        },
+        "timeStart": "00:05:17:880",
+        "timeEnd": "00:05:19:560",
+        "character": "Character Name",
+        "videoUrl": null,
+        "dialogue": {
+            "original": "I'm next to our mother.",
+            "translated": "I'm next to our mother.",
+            "adapted": "I'm next to our mother."
+        },
+        "emotions": {
+            "primary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            },
+            "secondary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            }
+        },
+        "direction": "Normal tone",
+        "lipMovements": {
+            "$numberInt": "0"
+        },
+        "sceneContext": "Character speaking",
+        "technicalNotes": "Neutral tone",
+        "culturalNotes": "General conversation",
+        "audioUrl": null,
+        "status": "recorded",
+        "recordingStatus": "pending"
+    },
+    {
+        "project": "123456789",
+        "index": {
+            "$numberInt": "82"
+        },
+        "timeStart": "00:05:23:560",
+        "timeEnd": "00:05:25:600",
+        "character": "Character Name",
+        "videoUrl": null,
+        "dialogue": {
+            "original": "Is Dad still in Sakarya?",
+            "translated": "Is Dad still in Sakarya?",
+            "adapted": "Is Dad still in Sakarya?"
+        },
+        "emotions": {
+            "primary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            },
+            "secondary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            }
+        },
+        "direction": "Normal tone",
+        "lipMovements": {
+            "$numberInt": "0"
+        },
+        "sceneContext": "Character speaking",
+        "technicalNotes": "Neutral tone",
+        "culturalNotes": "General conversation",
+        "audioUrl": null,
+        "status": "recorded",
+        "recordingStatus": "pending"
+    },
+    {
+        "project": "123456789",
+        "index": {
+            "$numberInt": "83"
+        },
+        "timeStart": "00:05:26:560",
+        "timeEnd": "00:05:29:120",
+        "character": "Character Name",
+        "videoUrl": null,
+        "dialogue": {
+            "original": "Yeah, he will not\nbe back before night.",
+            "translated": "Yeah, he will not\nbe back before night.",
+            "adapted": "Yeah, he will not\nbe back before night."
+        },
+        "emotions": {
+            "primary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            },
+            "secondary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            }
+        },
+        "direction": "Normal tone",
+        "lipMovements": {
+            "$numberInt": "0"
+        },
+        "sceneContext": "Character speaking",
+        "technicalNotes": "Neutral tone",
+        "culturalNotes": "General conversation",
+        "audioUrl": null,
+        "status": "recorded",
+        "recordingStatus": "pending"
+    },
+    {
+        "project": "123456789",
+        "index": {
+            "$numberInt": "84"
+        },
+        "timeStart": "00:05:30:240",
+        "timeEnd": "00:05:31:240",
+        "character": "Character Name",
+        "videoUrl": null,
+        "dialogue": {
+            "original": "<i>Brother.</i>",
+            "translated": "<i>Brother.</i>",
+            "adapted": "<i>Brother.</i>"
+        },
+        "emotions": {
+            "primary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            },
+            "secondary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            }
+        },
+        "direction": "Normal tone",
+        "lipMovements": {
+            "$numberInt": "0"
+        },
+        "sceneContext": "Character speaking",
+        "technicalNotes": "Neutral tone",
+        "culturalNotes": "General conversation",
+        "audioUrl": null,
+        "status": "recorded",
+        "recordingStatus": "pending"
+    },
+    {
+        "project": "123456789",
+        "index": {
+            "$numberInt": "85"
+        },
+        "timeStart": "00:05:31:960",
+        "timeEnd": "00:05:34:440",
+        "character": "Character Name",
+        "videoUrl": null,
+        "dialogue": {
+            "original": "You didn't tell your wife\nanything about this, did you?",
+            "translated": "You didn't tell your wife\nanything about this, did you?",
+            "adapted": "You didn't tell your wife\nanything about this, did you?"
+        },
+        "emotions": {
+            "primary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            },
+            "secondary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            }
+        },
+        "direction": "Normal tone",
+        "lipMovements": {
+            "$numberInt": "0"
+        },
+        "sceneContext": "Character speaking",
+        "technicalNotes": "Neutral tone",
+        "culturalNotes": "General conversation",
+        "audioUrl": null,
+        "status": "recorded",
+        "recordingStatus": "pending"
+    },
+    {
+        "project": "123456789",
+        "index": {
+            "$numberInt": "86"
+        },
+        "timeStart": "00:05:34:560",
+        "timeEnd": "00:05:35:560",
+        "character": "Character Name",
+        "videoUrl": null,
+        "dialogue": {
+            "original": "No!",
+            "translated": "No!",
+            "adapted": "No!"
+        },
+        "emotions": {
+            "primary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            },
+            "secondary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            }
+        },
+        "direction": "Normal tone",
+        "lipMovements": {
+            "$numberInt": "0"
+        },
+        "sceneContext": "Character speaking",
+        "technicalNotes": "Neutral tone",
+        "culturalNotes": "General conversation",
+        "audioUrl": null,
+        "status": "recorded",
+        "recordingStatus": "pending"
+    },
+    {
+        "project": "123456789",
+        "index": {
+            "$numberInt": "87"
+        },
+        "timeStart": "00:05:36:160",
+        "timeEnd": "00:05:37:160",
+        "character": "Character Name",
+        "videoUrl": null,
+        "dialogue": {
+            "original": "How is Suna?",
+            "translated": "How is Suna?",
+            "adapted": "How is Suna?"
+        },
+        "emotions": {
+            "primary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            },
+            "secondary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            }
+        },
+        "direction": "Normal tone",
+        "lipMovements": {
+            "$numberInt": "0"
+        },
+        "sceneContext": "Character speaking",
+        "technicalNotes": "Neutral tone",
+        "culturalNotes": "General conversation",
+        "audioUrl": null,
+        "status": "recorded",
+        "recordingStatus": "pending"
+    },
+    {
+        "project": "123456789",
+        "index": {
+            "$numberInt": "88"
+        },
+        "timeStart": "00:05:38:560",
+        "timeEnd": "00:05:41:840",
+        "character": "Character Name",
+        "videoUrl": null,
+        "dialogue": {
+            "original": "I see you can't talk\ncomfortably. Is she with you?",
+            "translated": "I see you can't talk\ncomfortably. Is she with you?",
+            "adapted": "I see you can't talk\ncomfortably. Is she with you?"
+        },
+        "emotions": {
+            "primary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            },
+            "secondary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            }
+        },
+        "direction": "Normal tone",
+        "lipMovements": {
+            "$numberInt": "0"
+        },
+        "sceneContext": "Character speaking",
+        "technicalNotes": "Neutral tone",
+        "culturalNotes": "General conversation",
+        "audioUrl": null,
+        "status": "recorded",
+        "recordingStatus": "pending"
+    },
+    {
+        "project": "123456789",
+        "index": {
+            "$numberInt": "89"
+        },
+        "timeStart": "00:05:42:600",
+        "timeEnd": "00:05:43:600",
+        "character": "Character Name",
+        "videoUrl": null,
+        "dialogue": {
+            "original": "Yeah.",
+            "translated": "Yeah.",
+            "adapted": "Yeah."
+        },
+        "emotions": {
+            "primary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            },
+            "secondary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            }
+        },
+        "direction": "Normal tone",
+        "lipMovements": {
+            "$numberInt": "0"
+        },
+        "sceneContext": "Character speaking",
+        "technicalNotes": "Neutral tone",
+        "culturalNotes": "General conversation",
+        "audioUrl": null,
+        "status": "recorded",
+        "recordingStatus": "pending"
+    },
+    {
+        "project": "123456789",
+        "index": {
+            "$numberInt": "90"
+        },
+        "timeStart": "00:05:44:120",
+        "timeEnd": "00:05:46:520",
+        "character": "Character Name",
+        "videoUrl": null,
+        "dialogue": {
+            "original": "Alright, say hi to Suna.",
+            "translated": "Alright, say hi to Suna.",
+            "adapted": "Alright, say hi to Suna."
+        },
+        "emotions": {
+            "primary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            },
+            "secondary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            }
+        },
+        "direction": "Normal tone",
+        "lipMovements": {
+            "$numberInt": "0"
+        },
+        "sceneContext": "Character speaking",
+        "technicalNotes": "Neutral tone",
+        "culturalNotes": "General conversation",
+        "audioUrl": null,
+        "status": "recorded",
+        "recordingStatus": "pending"
+    },
+    {
+        "project": "123456789",
+        "index": {
+            "$numberInt": "91"
+        },
+        "timeStart": "00:05:47:040",
+        "timeEnd": "00:05:48:920",
+        "character": "Character Name",
+        "videoUrl": null,
+        "dialogue": {
+            "original": "Come back on time, Ceylan, dear,",
+            "translated": "Come back on time, Ceylan, dear,",
+            "adapted": "Come back on time, Ceylan, dear,"
+        },
+        "emotions": {
+            "primary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            },
+            "secondary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            }
+        },
+        "direction": "Normal tone",
+        "lipMovements": {
+            "$numberInt": "0"
+        },
+        "sceneContext": "Character speaking",
+        "technicalNotes": "Neutral tone",
+        "culturalNotes": "General conversation",
+        "audioUrl": null,
+        "status": "recorded",
+        "recordingStatus": "pending"
+    },
+    {
+        "project": "123456789",
+        "index": {
+            "$numberInt": "92"
+        },
+        "timeStart": "00:05:49:480",
+        "timeEnd": "00:05:50:800",
+        "character": "Character Name",
+        "videoUrl": null,
+        "dialogue": {
+            "original": "b before Dad gets home.",
+            "translated": "b before Dad gets home.",
+            "adapted": "b before Dad gets home."
+        },
+        "emotions": {
+            "primary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            },
+            "secondary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            }
+        },
+        "direction": "Normal tone",
+        "lipMovements": {
+            "$numberInt": "0"
+        },
+        "sceneContext": "Character speaking",
+        "technicalNotes": "Neutral tone",
+        "culturalNotes": "General conversation",
+        "audioUrl": null,
+        "status": "recorded",
+        "recordingStatus": "pending"
+    },
+    {
+        "project": "123456789",
+        "index": {
+            "$numberInt": "93"
+        },
+        "timeStart": "00:05:50:880",
+        "timeEnd": "00:05:52:440",
+        "character": "Character Name",
+        "videoUrl": null,
+        "dialogue": {
+            "original": "Otherwise, you know\nwhat will happen.",
+            "translated": "Otherwise, you know\nwhat will happen.",
+            "adapted": "Otherwise, you know\nwhat will happen."
+        },
+        "emotions": {
+            "primary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            },
+            "secondary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            }
+        },
+        "direction": "Normal tone",
+        "lipMovements": {
+            "$numberInt": "0"
+        },
+        "sceneContext": "Character speaking",
+        "technicalNotes": "Neutral tone",
+        "culturalNotes": "General conversation",
+        "audioUrl": null,
+        "status": "recorded",
+        "recordingStatus": "pending"
+    },
+    {
+        "project": "123456789",
+        "index": {
+            "$numberInt": "94"
+        },
+        "timeStart": "00:05:52:520",
+        "timeEnd": "00:05:53:520",
+        "character": "Character Name",
+        "videoUrl": null,
+        "dialogue": {
+            "original": "I know, brother.",
+            "translated": "I know, brother.",
+            "adapted": "I know, brother."
+        },
+        "emotions": {
+            "primary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            },
+            "secondary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            }
+        },
+        "direction": "Normal tone",
+        "lipMovements": {
+            "$numberInt": "0"
+        },
+        "sceneContext": "Character speaking",
+        "technicalNotes": "Neutral tone",
+        "culturalNotes": "General conversation",
+        "audioUrl": null,
+        "status": "recorded",
+        "recordingStatus": "pending"
+    },
+    {
+        "project": "123456789",
+        "index": {
+            "$numberInt": "95"
+        },
+        "timeStart": "00:05:54:360",
+        "timeEnd": "00:05:56:320",
+        "character": "Character Name",
+        "videoUrl": null,
+        "dialogue": {
+            "original": "The bus leaves in two hours.",
+            "translated": "The bus leaves in two hours.",
+            "adapted": "The bus leaves in two hours."
+        },
+        "emotions": {
+            "primary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            },
+            "secondary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            }
+        },
+        "direction": "Normal tone",
+        "lipMovements": {
+            "$numberInt": "0"
+        },
+        "sceneContext": "Character speaking",
+        "technicalNotes": "Neutral tone",
+        "culturalNotes": "General conversation",
+        "audioUrl": null,
+        "status": "recorded",
+        "recordingStatus": "pending"
+    },
+    {
+        "project": "123456789",
+        "index": {
+            "$numberInt": "96"
+        },
+        "timeStart": "00:05:59:320",
+        "timeEnd": "00:06:00:360",
+        "character": "Character Name",
+        "videoUrl": null,
+        "dialogue": {
+            "original": "Is she coming?",
+            "translated": "Is she coming?",
+            "adapted": "Is she coming?"
+        },
+        "emotions": {
+            "primary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            },
+            "secondary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            }
+        },
+        "direction": "Normal tone",
+        "lipMovements": {
+            "$numberInt": "0"
+        },
+        "sceneContext": "Character speaking",
+        "technicalNotes": "Neutral tone",
+        "culturalNotes": "General conversation",
+        "audioUrl": null,
+        "status": "recorded",
+        "recordingStatus": "pending"
+    },
+    {
+        "project": "123456789",
+        "index": {
+            "$numberInt": "97"
+        },
+        "timeStart": "00:06:00:880",
+        "timeEnd": "00:06:01:920",
+        "character": "Character Name",
+        "videoUrl": null,
+        "dialogue": {
+            "original": "Yes, she is.",
+            "translated": "Yes, she is.",
+            "adapted": "Yes, she is."
+        },
+        "emotions": {
+            "primary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            },
+            "secondary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            }
+        },
+        "direction": "Normal tone",
+        "lipMovements": {
+            "$numberInt": "0"
+        },
+        "sceneContext": "Character speaking",
+        "technicalNotes": "Neutral tone",
+        "culturalNotes": "General conversation",
+        "audioUrl": null,
+        "status": "recorded",
+        "recordingStatus": "pending"
+    },
+    {
+        "project": "123456789",
+        "index": {
+            "$numberInt": "98"
+        },
+        "timeStart": "00:06:19:560",
+        "timeEnd": "00:06:21:840",
+        "character": "Character Name",
+        "videoUrl": null,
+        "dialogue": {
+            "original": "I don't want to leave you, mom.",
+            "translated": "I don't want to leave you, mom.",
+            "adapted": "I don't want to leave you, mom."
+        },
+        "emotions": {
+            "primary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            },
+            "secondary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            }
+        },
+        "direction": "Normal tone",
+        "lipMovements": {
+            "$numberInt": "0"
+        },
+        "sceneContext": "Character speaking",
+        "technicalNotes": "Neutral tone",
+        "culturalNotes": "General conversation",
+        "audioUrl": null,
+        "status": "recorded",
+        "recordingStatus": "pending"
+    },
+    {
+        "project": "123456789",
+        "index": {
+            "$numberInt": "99"
+        },
+        "timeStart": "00:06:23:800",
+        "timeEnd": "00:06:25:000",
+        "character": "Character Name",
+        "videoUrl": null,
+        "dialogue": {
+            "original": "But I have to go.",
+            "translated": "But I have to go.",
+            "adapted": "But I have to go."
+        },
+        "emotions": {
+            "primary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            },
+            "secondary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            }
+        },
+        "direction": "Normal tone",
+        "lipMovements": {
+            "$numberInt": "0"
+        },
+        "sceneContext": "Character speaking",
+        "technicalNotes": "Neutral tone",
+        "culturalNotes": "General conversation",
+        "audioUrl": null,
+        "status": "recorded",
+        "recordingStatus": "pending"
+    },
+    {
+        "project": "123456789",
+        "index": {
+            "$numberInt": "100"
+        },
+        "timeStart": "00:06:36:480",
+        "timeEnd": "00:06:37:480",
+        "character": "Character Name",
+        "videoUrl": null,
+        "dialogue": {
+            "original": "Goodbye.",
+            "translated": "Goodbye.",
+            "adapted": "Goodbye."
+        },
+        "emotions": {
+            "primary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            },
+            "secondary": {
+                "emotion": "Neutral",
+                "intensity": {
+                    "$numberInt": "1"
+                }
+            }
+        },
+        "direction": "Normal tone",
+        "lipMovements": {
+            "$numberInt": "0"
+        },
+        "sceneContext": "Character speaking",
+        "technicalNotes": "Neutral tone",
+        "culturalNotes": "General conversation",
+        "audioUrl": null,
+        "status": "recorded",
+        "recordingStatus": "pending"
+    }
+]

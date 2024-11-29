@@ -26,7 +26,7 @@ const DialogueCard = () => {
 
       try {
         // Make API call to update dialogue
-        const response = await axios.put(`https://server-v2-akga.onrender.com/api/dialogues/${currentDialogue._id}`, {
+        const response = await axios.put(`http://localhost:5000/api/dialogues/${currentDialogue._id}`, {
           dialogue: {
             original,
             translated,

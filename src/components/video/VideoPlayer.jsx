@@ -2,7 +2,6 @@ import React, { useRef, useEffect, useState } from "react";
 import { useRecording } from "../../context/RecordingContext";
 import VideoProgress from "./VideoProgress";
 import "../../styles/globals.css";
-import axios from "axios";
 
 const VideoPlayer = () => {
   const {
@@ -15,39 +14,13 @@ const VideoPlayer = () => {
   const localAudioRef = useRef(null); // Local backup audio ref
   const [isLoading, setIsLoading] = useState(false);
 
-  const videoPath = currentDialogue.videoUrl;
-
-  const fetchVideo = async () => {
-    try {
-      setIsLoading(true);
-      const response = await axios.get(`https://server-v2-akga.onrender.com/api/videos/stream/${videoPath}`, {
-        responseType: 'blob'  // Important for video streaming
-      });
-      return response.data;
-    } catch (error) {
-      console.error('Error fetching video:', error.message);
-      throw new Error('Failed to fetch video');
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
   useEffect(() => {
-    const loadVideo = async () => {
-      try {
-        const videoData = await fetchVideo();
-        if (videoRef.current) {
-          videoRef.current.src = URL.createObjectURL(videoData);
-        }
-      } catch (error) {
-        console.error('Error loading video:', error);
-      }
-    };
-
-    if (videoPath) {
-      loadVideo();
+    if (videoRef.current && currentDialogue?.videoUrl) {
+      // Directly set the video source
+      videoRef.current.src = currentDialogue.videoUrl;
+      videoRef.current.load();
     }
-  }, [videoPath]);
+  }, [currentDialogue?.videoUrl]);
 
   // Use either context audio ref or local ref
   const audioRef = contextAudioRef || localAudioRef;
@@ -154,6 +127,8 @@ const VideoPlayer = () => {
     setIsVideoReady(true);
   };
 
+  // console.log(currentDialogue);
+
   return (
     <div className="relative w-full text-yellow-500 ">
       {isLoading && (
@@ -176,7 +151,7 @@ const VideoPlayer = () => {
       >
         <source
           src={`${process.env.PUBLIC_URL || "/client-v2/"}${
-            currentDialogue?.videoUrl || "/Kuma/Kuma%20Clip%2001.mp4"
+            currentDialogue?.videoUrl || "https://pub-ca2dd6ef0390446c8dda16e228d97cf6.r2.dev/Kuma%20Ep%2001/videos/Kuma%20Ep%2001_Clip_01.mp4"
           }`}
           type="video/mp4"
         />

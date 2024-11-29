@@ -273,7 +273,7 @@ const RecordingControls = () => {
           )}
         </Button>
 
-        <Button
+        {/* <Button
           variant="outline"
           onClick={handlePlayback}
           disabled={!currentDialogue?.audioURL || isRecording}
@@ -288,7 +288,7 @@ const RecordingControls = () => {
               <Play className="mr-2 h-4 w-4" /> Play
             </>
           )}
-        </Button>
+        </Button> */}
 
         <Button
           variant="outline"

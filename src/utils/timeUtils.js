@@ -1,12 +1,12 @@
 export const calculateMaxDuration = (currentDialogue) => {
   if (currentDialogue?.timeStart && currentDialogue?.timeEnd) {
-    const [startH, startM, startS] = currentDialogue.timeStart.split(':').map(Number);
-    const [endH, endM, endS] = currentDialogue.timeEnd.split(':').map(Number);
+    const [startH, startM, startS, startMs] = currentDialogue.timeStart.split(':').map(Number);
+    const [endH, endM, endS, endMs] = currentDialogue.timeEnd.split(':').map(Number);
 
-    const startSeconds = startH * 3600 + startM * 60 + startS;
-    const endSeconds = endH * 3600 + endM * 60 + endS;
+    const startSeconds = startH * 3600 + startM * 60 + startS + startMs / 100;
+    const endSeconds = endH * 3600 + endM * 60 + endS + endMs / 100;
 
-    return endSeconds - startSeconds;
+    return Number((endSeconds - startSeconds).toFixed(3));
   }
   return 6; // Default duration if times aren't available
 };

@@ -3,11 +3,16 @@ import { useRecording } from '../../context/RecordingContext';
 
 const VideoProgress = ({ videoRef }) => {
   const { currentDialogue } = useRecording();
+
+  // console.log(currentDialogue);
   
   const formatTime = (timeString) => {
     const [hours, minutes, seconds, frames] = timeString.split(':');
     return `${hours}:${minutes}:${seconds}`;
   };
+  console.log(formatTime(currentDialogue.timeStart));
+  console.log(currentDialogue.timeStart);
+  
 
   return (
     <div className="absolute bottom-0 left-0 right-0 bg-orange-600 p-2">
