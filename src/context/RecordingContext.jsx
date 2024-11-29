@@ -49,7 +49,7 @@ const projectId = "123456789123456789123456";
 const fetchDialogues = async () => {
   try {
     const response = await axios.get(
-      `http://localhost:5000/api/dialogues/list/${projectId}`
+      `https://server-v2-akga.onrender.com/api/dialogues/list/${projectId}`
     );
     return response.data; // Assuming the response data is in the expected format
   } catch (error) {
