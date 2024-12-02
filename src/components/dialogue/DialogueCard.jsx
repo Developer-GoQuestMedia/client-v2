@@ -13,63 +13,64 @@ const DialogueCard = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
+  const [updateChoice, setUpdateChoice] = useState('both');
 
   const handleSwipeLeft = () => {
     console.log("handleSwipeLeft");
     setIsModalOpen(true);
   };
 
-  const handleConfirm = async (isApproved) => {
+  const handleConfirm = async () => {
     if (dialogueTextRef.current) {
       setIsLoading(true);
       const { original, translated, adapted } = dialogueTextRef.current.getTextValues();
 
       try {
-        // Make API call to update dialogue
-        const response = await axios.put(`https://server-v2-akga.onrender.com/api/dialogues/${currentDialogue._id}`, {
-          dialogue: {
-            original,
-            translated,
-            adapted
-          },
-          status: isApproved ? 'approved' : 'pending'
-        });
+        if (updateChoice === 'none') {
+          moveToNext();
+          setIsModalOpen(false);
+          return;
+        }
 
-        // Update local state after successful API call
-        updateDialogue(currentIndex, {
-          dialogue: {
-            original,
-            translated,
-            adapted
-          },
-          isCompleted: true,
-          status: isApproved ? 'approved' : 'pending'
-        });
+        if (updateChoice === 'dialogue' || updateChoice === 'both') {
+          const response = await axios.put(`https://server-v2-akga.onrender.com/api/dialogues/${currentDialogue._id}`, {
+            dialogue: {
+              original,
+              translated,
+              adapted
+            },
+            status: 'approved'
+          });
 
-        if (isApproved) {
+          updateDialogue(currentIndex, {
+            dialogue: {
+              original,
+              translated,
+              adapted
+            },
+            isCompleted: true,
+            status: 'approved'
+          });
+        }
+
+        if (updateChoice === 'recording' || updateChoice === 'both') {
           try {
-            // Call handleSuccessfulUpload before moving to next
             if (handleSuccessfulUpload) {
-              console.log("handleSuccessfulUpload");
               await handleSuccessfulUpload();
-              console.log("handleSuccessfulUpload completed");
             }
-            moveToNext();
           } catch (uploadError) {
             console.error('Error uploading audio:', uploadError);
             console.log('Failed to upload audio. Please try again.');
             setIsModalOpen(false);
             return;
           }
-        } else {
-          if (typeof handleDeleteRecording === 'function') {
-            handleDeleteRecording();
-          }
         }
+
+        moveToNext();
         setIsModalOpen(false);
       } catch (error) {
-        console.error('Error updating dialogue:', error);
-        console.log('Failed to update dialogue. Please try again.');
+        console.error('Error updating:', error);
+        console.log('Failed to update. Please try again.');
       } finally {
         setIsLoading(false);
       }
@@ -96,7 +97,6 @@ const DialogueCard = () => {
   const handleSwipeRight = () => {
     console.log("handleSwipeRight");
 
-    // Save current text before moving back
     if (dialogueTextRef.current) {
       const { original, translated, adapted } = dialogueTextRef.current.getTextValues();
       updateDialogue(currentIndex, {
@@ -115,11 +115,6 @@ const DialogueCard = () => {
     onSwipeRight: handleSwipeRight
   });
 
-  // console.log("context",   currentDialogue)
-  // console.log("Primary",   currentDialogue.emotions.primary)
-  // console.log("secondary", currentDialogue)
-  // console.log("technicle notes", currentDialogue)
-  // console.log("caltural", currentDialogue)
   return (
     <>
       <div
@@ -130,7 +125,6 @@ const DialogueCard = () => {
         onTouchEnd={handleTouchEnd}
       >
         <Card className="w-full bg-white shadow-lg">
-          {/* Character Info */}
           <div className="p-4 border-b">
             <div className="flex justify-between text-sm">
               <span>Character: {currentDialogue.character}</span>
@@ -150,18 +144,6 @@ const DialogueCard = () => {
             ref={dialogueTextRef}
           />
 
-          {/* <ContextInfo
-            context={{
-              sceneContext: currentDialogue.sceneContext,
-              emotions: {
-                primary: currentDialogue.emotions.primary,
-                secondary: currentDialogue.emotions.secondary,
-              },
-              technical: currentDialogue.technicalNotes,
-              cultural: currentDialogue.culturalNotes,
-            }}
-          /> */}
-
           {currentDialogue.audioURL && (
             <div className="p-4 border-t bg-red-600 h-32 mb-2">
               <audio controls className="w-full">
@@ -176,7 +158,6 @@ const DialogueCard = () => {
         <div 
           className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50"
           onClick={(e) => {
-            // Close modal only if clicking the backdrop (not the modal content)
             if (e.target === e.currentTarget) {
               setIsModalOpen(false);
               setShowDeleteConfirm(false);
@@ -204,20 +185,62 @@ const DialogueCard = () => {
               </>
             ) : (
               <>
-                <p className="text-lg font-semibold">Do you want to approve or re-record this dialogue?</p>
+                <p className="text-lg font-semibold mb-4">What would you like to update?</p>
+                <div className="space-y-2 mb-4">
+                  <label className="flex items-center">
+                    <input
+                      type="radio"
+                      value="dialogue"
+                      checked={updateChoice === 'dialogue'}
+                      onChange={(e) => setUpdateChoice(e.target.value)}
+                      className="mr-2"
+                    />
+                    Dialogue Only
+                  </label>
+                  <label className="flex items-center">
+                    <input
+                      type="radio"
+                      value="recording"
+                      checked={updateChoice === 'recording'}
+                      onChange={(e) => setUpdateChoice(e.target.value)}
+                      className="mr-2"
+                    />
+                    Recording Only
+                  </label>
+                  <label className="flex items-center">
+                    <input
+                      type="radio"
+                      value="both"
+                      checked={updateChoice === 'both'}
+                      onChange={(e) => setUpdateChoice(e.target.value)}
+                      className="mr-2"
+                    />
+                    Both
+                  </label>
+                  <label className="flex items-center">
+                    <input
+                      type="radio"
+                      value="none"
+                      checked={updateChoice === 'none'}
+                      onChange={(e) => setUpdateChoice(e.target.value)}
+                      className="mr-2"
+                    />
+                    None
+                  </label>
+                </div>
                 <div className="mt-4 flex justify-center">
                   <button
                     className="mr-2 px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600 disabled:opacity-50"
-                    onClick={() => handleConfirm(true)}
+                    onClick={handleConfirm}
                     disabled={isLoading}
                   >
-                    {isLoading ? 'Approving...' : 'Approve'}
+                    {isLoading ? 'Processing...' : 'Confirm'}
                   </button>
                   <button 
-                    className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600" 
-                    onClick={() => handleConfirm(false)}
+                    className="px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-600" 
+                    onClick={() => setIsModalOpen(false)}
                   >
-                    Re-record
+                    Cancel
                   </button>
                 </div>
               </>

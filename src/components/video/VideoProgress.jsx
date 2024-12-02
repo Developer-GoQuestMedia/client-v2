@@ -8,7 +8,7 @@ const VideoProgress = ({ videoRef }) => {
   
   const formatTime = (timeString) => {
     const [hours, minutes, seconds, frames] = timeString.split(':');
-    return `${hours}:${minutes}:${seconds}`;
+    return `${hours}:${minutes}:${seconds}:${frames}`;
   };
   console.log(formatTime(currentDialogue.timeStart));
   console.log(currentDialogue.timeStart);

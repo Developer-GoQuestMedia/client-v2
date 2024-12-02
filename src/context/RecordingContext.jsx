@@ -265,7 +265,7 @@ export const RecordingProvider = ({ children }) => {
             source.disconnect(workletNode);
             workletNode.disconnect();
 
-            if (recordedChunks.length === 0) {
+            if (!recordedChunks || recordedChunks.length === 0) {
               throw new Error("No audio data recorded");
             }
 
