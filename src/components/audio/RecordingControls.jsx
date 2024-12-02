@@ -55,26 +55,21 @@ const RecordingControls = () => {
 
   const handleStopRecording = useCallback(() => {
     try {
-      console.log('Stopping recording...');
       
       if (timeoutRef.current) {
-        console.log('Clearing timeout...');
         clearTimeout(timeoutRef.current);
         timeoutRef.current = null;
       }
 
       stopRecording();
-      console.log('Recording stopped');
       
       if (mediaStreamRef.current) {
-        console.log('Cleaning up media stream...');
         mediaStreamRef.current.getTracks().forEach(track => track.stop());
         mediaStreamRef.current = null;
       }
       
       setIsPlaying(false);
       if (audioElement) {
-        console.log('Pausing audio element...');
         audioElement.pause();
       }
     } catch (error) {
@@ -99,29 +94,22 @@ const RecordingControls = () => {
     if (isProcessing) return;
     
     try {
-      console.log('Starting countdown...');
       setIsProcessing(true);
       startCountdown();
 
       // Wait for countdown
       await new Promise(resolve => setTimeout(resolve, 3000));
       
-      console.log('Requesting media stream...');
       const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-      console.log('Media stream obtained:', stream);
       mediaStreamRef.current = stream;
       
       const maxDuration = calculateMaxDuration(currentDialogue) * 1000;
-      console.log('Max duration set to:', maxDuration, 'ms');
       
       timeoutRef.current = setTimeout(() => {
-        console.log('Max duration reached, stopping recording...');
         handleStopRecording();
       }, maxDuration);
 
-      console.log('Initiating recording...');
       await startRecording(maxDuration);
-      console.log('Recording started successfully');
 
     } catch (error) {
       console.error("Error starting recording:", error);
@@ -193,18 +181,15 @@ const RecordingControls = () => {
     const audioPath = `${process.env.PUBLIC_URL || '/client-v2'}/Kuma/audio.wav`;
     
     try {
-        console.log(`Checking audio file at: ${audioPath}`);
         const response = await fetch(audioPath);
         
         if (!response.ok) {
             throw new Error(`File not found: ${audioPath}`);
         } else {
-            console.log("File found");
         }
 
         // Check the content type of the response
         const contentType = response.headers.get('Content-Type');
-        console.log("Content-Type:", contentType);
         
         // Ensure the content type is a supported audio format
         if (!contentType || !contentType.startsWith('audio/')) {
@@ -221,7 +206,6 @@ const RecordingControls = () => {
         sampleAudio.addEventListener('canplaythrough', async () => {
             try {
                 await sampleAudio.play();
-                console.log("Sample audio is playing");
             } catch (playError) {
                 console.error("Error playing audio:", playError);
                 alert("Failed to play audio. Please check the console for details.");

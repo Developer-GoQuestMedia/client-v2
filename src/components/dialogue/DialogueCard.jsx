@@ -16,7 +16,6 @@ const DialogueCard = () => {
   const [updateChoice, setUpdateChoice] = useState('both');
 
   const handleSwipeLeft = () => {
-    console.log("handleSwipeLeft");
     setIsModalOpen(true);
   };
 
@@ -60,7 +59,6 @@ const DialogueCard = () => {
             }
           } catch (uploadError) {
             console.error('Error uploading audio:', uploadError);
-            console.log('Failed to upload audio. Please try again.');
             setIsModalOpen(false);
             return;
           }
@@ -70,7 +68,6 @@ const DialogueCard = () => {
         setIsModalOpen(false);
       } catch (error) {
         console.error('Error updating:', error);
-        console.log('Failed to update. Please try again.');
       } finally {
         setIsLoading(false);
       }
@@ -95,7 +92,6 @@ const DialogueCard = () => {
   };
 
   const handleSwipeRight = () => {
-    console.log("handleSwipeRight");
 
     if (dialogueTextRef.current) {
       const { original, translated, adapted } = dialogueTextRef.current.getTextValues();

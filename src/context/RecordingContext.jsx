@@ -60,7 +60,6 @@ const fetchDialogues = async () => {
 // Replace defaultDialogues with the fetched data
 const defaultDialogues = await fetchDialogues();
 // const defaultDialogues = require('../data/Sample.json');
-console.log(defaultDialogues);
 
 const RecordingContext = createContext(null);
 
@@ -114,15 +113,12 @@ export const RecordingProvider = ({ children }) => {
   }, []);
 
   const stopRecording = useCallback(() => {
-    console.log("Stop recording called");
 
     if (!mediaRecorder.current || !mediaRecorder.current.isRecording) {
-      console.log("No active recording found");
       return;
     }
 
     try {
-      console.log("Stopping recording...");
       mediaRecorder.current.stop();
 
       // Stop all tracks
@@ -130,7 +126,6 @@ export const RecordingProvider = ({ children }) => {
         audioStream.getTracks().forEach((track) => track.stop());
       }
 
-      console.log("Recording stopped successfully");
       setIsRecording(false);
       setAudioStream(null);
 
@@ -144,18 +139,15 @@ export const RecordingProvider = ({ children }) => {
   }, [audioStream, setError, setIsRecording, setAudioStream, cleanup]);
 
   const checkMediaSupport = useCallback(async () => {
-    console.log("Checking media support...");
 
     try {
       // Initialize media devices
       initializeMediaDevices();
-      console.log("Media devices initialized");
 
       // Only check for secure context in production
       if (!window.isSecureContext && process.env.NODE_ENV === "production") {
         const msg =
           "Audio recording requires a secure (HTTPS) connection. Please contact the administrator.";
-        console.error("Not in a secure context - HTTPS required");
         setError(msg);
         return false;
       }
@@ -180,7 +172,6 @@ export const RecordingProvider = ({ children }) => {
         return false;
       }
 
-      console.log("Requesting audio permissions...");
       const stream = await navigator.mediaDevices.getUserMedia({
         audio: {
           echoCancellation: true,
@@ -189,7 +180,6 @@ export const RecordingProvider = ({ children }) => {
         },
       });
 
-      console.log("Audio permissions granted");
       stream.getTracks().forEach((track) => track.stop());
       return true;
     } catch (err) {
@@ -207,7 +197,6 @@ export const RecordingProvider = ({ children }) => {
 
   const startRecording = useCallback(
     async (maxDuration) => {
-      console.log("Starting recording process...");
       let stream;
       let audioContext;
       let workletNode;
@@ -216,7 +205,6 @@ export const RecordingProvider = ({ children }) => {
         const isSupported = await checkMediaSupport();
         if (!isSupported) return;
 
-        console.log("Media support confirmed, proceeding with recording setup");
 
         // Request high-quality audio stream
         stream = await navigator.mediaDevices.getUserMedia({
@@ -228,7 +216,6 @@ export const RecordingProvider = ({ children }) => {
           },
         });
 
-        console.log("Audio stream obtained");
 
         // Create Audio Context and Source
         audioContext = new (window.AudioContext || window.webkitAudioContext)({
@@ -260,7 +247,6 @@ export const RecordingProvider = ({ children }) => {
           workletNode,
           isRecording: true,
           stop: async () => {
-            console.log("Stopping media recorder...");
             mediaRecorder.current.isRecording = false;
             source.disconnect(workletNode);
             workletNode.disconnect();
@@ -295,10 +281,8 @@ export const RecordingProvider = ({ children }) => {
             const reader = new FileReader();
             reader.onloadend = () => {
               localStorage.setItem('recording', reader.result);
-              console.log("WAV Blob stored in localStorage under 'recording'");
             };
             reader.readAsDataURL(processedBlob);
-            console.log("Recorded audio type:", processedBlob.type);
 
             if (dialogues[currentIndex]?.audioURL) {
               URL.revokeObjectURL(dialogues[currentIndex].audioURL);
@@ -322,14 +306,12 @@ export const RecordingProvider = ({ children }) => {
                 return dialogue;
               })
             );
-            console.log("Media recorder stopped");
           },
         };
 
         setIsRecording(true);
         setAudioStream(stream);
         setError(null);
-        console.log("Recording started successfully");
       } catch (error) {
         console.error("Recording setup failed:", error);
         setError(`Recording failed: ${error.message}`);
@@ -453,8 +435,6 @@ export const RecordingProvider = ({ children }) => {
         ""
       )}.wav`;
       const audioData = localStorage.getItem("recording");
-      // console.log("fileName:", fileName);
-      console.log("audioData found:", !!audioData);
 
       if (!audioData) {
         throw new Error("No audio data found");
@@ -478,15 +458,12 @@ export const RecordingProvider = ({ children }) => {
         }
       );
 
-      console.log("Upload response:", response.data);
 
       if (response.data.audioUrl) {
-        console.log("Updating dialogue with new audio URL and recordingStatus");
         updateDialogue(currentIndex, {
           audioURL: response.data.audioUrl,
           recordingStatus: "recorded",
         });
-        console.log("Dialogue updated with new audio URL and recordingStatus");
       }
 
       // Clean up localStorage

@@ -41,12 +41,10 @@ const VideoPlayer = () => {
 
   const handlePlay = () => {
     if (!videoRef.current) {
-      console.log("Video ref not available");
       return;
     }
 
     try {
-      console.log("Playing video");
       videoRef.current.muted = false;
       const playPromise = videoRef.current.play();
       if (playPromise !== undefined) {
@@ -61,12 +59,10 @@ const VideoPlayer = () => {
 
   const handleStop = () => {
     if (!videoRef.current) {
-      console.log("Video ref not available");
       return;
     }
 
     try {
-      console.log("Stopping playback");
       videoRef.current.pause();
       videoRef.current.currentTime = 0;
 
@@ -81,21 +77,14 @@ const VideoPlayer = () => {
 
   const handlePlayWithRecordedAudio = () => {
     if (!videoRef.current) {
-      console.log("Video ref not available");
       return;
     }
 
     if (!audioRef?.current) {
-      console.log("Audio ref not available");
       return;
     }
 
-    console.log("Playing with recorded audio");
-    console.log("Audio state:", {
-      duration: audioRef.current.duration,
-      src: audioRef.current.src,
-      readyState: audioRef.current.readyState,
-    });
+    
 
     try {
       videoRef.current.muted = true;
@@ -121,13 +110,11 @@ const VideoPlayer = () => {
 
   const handleMetadataLoaded = (e) => {
     if (!videoRef.current) {
-      console.log("Video ref not available for metadata");
       return;
     }
     setIsVideoReady(true);
   };
 
-  // console.log(currentDialogue);
 
   return (
     <div className="relative w-full text-yellow-500 ">

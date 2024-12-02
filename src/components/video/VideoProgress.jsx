@@ -4,14 +4,11 @@ import { useRecording } from '../../context/RecordingContext';
 const VideoProgress = ({ videoRef }) => {
   const { currentDialogue } = useRecording();
 
-  // console.log(currentDialogue);
   
   const formatTime = (timeString) => {
     const [hours, minutes, seconds, frames] = timeString.split(':');
     return `${hours}:${minutes}:${seconds}:${frames}`;
   };
-  console.log(formatTime(currentDialogue.timeStart));
-  console.log(currentDialogue.timeStart);
   
 
   return (
