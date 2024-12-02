@@ -6,7 +6,7 @@ export const calculateMaxDuration = (currentDialogue) => {
     const startSeconds = startH * 3600 + startM * 60 + startS + startMs / 100;
     const endSeconds = endH * 3600 + endM * 60 + endS + endMs / 100;
 
-    return Number((endSeconds - startSeconds).toFixed(3));
+    return Number(Math.abs(endSeconds - startSeconds).toFixed(3));
   }
   return 6; // Default duration if times aren't available
 };
